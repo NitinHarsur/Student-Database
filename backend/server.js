@@ -3,13 +3,11 @@ const dotenv = require('dotenv');
 const express = require('express');
 const app = express();
 
-const DB = 'mongodb+srv://nitinharsur:mongo%40123@cluster0.zjmwqdw.mongodb.net/studentdb?retryWrites=true&w=majority';
 
-mongoose.connect(DB).then(() => {
-    console.log("Connection successful");
-}).catch((err) => {
-    console.error("Connection failed:");
-});
+dotenv.config({path:'./config.env'})
+require('./db/conn')
+const PORT = process.env.PORT;
+
 
 app.get('/', (req, res) => {
     res.send('hello');
@@ -27,6 +25,6 @@ app.get('/contact', (req, res) => {
     res.send('Contact');
 });
 
-app.listen(3000, () => {
-    console.log("done");
+app.listen(PORT, () => {
+    console.log(`Server Is Running ON ${PORT}` );
 });
