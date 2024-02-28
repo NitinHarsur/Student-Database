@@ -1,0 +1,51 @@
+body{
+  background-color: rgb(188, 129, 217);
+}
+
+
+
+.navbar {
+    padding: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+.navbar .logo{
+  mix-blend-mode: multiply;
+}
+  
+  .navbar .menu-list {
+    display: flex;
+    list-style: none;
+    gap: 80px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-left: 120px;
+    padding: 10px;
+  }
+  .navbar .menu-list li{
+    cursor: pointer;
+  }
+
+  .login-container {
+    margin-left: auto; /* This pushes the login select to the left */
+  }
+  .login-container select{
+    font-weight: bold;
+    width: 150px;
+    color: black;
+    background-color: yellow;
+    font-size: 1rem;
+    padding: 12px;
+    border: 2px  solid black;
+    border-radius: 5px;
+    cursor: pointer;
+
+ 
+  }
+  
+.login-container select option{
+    font-size: 1.2rem;
+font-weight: bold;
+
+}
