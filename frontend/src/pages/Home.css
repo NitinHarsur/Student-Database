@@ -24,7 +24,40 @@
     cursor: pointer;
     color: black;
     text-decoration: none;
+    display: inline-block; /* Ensures inline behavior for smooth transitions */
+  position: relative; /* Allows positioning of the transition effect */
+  overflow: hidden; 
   }
+
+/*hovering effect*/
+.navbar .menu-list a::after {
+  content: ""; /* Empty content for the pseudo-element */
+  position: absolute; /* Position the transition effect element below the text */
+  top: 90%;
+  left: 0;
+  width: 100%;
+  height: 3px; /* Specify the thickness of the underline */
+  background-color: #4158D0; /* Set transition color */
+  transition: all 0.3s ease-in-out; /* Smooth transition on hover */
+  transform: translateX(-100%); /* Initially hide the effect by offsetting */
+}
+
+.navbar .menu-list a:hover::after {
+  transform: translateX(0); /* Show the effect on hover */
+  width: 100%; /* Expand underline width on hover */
+  background-color: #C850C0; /* Change underline color to match text on hover */
+}
+
+.navbar .menu-list a:hover {
+  /* Change color on hover (same as underline color) */
+  color: #C850C0; /* New color on hover */
+}
+
+
+
+
+
+
   .login-container {
     margin-left: auto; /* This pushes the login select to the left */
   }
@@ -37,21 +70,44 @@
     border: 2px  solid black;
     border-radius: 5px;
     cursor: pointer;
-
- 
   }
   
+
+  .login-container select::after {
+    content: ""; /* Empty content for the pseudo-element */
+    position: absolute; /* Position the underline below the text */
+    bottom: 0; /* Align the underline to the bottom */
+    left: 0; /* Align the underline to the left */
+    width: 100%; /* Match the width of the select element */
+    height: 2px; /* Set the thickness of the underline */
+    background-color: #4158D0; /* Initial underline color */
+    transition: all 0.3s ease-in-out; /* Smooth transition on focus */
+    transform: scaleX(0); /* Initially hide the underline */
+  }
+  
+  .login-container select:focus::after {
+    transform: scaleX(1); /* Show the underline on focus */
+    background-color: #4158D0; /* Change underline color on focus (match text color) */
+  }
+
+   .login-container select:hover {
+    /* Change color on hover (same as underline color) */
+    color: #4158D0; /* New color on hover */
+  }
+
+
+
 .login-container select option{
     font-size: 1rem;
 font-weight: bold;
 }
 
+
 .icon {
   display: none;
 }
 
-
-
+/*WebPage Responsive*/
 @media (max-width: 1300px) {
   .navbar .menu-list {
     gap: 50px;
@@ -87,18 +143,16 @@ font-weight: bold;
 @media (max-width: 930px) {
   .icon {
     margin-left: 30px;
-    display: flex; /* Make the icon visible */
-    align-items: center; /* Center the icon vertically */
-    justify-content: center; /* Center the icon horizontally */
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
     font-size: 30px;
     cursor: pointer;
   }
-
   /* Hide menu list and login container by default */
   .menu {
     display: none;
   }
-
   /* Show menu list and login container when .show class is applied */
   .menu.show{
     display: flex;
@@ -121,10 +175,48 @@ font-weight: bold;
   width: 100px;
   padding: 3px;
 }
+.menu.show~ .icon{
+  transform: rotate(-45deg); /* Rotate the icon 90 degrees when active (clicked) */
+}
 }
 
-@media (max-width: 600px) {
-  .navbar .logo img {
-    width: 100px; /* Adjust the width to your preference */
+
+
+/*Body-Page*/
+.body-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Heading H1*/
+.heading h1 {
+  font-size: 2.5rem;
+  background-image: linear-gradient(45deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 3px;
+  border-right: 3px solid black;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 8s steps(28) infinite, cursor .4s step-end infinite alternate;
+  animation-fill-mode: forwards;
+}
+
+@keyframes cursor {
+  50% {
+    border-color: transparent;
   }
 }
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  100%{
+    width: 100%;
+  }
+}
+
+
+
