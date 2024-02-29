@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate,Link } from 'react-router-dom';
 import logo  from '../images/logo.jpg'
 import  './Home.css'
+import { TiThMenu } from "react-icons/ti";
+
 function HomePage() {
   const navigate = useNavigate();
   const [selectOption, setSelectOption] = useState('');
+  const [showMenu, setShowMenu] = useState(false);
 
   const handleSelectChange = (e) => {
     const value = e.target.value;
@@ -15,6 +18,9 @@ function HomePage() {
       navigate('/student/StudentHome');
     }
   };
+   const toggleMenu=(e)=>{
+    setShowMenu(!showMenu)
+   }
 
   return (
     <div>
@@ -22,7 +28,7 @@ function HomePage() {
         <div className="logo">
         <img src={logo} alt="Logo" style={{ width: '150px', height: 'auto', cursor:'pointer'}} />
         </div>
-        <div className="menu">
+        <div className={`menu ${showMenu ? 'show' : ''}`}>
           <ul className="menu-list">
           <li><Link to="/faculty">Faculty</Link></li>
             <li><Link to="/departments">Departments</Link></li>
@@ -32,16 +38,19 @@ function HomePage() {
             <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
-      <div className="login-container"> 
-        <select name="login" id="login" value={selectOption} onChange={handleSelectChange}>
+        <div className={`login-container`}>
+          <select name="login" id="login" value={selectOption} onChange={handleSelectChange}>
           <option selected>Login</option>
           <option value="teacher">Teacher</option>
           <option value="student">Student</option>
         </select>
       </div>
-       
+        <div className="icon" onClick={toggleMenu}>
+        <TiThMenu />
+        </div>
       </div>
-      Welcome to Student DataBase
+      <div className="body-page">      Welcome to Student DataBase
+</div>
     </div>
   );
 }

@@ -1,8 +1,3 @@
-body{
-  background-color: #ffadad;
-}
-
-
 
 .navbar {
     padding: 25px;
@@ -37,8 +32,7 @@ body{
     font-weight: bold;
     width: 150px;
     color: black;
-    background-color: yellow;
-    font-size: 1rem;
+    font-size: 1.2rem;
     padding: 12px;
     border: 2px  solid black;
     border-radius: 5px;
@@ -48,7 +42,89 @@ body{
   }
   
 .login-container select option{
-    font-size: 1.2rem;
+    font-size: 1rem;
 font-weight: bold;
+}
 
+.icon {
+  display: none;
+}
+
+
+
+@media (max-width: 1300px) {
+  .navbar .menu-list {
+    gap: 50px;
+    font-size: 1.1rem;
+    margin-left: 50px;
+  }
+}
+
+@media (max-width: 1150px) {
+  .navbar .menu-list {
+    gap: 40px;
+    font-size: 1rem;
+    margin-left: 50px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .navbar .menu-list {
+    gap: 25px;
+    font-size: 1rem;
+    margin-left: 50px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .navbar .menu-list {
+    gap: 15px;
+    font-size: 1rem;
+    margin-left: 50px;
+  }
+}
+
+@media (max-width: 930px) {
+  .icon {
+    margin-left: 30px;
+    display: flex; /* Make the icon visible */
+    align-items: center; /* Center the icon vertically */
+    justify-content: center; /* Center the icon horizontally */
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+  /* Hide menu list and login container by default */
+  .menu {
+    display: none;
+  }
+
+  /* Show menu list and login container when .show class is applied */
+  .menu.show{
+    display: flex;
+    flex-direction: column; 
+  }
+
+  .menu-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+
+   right: 0%;
+   width: 150px;
+  align-items: end
+  }
+.login-container select{
+  display: flex;
+  font: 1em sans-serif;
+  width: 100px;
+  padding: 3px;
+}
+}
+
+@media (max-width: 600px) {
+  .navbar .logo img {
+    width: 100px; /* Adjust the width to your preference */
+  }
 }
