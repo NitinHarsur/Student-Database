@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import logo from '../images/logo.jpg';
 import './Home.css';
@@ -33,7 +33,7 @@ function HomePage() {
     <div>
       <div className="navbar">
         <div className="logo">
-          <img src={logo} alt="Logo" style={{ width: '150px', height: 'auto', cursor: 'pointer' }} />
+          <img src={logo} alt="Logo" />
         </div>
         <div className={`menu ${showMenu ? 'show' : ''}`}>
           <ul className="menu-list">

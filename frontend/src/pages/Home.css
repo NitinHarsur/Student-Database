@@ -7,8 +7,8 @@
   }
 .navbar .logo{
   mix-blend-mode: multiply;
-}
-  
+} 
+.logo img{width: 150px; height: 'auto'; cursor: 'pointer' }
   .navbar .menu-list {
     display: flex;
     list-style: none;
@@ -108,6 +108,12 @@ font-weight: bold;
 }
 
 /*WebPage Responsive*/
+@media(max-width:500px){
+  .logo img{
+    width: 80px;
+    height: auto;
+  }
+}
 @media (max-width: 1300px) {
   .navbar .menu-list {
     gap: 50px;
@@ -191,11 +197,11 @@ font-weight: bold;
 
 /*Heading H1*/
 .heading h1 {
-  font-size: 2.5rem;
+  font-size: 4vw;
   background-image: linear-gradient(45deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
   -webkit-background-clip: text;
   color: transparent;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   border-right: 3px solid black;
   white-space: nowrap;
   overflow: hidden;
