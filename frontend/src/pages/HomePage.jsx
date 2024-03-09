@@ -15,9 +15,9 @@ function HomePage() {
     const value = e.target.value;
     setSelectOption(value);
     if (value === 'teacher') {
-      navigate('/teacher/TeacherHome');
+      navigate('/teacher/TeacherLogin');
     } else if (value === 'student') {
-      navigate('/student/StudentHome');
+      navigate('/student/StudentLogin');
     }
   };
 
@@ -45,7 +45,7 @@ function HomePage() {
             <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
-        <div className={`login-container`}>
+        <div className="login-box">
           <select name="login" id="login" value={selectOption} onChange={handleSelectChange}>
             <option selected>Login</option>
             <option value="teacher">Teacher</option>

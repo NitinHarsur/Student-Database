@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import StudentHome from './pages/student/StudentHome';
-import TeacherHome from './pages/teacher/TeacherHome';
+import StudentLogin from './pages/student/StudentLogin';
+import TeacherLogin from './pages/teacher/TeacherLogin';
 import Contact from './pages/menu-pages/Contact'; // Import the ContactPage component
 import Faculty from './pages/menu-pages/Faculty'; // Import the FacultyPage component
 import Department from './pages/menu-pages/Department'; // Import the DepartmentsPage component
@@ -16,8 +16,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/student/StudentHome" element={<StudentHome />} />
-        <Route path="/teacher/TeacherHome" element={<TeacherHome />} />
+        <Route path="/student/StudentLogin" element={<StudentLogin />} />
+        <Route path="/teacher/TeacherLogin" element={<TeacherLogin />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/faculty" element={<Faculty />} />
         <Route path="/departments" element={<Department />} />
