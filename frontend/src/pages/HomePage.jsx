@@ -41,7 +41,7 @@ function HomePage() {
             <li><Link to="/departments">Departments</Link></li>
             <li><Link to="/syllabus">Syllabus</Link></li>
             <li><Link to="/admission">Admission</Link></li>
-            <li><Link to="/about">AboutUs</Link></li>
+            <li><Link to="/about">About us</Link></li>
             <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>

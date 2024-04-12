@@ -1,54 +1,27 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const cors = require('cors');
+const connectDB = require('./db/conn'); // Import the connectDB function
+const router = require('./router/auth'); // Import the user router
 
 const app = express();
-app.use(cors());
-app.use(express.json());
 
-dotenv.config({ path: './config.env' });
+// Connect to MongoDB database (assuming 'conn.js' handles connection logic)
+connectDB();
 
+// Middleware
+app.use(express.json()); // Parse incoming JSON data
 
-// Define MongoDB schema and model
-const userSchema = new mongoose.Schema({
-    username: String,
-    regno: String,
-    email: String
+// Routes
+app.use('/', router); // Mount the user router at '/api/users'
+
+// Define the default route (optional)
+app.get('/', (req, res) => {
+  res.send('Welcome to the home page');
 });
 
-const UserModel = mongoose.model('User', userSchema);
+// Define the port
+const PORT = process.env.PORT || 3000;
 
-const PORT = process.env.PORT || 3000; // Default port 3000 if not specified in environment variables
-
-app.post('/login', async (req, res) => {
-    const { username, regno } = req.body;
-    try {
-        const user = await UserModel.findOne({ username });
-        if (user) {
-            if (user.regno === regno) {
-                res.json({ message: 'Login successful', user });
-            } else {
-                res.status(400).json({ message: 'Invalid registration number' });
-            }
-        } else {
-            res.status(400).json({ message: 'Invalid username' });
-        }
-    } catch (error) {
-        console.error("Error while logging in:", error);
-        res.status(500).json({ message: 'Server error' });
-    }
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
-
-// Connect to MongoDB database
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log("Connected to MongoDB");
-        // Start the server
-        app.listen(PORT, () => {
-            console.log(`Server is running on port ${PORT}`);
-        });
-    })
-    .catch((error) => {
-        console.error("Error connecting to MongoDB:", error);
-    });
