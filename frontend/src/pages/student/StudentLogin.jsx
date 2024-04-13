@@ -9,7 +9,7 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3001/login', {
+      const response = await fetch('http://localhost:3001/studentLogin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

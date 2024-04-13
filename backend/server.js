@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./db/conn'); // Import the connectDB function
-const router = require('./router/auth'); // Import the user router
+const router = require('./router/auth');
 
 const app = express();
 

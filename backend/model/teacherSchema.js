@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 // Define user schema
-const studentSchema = new mongoose.Schema({
-  studentname: {
+const teacherSchema = new mongoose.Schema({
+  name: {
     type: String,
     required: true // Ensure that the username is required
   },
-  regnumber: {
+  password: {
     type: String,
     required: true // Ensure that the registration number is required
   }
@@ -14,5 +14,5 @@ const studentSchema = new mongoose.Schema({
 
 // Create and export User model
 const db = mongoose.connection.useDb('GPTDATA');
-const Student = db.model('STUDENTDATA', studentSchema);
-module.exports = Student;
+const Teacher = db.model('TEACHERDATA', teacherSchema);
+module.exports = Teacher;

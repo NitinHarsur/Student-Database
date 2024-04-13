@@ -1,76 +1,62 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // For API calls
+import './Login.css'
 
-function TeacherLogin() {
-  const [username, setUsername] = useState('');
-  const [regNumber, setRegNumber] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [isLoading, setIsLoading] = useState(false); // Track API call state
+const LoginForm = () => {
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setIsLoading(true); // Set loading state
-
     try {
-      const response = await axios.post('/api/teacher-login', {
-        username,
-        regNumber,
+      const response = await fetch('http://localhost:3001/teacherLogin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, password }),
       });
 
-      const userData = response.data; // Assuming response contains user data (validation might be needed)
+      if (!response.ok) {
+        throw new Error('Invalid username or password number');
+      }
 
-      // Successful login (replace with redirection or state change)
-      console.log('Login successful!');
-      // Handle successful login (e.g., redirect, store user data in a secure way)
-      // Example: store user data in local storage or state management library like Redux/Context API
-      localStorage.setItem('userData', JSON.stringify(userData)); // Example using local storage
-
+      // If successful, you can redirect the user or display a success message
+      alert('Login successful');
     } catch (error) {
-      console.error(error);
-      setErrorMessage(error.response?.data?.message || 'Login failed'); // Handle potential nested error objects
-    } finally {
-      setIsLoading(false); // Reset loading state
+      console.error('Error logging in:', error.message);
+      setError(error.message);
     }
   };
 
   return (
-    <div className="login">
-      <div className="login-container">
-        <h1>Login</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="username">Username:</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="regNumber">Registration Number:</label>
-            <input
-              type="text"
-              id="regNumber"
-              name="regNumber"
-              value={regNumber}
-              onChange={(e) => setRegNumber(e.target.value)}
-              required
-            />
-          </div>
-          {errorMessage && <p className="error">{errorMessage}</p>}
-          <div className="button-container">
-            <button type="submit" disabled={isLoading}>
-              {isLoading ? 'Loading...' : 'Login'}
-            </button>
-          </div>
-        </form>
-      </div>
+    <div>
+      <h2>Login Form</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="name"> Name:</label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="password"> Password:</label>
+          <input
+            type="text"
+            id="regnumber"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <button type="submit">Login</button>
+        {error && <div>{error}</div>}
+      </form>
     </div>
   );
-}
+};
 
-export default TeacherLogin;
+export default LoginForm;
