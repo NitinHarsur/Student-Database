@@ -13,5 +13,6 @@ const studentSchema = new mongoose.Schema({
 });
 
 // Create and export User model
-const User = mongoose.model('GPTDB', studentSchema);
+const db = mongoose.connection.useDb('GPTDATA');
+const User = db.model('STUDENTDATA', studentSchema);
 module.exports = User;

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../model/userSchema'); // Import the user model (assuming 'models' folder)
+const User = require('../model/studentSchema'); // Import the user model (assuming 'models' folder)
 
 // POST route for user login (secure login logic)
 router.post('/login', async (req, res) => {
