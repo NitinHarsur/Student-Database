@@ -2,30 +2,28 @@ const express = require('express');
 const router = express.Router();
 const User = require('../model/userSchema'); // Import the user model (assuming 'models' folder)
 
-// GET route for login page message (NOT FOR LOGIN)
-router.get('/login', (req, res) => {
-  console.log("Login page requested"); // Optional logging
-  res.send('Welcome to the Login Page! Please enter your credentials below.');
-});
-
 // POST route for user login (secure login logic)
 router.post('/login', async (req, res) => {
   const { studentname, regnumber } = req.body;
 
   try {
-    // Check if username AND registration number exist
-    const user = await User.findOne({ studentname, regnumber });
-
-    if (!user) {
-      return res.status(400).json({ message: 'Invalid username or registration number' });
+    // Check if both username and registration number exist in the request body
+    if (!studentname || !regnumber) {
+      return res.status(400).json({ error: 'Both username and registration number are required' });
     }
 
-    // Handle successful login (e.g., generate token, send user data)
-    // Implement secure login logic here (e.g., password hashing, token generation)
-    res.json({ message: 'Login successful' }); // You might include additional user data here
+    // Find the user in the database based on both studentname and regnumber
+    const userLogin = await User.findOne({ studentname: studentname, regnumber: regnumber });
+
+    if (!userLogin) {
+      return res.status(400).json({ error: 'Invalid username or registration number' });
+    }
+
+    // Return success message if user is found
+    res.json({ message: 'Login successful' });
   } catch (error) {
     console.error('Error logging in:', error);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ error: 'Server error' });
   }
 });
 
