@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-
+import {useNavigate} from 'react-router-dom';
 const LoginForm = () => {
   const [studentname, setStudentname] = useState('');
   const [regnumber, setRegnumber] = useState('');
   const [error, setError] = useState('');
-
+  const  navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -18,11 +18,11 @@ const LoginForm = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Invalid username or registration number');
+        alert('Invalid username or registration number');
       }
 
-      // If successful, you can redirect the user or display a success message
-      alert('Login successful');
+else{alert('Login successful');
+navigate('/studentHome')}      
     } catch (error) {
       console.error('Error logging in:', error.message);
       setError(error.message);
@@ -39,7 +39,7 @@ const LoginForm = () => {
             type="text"
             id="studentname"
             value={studentname}
-            onChange={(e) => setStudentname(e.target.value)}
+            onChange={(e) => setStudentname(e.target.value)} required
           />
         </div>
         <div>
@@ -48,7 +48,7 @@ const LoginForm = () => {
             type="text"
             id="regnumber"
             value={regnumber}
-            onChange={(e) => setRegnumber(e.target.value)}
+            onChange={(e) => setRegnumber(e.target.value)} required
           />
         </div>
         <button type="submit">Login</button>

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import './Login.css'
+import {useNavigate} from 'react-router-dom';
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -19,11 +22,13 @@ const LoginForm = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Invalid username or password number');
+        alert('Invalid username or password number');
       }
+      else{
+        alert('Login successful');
+        navigate('/teacherHome');
+    }
 
-      // If successful, you can redirect the user or display a success message
-      alert('Login successful');
     } catch (error) {
       console.error('Error logging in:', error.message);
       setError(error.message);
@@ -40,7 +45,7 @@ const LoginForm = () => {
             type="text"
             id="name"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)} required
           />
         </div>
         <div>
@@ -49,7 +54,7 @@ const LoginForm = () => {
             type="text"
             id="regnumber"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)} required
           />
         </div>
         <button type="submit">Login</button>

@@ -15,9 +15,9 @@ function HomePage() {
     const value = e.target.value;
     setSelectOption(value);
     if (value === 'teacher') {
-      navigate('/teacher/TeacherLogin');
+      navigate('/teacher/teacherLogin');
     } else if (value === 'student') {
-      navigate('/student/StudentLogin');
+      navigate('/student/studentLogin');
     }
   };
 
