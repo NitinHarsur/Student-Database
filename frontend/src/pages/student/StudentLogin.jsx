@@ -1,58 +1,61 @@
 import React, { useState } from 'react';
-import './Login.css'; 
 
-function StudentLogin() {
-  const [username, setUsername] = useState('');
-  const [regNumber, setRegNumber] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+const LoginForm = () => {
+  const [studentname, setStudentname] = useState('');
+  const [regnumber, setRegnumber] = useState('');
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Implement login logic here (e.g., API call, validation)
-    // Replace with your actual backend interaction logic
-    if (username === 'admin' && regNumber === '12345') {
-      // Successful login (replace with redirection or state change)
-      console.log('Login successful!');
-    } else {
-      setErrorMessage('Invalid username or registration number');
+    try {
+      const response = await fetch('http://localhost:3001/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ studentname, regnumber }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Invalid username or registration number');
+      }
+
+      // If successful, you can redirect the user or display a success message
+      alert('Login successful');
+    } catch (error) {
+      console.error('Error logging in:', error.message);
+      setError(error.message);
     }
   };
 
   return (
-    <div className="login">
-    <div className="login-container">
-      <h1>Login</h1>
+    <div>
+      <h2>Login Form</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Username:</label>
+        <div>
+          <label htmlFor="studentname">Student Name:</label>
           <input
             type="text"
-            id="username"
-            name="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
+            id="studentname"
+            value={studentname}
+            onChange={(e) => setStudentname(e.target.value)}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="regNumber">Registration Number:</label>
+        <div>
+          <label htmlFor="regnumber">Registration Number:</label>
           <input
             type="text"
-            id="regNumber"
-            name="regNumber"
-            value={regNumber}
-            onChange={(e) => setRegNumber(e.target.value)}
-            required
+            id="regnumber"
+            value={regnumber}
+            onChange={(e) => setRegnumber(e.target.value)}
           />
         </div>
-        {errorMessage && <p className="error">{errorMessage}</p>}
-        <div className="button-container">
-          <button type="submit">Login</button>
-        </div>
+        <button type="submit">Login</button>
+        {error && <div>{error}</div>}
       </form>
-    </div></div>    
+    </div>
   );
-}
+};
 
-export default StudentLogin;
+export default LoginForm;

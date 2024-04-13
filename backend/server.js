@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const connectDB = require('./db/conn'); // Import the connectDB function
 const router = require('./router/auth'); // Import the user router
 
@@ -7,6 +8,7 @@ const app = express();
 // Connect to MongoDB database (assuming 'conn.js' handles connection logic)
 connectDB();
 
+app.use(cors());
 // Middleware
 app.use(express.json()); // Parse incoming JSON data
 
