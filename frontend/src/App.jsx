@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import StudentLogin from './pages/student/StudentLogin';
 import TeacherLogin from './pages/teacher/TeacherLogin';
-import TeacherHome from './pages/teacher/TeacherHome';
-import StudentHome from './pages/student/StudentHome';
+import TeacherDashboard from './pages/teacher/TeacherDashboard';
+import StudentDashboard from './pages/student/StudentDashboard';
 import Contact from './pages/menu-pages/Contact'; // Import the ContactPage component
 import Faculty from './pages/menu-pages/Faculty'; // Import the FacultyPage component
 import Department from './pages/menu-pages/Department'; // Import the DepartmentsPage component
@@ -27,8 +27,8 @@ function App() {
         <Route path="/syllabus" element={<Syllabus />} />
         <Route path="/admission" element={<Admission />} />
         <Route path="/about" element={<AboutUs />} />
-        <Route path="/TeacherHome" element={<TeacherHome/>} />
-        <Route path="/StudentHome" element={<StudentHome/>} />
+        <Route path="/teacherDashboard" element={<TeacherDashboard/>} />
+        <Route path="/studentDashboard" element={<StudentDashboard/>} />
       </Routes>
     </Router>
     </>

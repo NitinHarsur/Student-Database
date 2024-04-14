@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import './Login.css'
-import {useNavigate} from 'react-router-dom';
+import './Login.css';
+import { useNavigate } from 'react-router-dom';
+import { toast,Bounce } from 'react-toastify';
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -22,13 +23,31 @@ const LoginForm = () => {
       });
 
       if (!response.ok) {
-        alert('Invalid username or password number');
+        toast.error('Invalid username and password', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          });
+      } else {
+        navigate('/TeacherDashboard');
+        toast.success('Login Successfull', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          });
       }
-      else{
-        alert('Login successful');
-        navigate('/teacherHome');
-    }
-
     } catch (error) {
       console.error('Error logging in:', error.message);
       setError(error.message);
@@ -51,15 +70,16 @@ const LoginForm = () => {
         <div>
           <label htmlFor="password"> Password:</label>
           <input
-            type="text"
-            id="regnumber"
+            type="password" 
+            id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)} required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" >Login</button>
         {error && <div>{error}</div>}
       </form>
+
     </div>
   );
 };

@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
+
+import {  toast,Bounce } from 'react-toastify';
+
+
 const LoginForm = () => {
   const [studentname, setStudentname] = useState('');
   const [regnumber, setRegnumber] = useState('');
   const [error, setError] = useState('');
   const  navigate = useNavigate();
+
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -18,11 +26,31 @@ const LoginForm = () => {
       });
 
       if (!response.ok) {
-        alert('Invalid username or registration number');
-      }
+        toast.error('Invalid studentname and register number', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+      });}
 
-else{alert('Login successful');
-navigate('/studentHome')}      
+else{
+      navigate('/studentDashboard')
+      toast.success('Login Successfull', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });}      
     } catch (error) {
       console.error('Error logging in:', error.message);
       setError(error.message);
@@ -31,6 +59,7 @@ navigate('/studentHome')}
 
   return (
     <div>
+
       <h2>Login Form</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -51,9 +80,10 @@ navigate('/studentHome')}
             onChange={(e) => setRegnumber(e.target.value)} required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" >Login</button>
         {error && <div>{error}</div>}
       </form>
+
     </div>
   );
 };
