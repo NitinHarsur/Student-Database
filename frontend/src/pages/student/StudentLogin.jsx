@@ -39,7 +39,7 @@ const LoginForm = () => {
       });}
 
 else{
-      navigate('/studentDashboard')
+      navigate('/StudentDashboard')
       toast.success('Login Successfull', {
         position: "top-right",
         autoClose: 3000,

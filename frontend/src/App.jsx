@@ -4,7 +4,7 @@ import HomePage from './pages/HomePage';
 import StudentLogin from './pages/student/StudentLogin';
 import TeacherLogin from './pages/teacher/TeacherLogin';
 import TeacherDashboard from './pages/teacher/TeacherDashboard';
-import Attendence from './pages/teacher/sidebar/Attendence';
+
 
 import StudentDashboard from './pages/student/StudentDashboard';
 import Contact from './pages/menu-pages/Contact'; // Import the ContactPage component
@@ -15,23 +15,33 @@ import Admission from './pages/menu-pages/Admission'; // Import the AdmissionPag
 import AboutUs from './pages/menu-pages/AboutUs'; // Import the AboutUsPage component
 
 
+
 function App() {
   return (
     <>
     
       <Routes>
         <Route path="/" element={<HomePage />} />
+
+         {/* Login */}
         <Route path="/student/StudentLogin" element={<StudentLogin />} />
         <Route path="/teacher/TeacherLogin" element={<TeacherLogin />} />
+
+           {/* Home Page Navbar */}
         <Route path="/contact" element={<Contact />} />
         <Route path="/faculty" element={<Faculty />} />
         <Route path="/departments" element={<Department />} />
         <Route path="/syllabus" element={<Syllabus />} />
         <Route path="/admission" element={<Admission />} />
         <Route path="/about" element={<AboutUs />} />
-        <Route path="/TeacherDashboard" element={<TeacherDashboard/>} />
-        <Route path="/studentDashboard" element={<StudentDashboard/>} />
-        <Route path="/TeacherDashboard/Attendence" element={<Attendence />} />
+
+         {/* Teacher Dashboard */}
+        <Route path="/TeacherDashboard/*" element={<TeacherDashboard/>} />
+               
+       
+
+          {/* Student Dashboard */}
+       <Route path="/StudentDashboard/*" element={<StudentDashboard/>} /> 
         
       </Routes>
     </>

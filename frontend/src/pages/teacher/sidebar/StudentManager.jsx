@@ -6,4 +6,4 @@ const StudentManager = () => {
   )
 }
 
-export default StudentManager
+export default StudentManager;
