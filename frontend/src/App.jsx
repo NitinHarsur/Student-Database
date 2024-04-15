@@ -1,9 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {  Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import StudentLogin from './pages/student/StudentLogin';
 import TeacherLogin from './pages/teacher/TeacherLogin';
 import TeacherDashboard from './pages/teacher/TeacherDashboard';
+import Attendence from './pages/teacher/sidebar/Attendence';
+
 import StudentDashboard from './pages/student/StudentDashboard';
 import Contact from './pages/menu-pages/Contact'; // Import the ContactPage component
 import Faculty from './pages/menu-pages/Faculty'; // Import the FacultyPage component
@@ -16,7 +18,7 @@ import AboutUs from './pages/menu-pages/AboutUs'; // Import the AboutUsPage comp
 function App() {
   return (
     <>
-    <Router>
+    
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/student/StudentLogin" element={<StudentLogin />} />
@@ -27,10 +29,11 @@ function App() {
         <Route path="/syllabus" element={<Syllabus />} />
         <Route path="/admission" element={<Admission />} />
         <Route path="/about" element={<AboutUs />} />
-        <Route path="/teacherDashboard" element={<TeacherDashboard/>} />
+        <Route path="/TeacherDashboard" element={<TeacherDashboard/>} />
         <Route path="/studentDashboard" element={<StudentDashboard/>} />
+        <Route path="/TeacherDashboard/Attendence" element={<Attendence />} />
+        
       </Routes>
-    </Router>
     </>
   );
 }

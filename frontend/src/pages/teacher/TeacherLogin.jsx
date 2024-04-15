@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import { toast,Bounce } from 'react-toastify';
+import DBwelcome from '../../IndexTexts/DBwelcome';
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -56,6 +57,7 @@ const LoginForm = () => {
 
   return (
     <div>
+      <DBwelcome/>
       <h2>Login Form</h2>
       <form onSubmit={handleSubmit}>
         <div>
