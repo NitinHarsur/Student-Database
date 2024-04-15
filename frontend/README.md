@@ -66,9 +66,6 @@ Access Application: Access the Student Database Management System by navigating 
 Contributing
 Contributions to the Student Database Management System project are welcome! Please follow the guidelines outlined in the CONTRIBUTING.md file.
 
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
 Credits
 This project was developed by [Your Name]. Special thanks to [Name] for their contributions.
 
