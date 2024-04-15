@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const Attendence = () => {
+const Attendance = () => {
 
   return (
     <div className="Thome">
@@ -11,4 +11,4 @@ const Attendence = () => {
   );
 };
 
-export default Attendence;
+export default Attendance;
