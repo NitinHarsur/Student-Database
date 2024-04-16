@@ -11,18 +11,19 @@ import Result from './sidebar/Result';
 
 const TeacherDashboard = () => {
   return (
-    <>
+    <div style={{display:'flex'}}>
     
-
-      <Sidebar />
+<div>  <Sidebar />
+</div>
+    <div>
       <Routes>
         <Route path="/" element={<TeacherHome />} />
         <Route path="/Attendance" element={<Attendance />} />
         <Route path="/StudentManager" element={<StudentManager />} />
         <Route path="/Result" element={<Result />} />
-
       </Routes>
-    </>
+      </div>
+    </div>
   );
 }
 

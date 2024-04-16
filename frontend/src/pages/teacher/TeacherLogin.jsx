@@ -9,7 +9,7 @@ const LoginForm = () => {
 
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [error] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,7 +51,17 @@ const LoginForm = () => {
       }
     } catch (error) {
       console.error('Error logging in:', error.message);
-      setError(error.message);
+      toast.error('Netwok Error', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
     }
   };
 
