@@ -1,22 +1,41 @@
+import { Hidden } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
+  // Define style objects
+  const sidebarStyle = {
+    background: '#f4f4f4',
+    padding: '1rem',
+    width: '200px',
+    height: '100vh'
+  };
+
+  const listStyle = {
+    listStyle: 'none',
+    padding: 0
+  };
+
+  const linkStyle = {
+    textDecoration: 'none',
+    color: '#333'
+  };
+
   return (
-    <div className="sidebar">
-      <h2>Teacher Dashboard</h2>
-      <ul>
+    <div className="sidebar" style={sidebarStyle}>
+    
+      <ul style={listStyle}>
         <li>
-          <Link to="/TeacherDashboard">Home</Link>
+          <Link to="/TeacherDashboard" style={linkStyle}>Home</Link>
         </li>
         <li>
-          <Link to="/TeacherDashboard/StudentManager">StudentManager</Link>
+          <Link to="/TeacherDashboard/StudentManager" style={linkStyle}>Student Manager</Link>
         </li>
         <li>
-          <Link to="/TeacherDashboard/Attendance">Attendance</Link>
+          <Link to="/TeacherDashboard/Attendance" style={linkStyle}>Attendance</Link>
         </li>
         <li>
-          <Link to="/TeacherDashboard/Result">Result</Link>
+          <Link to="/TeacherDashboard/Result" style={linkStyle}>Result</Link>
         </li>
       </ul>
     </div>

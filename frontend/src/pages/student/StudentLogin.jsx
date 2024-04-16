@@ -7,7 +7,7 @@ import {  toast,Bounce } from 'react-toastify';
 const LoginForm = () => {
   const [studentname, setStudentname] = useState('');
   const [regnumber, setRegnumber] = useState('');
-  const [error, setError] = useState('');
+  const [error] = useState('');
   const  navigate = useNavigate();
 
 
@@ -53,7 +53,17 @@ else{
         });}      
     } catch (error) {
       console.error('Error logging in:', error.message);
-      setError(error.message);
+      toast.error('Netwok Error', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
     }
   };
 
