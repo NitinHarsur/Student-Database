@@ -56,33 +56,36 @@ const LoginForm = () => {
   };
 
   return (
-    <div>
-      <DBwelcome/>
-      <h2>Login Form</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name"> Name:</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)} required
-          />
-        </div>
-        <div>
-          <label htmlFor="password"> Password:</label>
-          <input
-            type="password" 
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)} required
-          />
-        </div>
-        <button type="submit" >Login</button>
-        {error && <div>{error}</div>}
-      </form>
-
+    <>
+    <div className="text">
+    <DBwelcome />
     </div>
+    <div className="login-container">
+    <h2>Login Form</h2>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="name"> Name:</label>
+        <input
+          type="text"
+          id="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)} required
+        />
+      </div>
+      <div>
+        <label htmlFor="password"> Password:</label>
+        <input
+          type="password" 
+          id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)} required
+        />
+      </div>
+      <button type="submit" >Login</button>
+      {error && <div className="error-message">{error}</div>}
+    </form>
+  </div>
+  </>
   );
 };
 
