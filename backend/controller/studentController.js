@@ -25,4 +25,32 @@ const studentLogin= async (req, res) => {
   };
 
   module.exports = studentLogin;
-  
+
+
+  const AddStudent = async (req, res) => {
+    try {
+      const { studentname, regnumber } = req.body;
+
+        const existingStudent = await Student.findOne({
+            regnumber:regnumber
+        });
+
+        if (existingStudent) {
+          return res.status(400).json({ error: 'Register number already exsist' });
+        }
+        else {
+            const student = new Student({
+                studentname,
+                regnumber
+            });
+
+            let result = await student.save();
+
+            res.status(201).json({ message: 'Student added successfully' });
+        }
+    } catch (error) {
+      console.error('Error adding student:', error);
+      res.status(500).json({ message: 'Server error' });
+    }
+}
+module.exports = AddStudent;

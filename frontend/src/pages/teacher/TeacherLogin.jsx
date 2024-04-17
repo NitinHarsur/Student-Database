@@ -66,10 +66,9 @@ const LoginForm = () => {
   };
 
   return (
-    <>
-    <div className="text">
+    <div className="login">
     <DBwelcome />
-    </div>
+   
     <div className="login-container">
     <h2>Login Form</h2>
     <form onSubmit={handleSubmit}>
@@ -95,7 +94,8 @@ const LoginForm = () => {
       {error && <div className="error-message">{error}</div>}
     </form>
   </div>
-  </>
+  </div>
+  
   );
 };
 
