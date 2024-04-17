@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import './AddStudent.css';
 import {  toast,Bounce } from 'react-toastify';
 
-const StudentManager = () => {
+const AddStudent = () => {
   const [studentname, setStudentname] = useState('');
+  const [year, setYear] = useState('');
   const [regnumber, setRegnumber] = useState('');
   const [error] = useState('');
  
@@ -20,7 +21,7 @@ const StudentManager = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ studentname, regnumber }),
+        body: JSON.stringify({ studentname, regnumber,year }),
       });
 
       if (!response.ok) {
@@ -87,7 +88,16 @@ else{
             onChange={(e) => setRegnumber(e.target.value)} required
           />
         </div>
-        <button type="submit" >Login</button>
+        <div>
+          <label htmlFor="year">Year:</label>
+          <input
+            type="text"
+            id="year"
+            value={year}
+            onChange={(e) => setYear(e.target.value)} required
+          />
+        </div>
+        <button type="submit" >Add Student</button>
         {error && <div>{error}</div>}
       </form>
 
@@ -95,4 +105,4 @@ else{
   );
 };
 
-export default StudentManager;
+export default AddStudent;

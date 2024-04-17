@@ -9,6 +9,10 @@ const studentSchema = new mongoose.Schema({
   regnumber: {
     type: String,
     required: true // Ensure that the registration number is required
+  },
+  year: {
+    type: String,
+    required: true // Ensure that the year is required
   }
 });
 
