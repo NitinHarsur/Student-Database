@@ -14,7 +14,7 @@ const Sidebar = () => {
   const sidebarStyle = {
     background: '#f4f4f4',
     padding: '1rem',
-    width: showIconsOnly ? '50px' : '250px', // Shrinking width when showIconsOnly is true
+    width: showIconsOnly ? '50px' : '200px', // Shrinking width when showIconsOnly is true
     height: '100vh',
     display: 'flex',
     flexDirection: 'column',
@@ -23,7 +23,7 @@ const Sidebar = () => {
 
   const listStyle = {
     listStyle: 'none',
-    padding: 0,
+    padding: '10px',
     marginTop: '1rem'
   };
 
@@ -42,7 +42,7 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar" style={sidebarStyle}>
-      <IoMenu onClick={toggleShowIconsOnly} style={{ marginBottom: '1rem', cursor: 'pointer', fontSize: '30px' }} />
+      <IoMenu onClick={toggleShowIconsOnly} style={{ marginBottom: '1rem', cursor: 'pointer', fontSize: '30px',padding:'10px' }} />
 
       <ul style={listStyle}>
         <li > {/* Apply margin based on showIconsOnly state */}
