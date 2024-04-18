@@ -1,42 +1,51 @@
-
-
 .add-student-container {
-    width: 300px;
-    margin: 50px auto;
-  }
+  width: 300px;
+  border-radius: 15px;
+  padding: 10px;
+  background-color: #48cae4;
+}
+
+
+
+.add-student-container h2 {
+  text-align: center;
+}
+
+.add-student-container form {
+  margin-top: 20px;
+}
+
+.add-student-container form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.add-student-container form div {
+
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.add-student-container form input {
+  border-radius: 10px;
+  width: 100%;
+  padding: 8px;
+  border: none;
+  box-sizing: border-box; /* Include padding and border in the element's total width */
+}
+
+.add-student-container form button {
   
-  .add-student-container h2 {
-    text-align: center;
-  }
-  
-  .add-student-container form {
-    margin-top: 20px;
-  }
-  
-  .add-student-container form label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .add-student-container form input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  
-  .add-student-container form button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
-  
-  .add-student-container form button:hover {
-    background-color: #0056b3;
-  }
-  
+  width: 50%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.add-student-container form button:hover {
+  background-color: #0056b3;
+}

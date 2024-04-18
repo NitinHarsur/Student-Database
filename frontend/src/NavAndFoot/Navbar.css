@@ -58,10 +58,10 @@
 
 
 
-  .login-box {
+  .login_box {
     margin-left: auto; /* This pushes the login select to the left */
   }
-  .login-box select{
+  .login_box select{
     font-weight: bold;
     width: 150px;
     color: black;
@@ -73,7 +73,7 @@
   }
   
 
-  .login-box select::after {
+  .login_box select::after {
     content: ""; /* Empty content for the pseudo-element */
     position: absolute; /* Position the underline below the text */
     bottom: 0; /* Align the underline to the bottom */
@@ -85,19 +85,19 @@
     transform: scaleX(0); /* Initially hide the underline */
   }
   
-  .login-box select:focus::after {
+  .login_box select:focus::after {
     transform: scaleX(1); /* Show the underline on focus */
     background-color: #4158D0; /* Change underline color on focus (match text color) */
   }
 
-   .login-box select:hover {
+   .login_box select:hover {
     /* Change color on hover (same as underline color) */
     color: #4158D0; /* New color on hover */
   }
 
 
 
-.login-box select option{
+.login_box select option{
     font-size: 1rem;
 font-weight: bold;
 }

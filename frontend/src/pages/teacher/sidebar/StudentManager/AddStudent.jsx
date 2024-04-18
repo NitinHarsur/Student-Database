@@ -64,8 +64,9 @@ else{
     }
   };
 
+  
   return (
-    <div className='add-student-container'>
+    <div className='add-student-container' >
 
       <h2>Add Student</h2>
       <form onSubmit={handleSubmit}>
@@ -87,7 +88,7 @@ else{
             onChange={(e) => setRegnumber(e.target.value)} required
           />
         </div>
-        <button type="submit" >Login</button>
+        <div style={{textAlign:'center'}}><button type="submit" >Login</button></div>
         {error && <div>{error}</div>}
       </form>
 

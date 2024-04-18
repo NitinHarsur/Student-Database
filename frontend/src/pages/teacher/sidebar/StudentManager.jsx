@@ -1,20 +1,18 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom';
-import StudentMenue from './StudentMenue';
-import AddStudent from './AddStudent';
-import DeleteStudent from './DeleteStudent';
-import UpdateStudent from './UpdateStudent';
+import AddStudent from './StudentManager/AddStudent';
+import DeleteStudent from './StudentManager/DeleteStudent';
+import UpdateStudent from './StudentManager/UpdateStudent';
 
 function StudentManager() {
   
   return (
     <div style={{display:'flex',flexDirection:'column'}}>
  <div>
-      <StudentMenue/>
-      </div>
-      <div>
+    
+      </div >
+      <div style={{display:'flex',justifyContent:'center'}}>
         <Routes>
-
         <Route path="/AddStudent" element={<AddStudent/>}/>
         <Route path="/UpdateStudent" element={<UpdateStudent/>}/>
         <Route path="/DeleteStudent" element={<DeleteStudent/>}/>
