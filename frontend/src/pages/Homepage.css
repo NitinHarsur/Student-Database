@@ -8,7 +8,7 @@ main .image-section {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%; /* Ensure the wrapper takes full width */
+    width: 100%; /* Ensure the wrapper takes full width */  gap:30px;
 }
 
 .homepage main .image-section .image-wrapper a {
@@ -18,11 +18,14 @@ main .image-section {
 }
 
 .homepage main .image-section .image-wrapper a img {
-    width: 100%; /* Set width of images to 100% of their parent container */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 5px; /* Add rounded corners to images */
-    transition: transform 0.3s ease; /* Add smooth transition effect */
+  width: 300px; /* Set width of images */
+  height: 250px; /* Set height of images */
+  border-radius: 20px; /* Add rounded corners to images */
+  box-shadow: 0px 5px 10px black;  transition: transform 0.3s ease;
+   /* Add smooth transition effect */
+
 }
+
 
   
   .image-wrapper img:hover {

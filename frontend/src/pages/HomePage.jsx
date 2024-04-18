@@ -1,32 +1,37 @@
-import React from 'react'
-import Navbar from '../NavAndFoot/Navbar'
-import { Link } from 'react-router-dom'
-import LMS from '../images/lms1.png'
-import SSP from '../images/ssp1.png'
-import './Homepage.css'
+import React from 'react';
+import Navbar from '../NavAndFoot/Navbar';
+import { Link } from 'react-router-dom';
+import LMS from '../images/lms1.png';
+import SSP from '../images/ssp1.png';
+import './Homepage.css';
 
 function HomePage() {
   return (
-    
     <div>
-      <Navbar/>
+      <Navbar />
       <div className="homepage">
-      <main>
-        <section className="image-section">
-          <div className="image-wrapper">
-            <Link to="https://karnatakalms.com/">
-              <img src={LMS} />
-            </Link>
-            <Link to="https://ssp.postmatric.karnataka.gov.in/">
-              <img src={SSP} />
-            </Link>
-          </div>
-        </section>
-      </main>
-      <footer>
-        <p>Student Database Management System - Powered by React</p>
-      </footer></div> </div>
-  )
+        <main>
+          <section className="image-section">
+
+            <div className="image-wrapper">
+              
+              <a href="https://karnatakalms.com/" target="_blank" rel="noopener noreferrer">
+                <img src={LMS} alt="LMS" />
+              </a>
+
+              <a href="https://ssp.postmatric.karnataka.gov.in/" target="_blank" rel="noopener noreferrer">
+                <img src={SSP} alt="SSP" />
+              </a>
+
+            </div>
+          </section>
+        </main>
+        <footer>
+          <p>Student Database Management System - Powered by React</p>
+        </footer>
+      </div>
+    </div>
+  );
 }
 
-export default HomePage
+export default HomePage;

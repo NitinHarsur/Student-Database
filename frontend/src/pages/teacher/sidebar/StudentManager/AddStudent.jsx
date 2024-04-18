@@ -89,9 +89,8 @@ else{
             onChange={(e) => setRegnumber(e.target.value)} required
           />
         </div>
-<<<<<<< HEAD
-        <div style={{textAlign:'center'}}><button type="submit" >Login</button></div>
-=======
+
+        
         <div>
           <label htmlFor="year">Year:</label>
           <input
@@ -102,10 +101,10 @@ else{
           />
         </div>
         <button type="submit" >Add Student</button>
->>>>>>> 729b15714e3c6c2da5fade67d00303a79740e7e5
-        {error && <div>{error}</div>}
+        {error && <div>{error}
+        </div>}
       </form>
-
+  
     </div>
   );
 };
