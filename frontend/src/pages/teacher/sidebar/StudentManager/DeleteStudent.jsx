@@ -88,7 +88,7 @@ const DeleteStudent = () => {
           transition: Bounce,
         });
       } else {
-        toast.success('Student Deleted successfully', {
+        toast.success('Students Deleted successfully', {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
