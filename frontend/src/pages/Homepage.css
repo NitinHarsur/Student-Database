@@ -1,0 +1,37 @@
+main .image-section {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .homepage main .image-section .image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Ensure the wrapper takes full width */
+}
+
+.homepage main .image-section .image-wrapper a {
+    text-decoration: none; /* Remove underline from links */
+    display: inline-block; /* Make links behave as inline-block elements */
+    max-width: 100%; /* Ensure the link doesn't exceed the width of the image */
+}
+
+.homepage main .image-section .image-wrapper a img {
+    width: 100%; /* Set width of images to 100% of their parent container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Add rounded corners to images */
+    transition: transform 0.3s ease; /* Add smooth transition effect */
+}
+
+  
+  .image-wrapper img:hover {
+    transform: scale(1.1); /* Optional: adds a zoom effect on hover */
+  }
+  
+  /* Footer styles */
+  footer {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #555;
+  }

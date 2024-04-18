@@ -24,12 +24,12 @@ const studentLogin= async (req, res) => {
     }
   };
 
-  module.exports = studentLogin;
 
 
-  const AddStudent = async (req, res) => {
+
+  const addStudent = async (req, res) => {
     try {
-      const { studentname, regnumber } = req.body;
+      const { studentname, regnumber,year } = req.body;
 
         const existingStudent = await Student.findOne({
             regnumber:regnumber
@@ -41,7 +41,8 @@ const studentLogin= async (req, res) => {
         else {
             const student = new Student({
                 studentname,
-                regnumber
+                regnumber,
+                year
             });
 
             let result = await student.save();
@@ -53,4 +54,52 @@ const studentLogin= async (req, res) => {
       res.status(500).json({ message: 'Server error' });
     }
 }
-module.exports = AddStudent;
+
+
+
+const deleteStudentByRegnumber = async (req,res)=>{
+  try {
+    const {regnumber} = req.body;
+
+    // Check if the student exists
+    const student = await Student.findOne({regnumber});
+    if (!student) {
+      return res.status(404).json({ message: 'Student not found' });
+    }
+
+    // Delete the student from the database
+    await Student.deleteOne({regnumber});
+
+    // Return success message
+    res.json({ message: 'Student deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting student:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+
+}
+
+
+const deleteStudentsByYear = async (req,res)=>{
+  try {
+    const {year} = req.body;
+
+    // Check if the student exists
+    const student = await Student.find({year});
+    if (!student) {
+      return res.status(404).json({ message: 'Students not found in this year' });
+    }
+
+    // Delete the student from the database
+    await Student.deleteMany({year});
+
+    // Return success message
+    res.json({ message: 'Students deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting students:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+
+}
+
+module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear};
