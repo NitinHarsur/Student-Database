@@ -127,7 +127,7 @@ const DeleteStudent = () => {
           <input
             type="text"
             id="regnumber"
-            value={year}
+            value={regnumber}
             onChange={(e) => setRegnumber(e.target.value)} required
           />
         
