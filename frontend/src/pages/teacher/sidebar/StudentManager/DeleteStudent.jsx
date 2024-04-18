@@ -72,7 +72,7 @@ const DeleteStudent = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ regnumber }),
+        body: JSON.stringify({ year }),
       });
   
       if (!response.ok) {
