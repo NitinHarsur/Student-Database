@@ -1,3 +1,4 @@
+
 main .image-section {
     display: flex;
     justify-content: center;
@@ -8,7 +9,8 @@ main .image-section {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%; /* Ensure the wrapper takes full width */  gap:30px;
+    width: 10000%; /* Ensure the wrapper takes full width */ 
+     gap:200px;
 }
 
 .homepage main .image-section .image-wrapper a {
@@ -18,8 +20,8 @@ main .image-section {
 }
 
 .homepage main .image-section .image-wrapper a img {
-  width: 300px; /* Set width of images */
-  height: 250px; /* Set height of images */
+  width: 500px; /* Set width of images */
+  height: 350px; /* Set height of images */
   border-radius: 20px; /* Add rounded corners to images */
   box-shadow: 0px 5px 10px black;  transition: transform 0.3s ease;
    /* Add smooth transition effect */
@@ -37,4 +39,28 @@ main .image-section {
     margin-top: 20px;
     font-size: 0.9em;
     color: #555;
+  }
+  .image-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .social-icons a {
+    margin: 0 10px; /* Adjust the spacing between icons */
+  }
+  
+  .social-icons img {
+    width: 30px; /* Adjust the size of the icons */
+    height: 30px;
+    cursor: pointer; /* Add a pointer cursor on hover */
+  }
+  
+  .social-icons img:hover {
+    opacity: 0.8; /* Reduce opacity on hover */
   }
