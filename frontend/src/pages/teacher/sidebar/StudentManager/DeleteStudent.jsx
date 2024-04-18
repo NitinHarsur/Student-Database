@@ -65,7 +65,7 @@ const DeleteStudent = () => {
     e.preventDefault();
   
     try {
-      const response = await fetch('http://localhost:3001/deleteStudentByRegnumber', {
+      const response = await fetch('http://localhost:3001/deleteStudentsByYear', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
