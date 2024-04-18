@@ -3,6 +3,8 @@ import {  toast,Bounce } from 'react-toastify';
 
 const DeleteStudent = () => {
   const [regnumber, setRegnumber] = useState('');
+  const [year, setYear] = useState('');
+
   const [error] = useState('');
  
 
@@ -121,11 +123,11 @@ const DeleteStudent = () => {
       <form onSubmit={handleDelete}>
 
         <div>
-          <label htmlFor="regnumber">Registration Number:</label>
+          <label htmlFor="regnumber">Register :</label>
           <input
             type="text"
             id="regnumber"
-            value={regnumber}
+            value={year}
             onChange={(e) => setRegnumber(e.target.value)} required
           />
         
@@ -139,12 +141,12 @@ const DeleteStudent = () => {
       <form onSubmit={handleDeleteMany}>
 
         <div>
-          <label htmlFor="regnumber">Registration Number:</label>
+          <label htmlFor="year"> Year :</label>
           <input
             type="text"
-            id="regnumber"
-            value={regnumber}
-            onChange={(e) => setRegnumber(e.target.value)} required
+            id="year"
+            value={year}
+            onChange={(e) => setYear(e.target.value)} required
           />
       
 
