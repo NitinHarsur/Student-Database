@@ -4,7 +4,7 @@ import React from "react";
 const Attendance = () => {
 
   return (
-    <div className="Thome">
+    <div >
   
       <h2>Attendance page</h2>
     </div>

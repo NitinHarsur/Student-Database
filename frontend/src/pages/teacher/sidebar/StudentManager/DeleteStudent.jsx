@@ -7,8 +7,6 @@ const DeleteStudent = () => {
  
 
 
-
-
   const handleDelete = async (e) => {
     e.preventDefault();
   

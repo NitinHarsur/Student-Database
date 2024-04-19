@@ -14,6 +14,7 @@ body {
   height: 320px;
   position: relative;
   top: 100px;
+  left: 200px;
   width: 420px;
   padding: 40px;
   transform: translate(-50%, -50%);
@@ -37,6 +38,7 @@ body {
   border-bottom: 1px solid #fff;
   outline: none;
   background: transparent;
+  
 }
 
 .login-box .user-box label {
@@ -79,10 +81,10 @@ body {
   background: linear-gradient(45deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
   color: #fff;
   border-radius: 5px;
-  box-shadow: 0 0 15px #03f40f,
-              0 0 25px #03f40f,
-              0 0 50px #03f40f,
-              0 0 100px #03f40f;
+  box-shadow: 0 0 15px white,
+              0 0 25px white,
+              0 0 50px white,
+              0 0 100px white;
 }
 
 .login-box button span {

@@ -1,79 +1,68 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-
-import { IoMenu } from 'react-icons/io5';
+import { Layout, Menu } from 'antd';
+import './Sidebar.css'; // Import your CSS file
+import { RiMenuFoldFill, RiMenuUnfoldFill } from 'react-icons/ri'; // Import icons
 import { AiFillHome } from 'react-icons/ai';
-import { PiStudentBold, PiExamFill } from "react-icons/pi";
-import { FaBookBookmark,FaUserCheck  } from "react-icons/fa6";
-import { HiUserAdd } from "react-icons/hi";
-import { MdPersonRemoveAlt1 } from "react-icons/md";
+import { PiStudentBold, PiExamFill } from 'react-icons/pi';
+import { FaBookBookmark, FaUserCheck } from 'react-icons/fa6';
+import { HiUserAdd } from 'react-icons/hi';
+import { MdPersonRemoveAlt1 } from 'react-icons/md';
 
+const { Sider, Content, Footer } = Layout;
+const { SubMenu } = Menu;
 
-const Side_bar = () => {
-  const [showIconsOnly, setShowIconsOnly] = useState(false);
+const Sidebar = () => {
+    const [collapsed, setCollapsed] = useState(true); // Initially set sidebar to be collapsed
 
-  
+    // Function to toggle the collapsed state
+    const toggleCollapse = () => {
+        setCollapsed(!collapsed);
+    };
 
-  // // Define style objects
-  const sidebarStyle = {
-    background: 'black',
-    padding: '1rem',
-    width: showIconsOnly ? '50px' : '200px', // Shrinking width when showIconsOnly is true
-    height: '100vh',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'left'
- };
+    return (
+        <Layout className='layout-container'>
+            {/* Sidebar */}
+            <Sider
+                className='side__bar'
+                collapsed={collapsed}
+                collapsedWidth={60}
+                width={200}
+                style={{ transition: ' 0.3s ease-in-out'}} 
+            >
 
-  // const listStyle = {
+                <div className='top-bar' onClick={toggleCollapse} style={{ padding: '10px', backgroundColor: '#00b4d8', cursor: 'pointer' }}>
+                    {collapsed ? (
+                        <RiMenuUnfoldFill fontSize={'30px'} />
+                    ) : (
+                        <RiMenuFoldFill fontSize={'30px'} />
+                    )}
+                </div>
 
-  //   listStyle: 'none',
-  //   padding: '10px',
-  //   marginTop: '1rem'
-  // };
+                {/* Menu */}
+                <Menu mode="inline" theme="dark">
+                    <Menu.Item key="1" icon={<AiFillHome />}>
+                        Home
+                    </Menu.Item>
+                    <SubMenu key="sub1" icon={<PiStudentBold />} title="Student Manager">
+                        <Menu.Item key="2" icon={<HiUserAdd />}>Add Student</Menu.Item>
+                        <Menu.Item key="3" icon={<FaUserCheck />}>Update Student</Menu.Item>
+                        <Menu.Item key="4" icon={<MdPersonRemoveAlt1 />}>Delete Student</Menu.Item>
+                    </SubMenu>
+                    <Menu.Item key="5" icon={<FaBookBookmark />}>
+                        Attendance
+                    </Menu.Item>
+                    <Menu.Item key="6" icon={<PiExamFill />}>Result</Menu.Item>
+                </Menu>
+            </Sider>
 
-  // const linkStyle = {    
+            {/* Content */}
+            <Content className='content-area'>
+                {/* Add your main content here */}
+            </Content>
+
       
-  //   height: '45px',
-  //   borderradius: '20px',
-  //   backgroundcolor: 'yellow',
-  //   textDecoration: 'none',
-  //   color: 'black',
-  //   display: 'flex',
-  //   alignItems: 'center',
-  //   marginBottom: '3rem',// Apply margin based on showIconsOnly state
-  // };
-
-  // Function to toggle between showing icons with text and just icons
-  const toggleShowIconsOnly = () => {
-    setShowIconsOnly(!showIconsOnly);
-  };
-
-  return (
-    <div className="sidebar" style={sidebarStyle}>
-      <IoMenu onClick={toggleShowIconsOnly} style={{ color:'darkblue',marginBottom: '2rem', cursor: 'pointer', fontSize: '30px',padding:'10px' }} />
-      
-      <div className="side_menu_bar" style={{ width: showIconsOnly ? '50px' : '200px' }}>
-        <Sidebar style={{ width: showIconsOnly ? '50px' : '200px' }}>
-          <Menu>
-            <MenuItem icon={<AiFillHome/>} component={<Link to="/TeacherDashBoard" />} >TeacherHome</MenuItem>
-
-            <SubMenu icon={<PiStudentBold/>} label='StudentManager'>
-            <MenuItem icon={<HiUserAdd/>} component={<Link to='/TeacherDashBoard/StudentManager/AddStudent'/>}>AddStudent</MenuItem>
-            <MenuItem icon={<FaUserCheck/>} component={<Link to="/TeacherDashboard/StudentManager/UpdateStudent"/>}>UpdateStudent</MenuItem>
-            <MenuItem icon={<MdPersonRemoveAlt1 />} component={<Link to="/TeacherDashboard/StudentManager/DeleteStudent"/>}>DeleteStudent</MenuItem>
-            </SubMenu>
-
-            <MenuItem icon={<FaBookBookmark/>} component={<Link to="/TeacherDashBoard/Attendance" />}>Attendance</MenuItem>
-
-            <MenuItem icon={<PiExamFill/>} component={<Link to="/TeacherDashBoard/Result" />}>Result</MenuItem>
-          </Menu>
-        </Sidebar>
-      </div>
-
-    </div>
-  );
+        </Layout>
+    );
 };
 
-export default Side_bar;
+export default Sidebar;
