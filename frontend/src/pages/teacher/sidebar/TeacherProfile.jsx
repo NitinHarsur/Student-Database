@@ -2,7 +2,7 @@ import React from 'react'
 
 const TeacherProfile = () => {
   return (
-    <div>TeacherProfile</div>
+    <div style={{display:'flex',justifyContent:'center'}}>TeacherProfile</div>
   )
 }
 
