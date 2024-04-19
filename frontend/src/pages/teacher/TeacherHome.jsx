@@ -4,7 +4,7 @@ import './home.css'
 const TeacherHome = () => {
 
   return (
-    <div className="Thome">
+    <div>
       <h2>Welcome</h2>
     </div>
   );

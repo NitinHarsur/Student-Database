@@ -5,7 +5,8 @@ import Sidebar from './sidebar/Sidebar';
 import Attendance from './sidebar/Attendance';
 import StudentManager from './sidebar/StudentManager';
 import Result from './sidebar/Result';
-//import AddStudent from './sidebar/StudentManager/AddStudent';
+import TeacherProfile from './sidebar/TeacherProfile';
+
 
 
 
@@ -14,15 +15,16 @@ const TeacherDashboard = () => {
   return (
     <div style={{display:'flex',height:'100vh'}}>
     
-<div>  <Sidebar />
+<div className='__side__bar' theme="dark">  
+  <Sidebar />
 </div>
-    <div style={{backgroundColor:'#fdfffc',width:'100%'}}>
+    <div className='teacherDashboard'   style={{ backgroundColor: '#d7e3fc',width:'100%'}} >
       <Routes>
         <Route path="/" element={<TeacherHome />} />
         <Route path="/Attendance" element={<Attendance />} />
-        <Route path="/StudentManager/*" element={<StudentManager />} />
+        <Route path="/StudentManager/*" element={<StudentManager/>} />
         <Route path="/Result" element={<Result />} />
-
+        <Route path="/TeacherProfile" element={<TeacherProfile />} />
       </Routes>
       </div>
     </div>

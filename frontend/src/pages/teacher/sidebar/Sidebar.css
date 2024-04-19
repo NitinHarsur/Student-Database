@@ -1,0 +1,25 @@
+/* Sidebar.css */
+
+/* Ensure your styles take precedence over default styles */
+.menu__bar {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-size: 1rem;
+}
+
+/* Hover styles for menu items */
+.ant-menu-item:hover {
+    background-color: #00b4d8;
+    color: black;
+    border-radius: 5px; /* Optional: round the corners */
+}
+
+/* Hover styles for menu icons */
+.ant-menu-item .anticon:hover {
+    background-color: #bde0fe;
+    border-radius: 50%; /* Make the icon background rounded */
+    padding: 5px; /* Add padding around the icon */
+}
+
+

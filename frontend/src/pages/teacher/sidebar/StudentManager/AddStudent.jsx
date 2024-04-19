@@ -67,8 +67,7 @@ else{
 
   
   return (
-    <div className='add-student-container' >
-
+    <div className='add-student-container'>
       <h2>Add Student</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -100,7 +99,8 @@ else{
             onChange={(e) => setYear(e.target.value)} required
           />
         </div>
-        <button type="submit" >Add Student</button>
+        <center>
+        <button type="submit" >Add Student</button></center>
         {error && <div>{error}
         </div>}
       </form>

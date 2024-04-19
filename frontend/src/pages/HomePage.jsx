@@ -11,7 +11,8 @@ import './Homepage.css';
 
 function HomePage() {
   return (
-    <div>
+  <>
+    <div className='home' style={{background:'#cdc1ff'}}>
       <Navbar />
       <div className="homepage">
         <main>
@@ -30,6 +31,14 @@ function HomePage() {
             </div>
           </section>
         </main>
+
+        
+      </div>
+      <footer>
+          <div>Student Database Management System - Powered by React</div>
+        </footer>
+    </div>
+
         <footer>
         <div className="social-icons">
             <a href="..whatsapp" target="_blank" rel="noopener noreferrer">
@@ -44,10 +53,8 @@ function HomePage() {
           </div>
           
         </footer>
-        
-  </div>
-      </div>
-    
+
+      </>
   );
 }
 

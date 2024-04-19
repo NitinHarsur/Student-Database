@@ -6,10 +6,12 @@
   }
   .heading{
     position: relative;
-    top: -100px;
+    top: -125px;
+    left: -100px;
   }
   /*Heading H1*/
   .heading h1 {
+ 
     font-size: 3vw;
     background-image: linear-gradient(45deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
     -webkit-background-clip: text;

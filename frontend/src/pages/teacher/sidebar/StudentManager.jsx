@@ -7,18 +7,14 @@ import UpdateStudent from './StudentManager/UpdateStudent';
 function StudentManager() {
   
   return (
-    <div style={{display:'flex',flexDirection:'column'}}>
- <div>
-    
-      </div >
-      <div style={{display:'flex',justifyContent:'center'}}>
+
+      <div className='studentManager' style={{display:'flex',justifyContent:'center',alignItems:'center',height:'100vh'}}>
         <Routes>
         <Route path="/AddStudent" element={<AddStudent/>}/>
         <Route path="/UpdateStudent" element={<UpdateStudent/>}/>
         <Route path="/DeleteStudent" element={<DeleteStudent/>}/>
-        
         </Routes>
-      </div>
+    
       </div>
   )
 }

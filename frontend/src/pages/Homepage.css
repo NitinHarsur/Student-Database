@@ -1,4 +1,14 @@
 
+<<<<<<< HEAD
+
+
+.homepage{
+  height: 100vh;
+}
+
+
+=======
+>>>>>>> 61b293afd78f169905e76fa544dfd5b8e49d14df
 main .image-section {
     display: flex;
     justify-content: center;
@@ -23,7 +33,7 @@ main .image-section {
   width: 500px; /* Set width of images */
   height: 350px; /* Set height of images */
   border-radius: 20px; /* Add rounded corners to images */
-  box-shadow: 0px 5px 10px black;  transition: transform 0.3s ease;
+  box-shadow: 0px 3px 10px black;  transition: transform 0.3s ease;
    /* Add smooth transition effect */
 
 }

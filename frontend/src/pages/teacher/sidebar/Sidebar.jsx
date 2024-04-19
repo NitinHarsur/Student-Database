@@ -1,79 +1,125 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-
-import { IoMenu } from 'react-icons/io5';
+import { Layout, Menu } from 'antd';
+import { RiMenuFoldFill, RiMenuUnfoldFill } from 'react-icons/ri';
 import { AiFillHome } from 'react-icons/ai';
-import { PiStudentBold, PiExamFill } from "react-icons/pi";
-import { FaBookBookmark,FaUserCheck  } from "react-icons/fa6";
-import { HiUserAdd } from "react-icons/hi";
-import { MdPersonRemoveAlt1 } from "react-icons/md";
+import { PiStudentBold, PiExamFill } from 'react-icons/pi';
+import { FaBookBookmark, FaUserCheck } from 'react-icons/fa6';
+import { HiUserAdd } from 'react-icons/hi';
+import { MdPersonRemoveAlt1 } from 'react-icons/md';
+import { UserOutlined } from '@ant-design/icons';
+import './Sidebar.css';
 
+const { Sider, Footer } = Layout;
 
-const Side_bar = () => {
-  const [showIconsOnly, setShowIconsOnly] = useState(false);
+const Sidebar = () => {
+    const [collapsed, setCollapsed] = useState(true);
 
-  
+    const toggleCollapse = () => {
+        setCollapsed(!collapsed);
+    };
 
-  // // Define style objects
-  const sidebarStyle = {
-    background: 'black',
-    padding: '1rem',
-    width: showIconsOnly ? '50px' : '200px', // Shrinking width when showIconsOnly is true
-    height: '100vh',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'left'
- };
+    return (
+        <Layout className="layout-container" style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#00b4d8', height: '100vh' }}>
+            <Sider
+                className="side__bar"
+                collapsed={collapsed}
+                collapsedWidth={70}
+                width={200}
+                style={{ height: '100vh', transition: '0.3s ease-in-out', backgroundColor: '#00b4d8' }}
+            >
+                <div className="top-bar" onClick={toggleCollapse} style={{ padding: '10px', backgroundColor: '#00b4d8', cursor: 'pointer' }}>
+                    {collapsed ? (
+                        <RiMenuUnfoldFill fontSize={30} />
+                    ) : (
+                        <div className="menu-icon-end" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                            <RiMenuFoldFill fontSize={30} />
+                        </div>
+                    )}
+                </div>
 
-  // const listStyle = {
+                {/* Menu */}
+                <Menu className='menu__bar'
+                    mode="inline"
+                    theme="dark"
+                    items={[
+                        {
+                            key: '/TeacherDashboard',
+                            icon: <AiFillHome size={collapsed ? '20' : '25'} />,
+                            label: <Link to="/TeacherDashboard">Home</Link>,
+                        },
+                        {
+                            key: 'sub1',
+                            icon: <PiStudentBold size={collapsed ? '20' : '25'} />,
+                            label: 'Student Manager',
+                            children: [
+                                {
+                                    key: '/TeacherDashboard/StudentManager/AddStudent',
+                                    icon: <HiUserAdd size={collapsed ? '20' : '25'} />,
+                                    label: <Link to="/TeacherDashboard/StudentManager/AddStudent">Add Student</Link>,
+                                },
+                                {
+                                    key: '/TeacherDashboard/StudentManager/UpdateStudent',
+                                    icon: <FaUserCheck size={collapsed ? '20' : '25'} />,
+                                    label: <Link to="/TeacherDashboard/StudentManager/UpdateStudent">Update Student</Link>,
+                                },
+                                {
+                                    key: '/TeacherDashboard/StudentManager/DeleteStudent',
+                                    icon: <MdPersonRemoveAlt1 size={collapsed ? '20' : '25'} />,
+                                    label: <Link to="/TeacherDashboard/StudentManager/DeleteStudent">Delete Student</Link>,
+                                },
+                            ],
+                        },
+                        {
+                            key: '/TeacherDashboard/Attendance',
+                            icon: <FaBookBookmark size={collapsed ? '20' : '25'} />,
+                            label: <Link to="/TeacherDashboard/Attendance">Attendance</Link>,
+                        },
+                        {
+                            key: '/TeacherDashboard/Result',
+                            icon: <PiExamFill size={collapsed ? '20' : '25'} />,
+                            label: <Link to="/TeacherDashboard/Result">Result</Link>,
+                        },
+                    ]}
+                />
+            </Sider>
 
-  //   listStyle: 'none',
-  //   padding: '10px',
-  //   marginTop: '1rem'
-  // };
-
-  // const linkStyle = {    
-      
-  //   height: '45px',
-  //   borderradius: '20px',
-  //   backgroundcolor: 'yellow',
-  //   textDecoration: 'none',
-  //   color: 'black',
-  //   display: 'flex',
-  //   alignItems: 'center',
-  //   marginBottom: '3rem',// Apply margin based on showIconsOnly state
-  // };
-
-  // Function to toggle between showing icons with text and just icons
-  const toggleShowIconsOnly = () => {
-    setShowIconsOnly(!showIconsOnly);
-  };
-
-  return (
-    <div className="sidebar" style={sidebarStyle}>
-      <IoMenu onClick={toggleShowIconsOnly} style={{ color:'darkblue',marginBottom: '2rem', cursor: 'pointer', fontSize: '30px',padding:'10px' }} />
-      
-      <div className="side_menu_bar" style={{ width: showIconsOnly ? '50px' : '200px' }}>
-        <Sidebar style={{ width: showIconsOnly ? '50px' : '200px' }}>
-          <Menu>
-            <MenuItem icon={<AiFillHome/>} component={<Link to="/TeacherDashBoard" />} >TeacherHome</MenuItem>
-
-            <SubMenu icon={<PiStudentBold/>} label='StudentManager'>
-            <MenuItem icon={<HiUserAdd/>} component={<Link to='/TeacherDashBoard/StudentManager/AddStudent'/>}>AddStudent</MenuItem>
-            <MenuItem icon={<FaUserCheck/>} component={<Link to="/TeacherDashboard/StudentManager/UpdateStudent"/>}>UpdateStudent</MenuItem>
-            <MenuItem icon={<MdPersonRemoveAlt1 />} component={<Link to="/TeacherDashboard/StudentManager/DeleteStudent"/>}>DeleteStudent</MenuItem>
-            </SubMenu>
-
-            <MenuItem icon={<FaBookBookmark/>} component={<Link to="/TeacherDashBoard/Attendance" />}>Attendance</MenuItem>
-
-            <MenuItem icon={<PiExamFill/>} component={<Link to="/TeacherDashBoard/Result" />}>Result</MenuItem>
-          </Menu>
-        </Sidebar>
-      </div>
-
-    </div>
-  );
+            {/* Footer */}
+            <Footer
+                style={{
+                    padding: 0,
+                    position: 'absolute',
+                    bottom: '20px',
+                    left: '20px',
+                    backgroundColor: '#00b4d8',
+                }}
+            >
+                <div
+                    className="profile-section"
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        transition: 'opacity 0.3s ease-in-out', // Transition effect for smooth appearance
+                    }}
+                >
+                    {collapsed ? (
+                        <UserOutlined style={{ fontSize: '20px' }} />
+                    ) : (
+                        <Link to="/TeacherDashboard/TeacherProfile" style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            textDecoration: 'none',
+                            color: 'black',
+                            transition: 'opacity 0.3s ease-in-out',
+                        }}>
+                            <UserOutlined style={{ fontSize: '20px', marginRight: '10px' }} />
+                            <b>Profile</b>
+                        </Link>
+                    )}
+                </div>
+            </Footer>
+        </Layout>
+    );
 };
 
-export default Side_bar;
+export default Sidebar;
