@@ -102,4 +102,43 @@ const deleteStudentsByYear = async (req,res)=>{
 
 }
 
-module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear};
+const updateStudent = async (req, res) => {
+  try {
+    const {regnumber} = req.body;
+    const { studentname, year } = req.body;
+
+    const student = await Student.findOne({ regnumber });
+
+    if (!student) {
+      return res.status(404).json({ message: 'Student not found' });
+    }
+
+    if (studentname) student.studentname = studentname;
+    if (year) student.year = year;
+
+    await student.save();
+
+    res.json({ message: 'Student information updated successfully' });
+  } catch (error) {
+    console.error('Error updating student:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+const updateStudentsYear = async(req,res)=>{
+
+  try {
+    const { year } = req.body;
+
+    await Student.updateMany({ year });
+
+    res.json({ message: 'Year updated for all students' });
+  } catch (error) {
+    console.error('Error updating students:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+
+}
+
+
+module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,updateStudent,updateStudentsYear};
