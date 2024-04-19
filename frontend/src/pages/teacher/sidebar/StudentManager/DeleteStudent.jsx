@@ -3,6 +3,8 @@ import {  toast,Bounce } from 'react-toastify';
 
 const DeleteStudent = () => {
   const [regnumber, setRegnumber] = useState('');
+  const [year, setYear] = useState('');
+
   const [error] = useState('');
  
 
@@ -63,12 +65,12 @@ const DeleteStudent = () => {
     e.preventDefault();
   
     try {
-      const response = await fetch('http://localhost:3001/deleteStudentByRegnumber', {
+      const response = await fetch('http://localhost:3001/deleteStudentsByYear', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ regnumber }),
+        body: JSON.stringify({ year }),
       });
   
       if (!response.ok) {
@@ -84,7 +86,7 @@ const DeleteStudent = () => {
           transition: Bounce,
         });
       } else {
-        toast.success('Student Deleted successfully', {
+        toast.success('Students Deleted successfully', {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
@@ -119,7 +121,7 @@ const DeleteStudent = () => {
       <form onSubmit={handleDelete}>
 
         <div>
-          <label htmlFor="regnumber">Registration Number:</label>
+          <label htmlFor="regnumber">Register :</label>
           <input
             type="text"
             id="regnumber"
@@ -137,12 +139,12 @@ const DeleteStudent = () => {
       <form onSubmit={handleDeleteMany}>
 
         <div>
-          <label htmlFor="regnumber">Registration Number:</label>
+          <label htmlFor="year"> Year :</label>
           <input
             type="text"
-            id="regnumber"
-            value={regnumber}
-            onChange={(e) => setRegnumber(e.target.value)} required
+            id="year"
+            value={year}
+            onChange={(e) => setYear(e.target.value)} required
           />
       
 
