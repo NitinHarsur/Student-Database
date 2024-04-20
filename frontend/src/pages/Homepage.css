@@ -1,5 +1,4 @@
 
-<<<<<<< HEAD
 
 
 .homepage{
@@ -7,8 +6,7 @@
 }
 
 
-=======
->>>>>>> 61b293afd78f169905e76fa544dfd5b8e49d14df
+
 main .image-section {
     display: flex;
     justify-content: center;
@@ -19,7 +17,7 @@ main .image-section {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 10000%; /* Ensure the wrapper takes full width */ 
+    width: 100%; /* Ensure the wrapper takes full width */ 
      gap:200px;
 }
 
