@@ -41,7 +41,7 @@ const Sidebar = () => {
                 {/* Menu */}
                 <Menu className='menu__bar'
                     mode="inline"
-                    theme="dark"
+                    theme="light"
                     items={[
                         {
                             key: '/TeacherDashboard',

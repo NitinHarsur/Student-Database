@@ -17,7 +17,7 @@ router.post('/addStudent', addStudent.addStudent );
 router.delete('/deleteStudentByRegnumber',deleteStudentByRegnumber.deleteStudentByRegnumber);
 router.delete('/deleteStudentsByYear',deleteStudentsByYear.deleteStudentsByYear);
 //Update Student 
-router.put('/updateStudent/:regnumber',updateStudent.updateStudent);
+router.put('/updateStudent',updateStudent.updateStudent);
 //Update students year
 router.put('/updateStudentsYear',updateStudentsYear.updateStudentsYear)
 
