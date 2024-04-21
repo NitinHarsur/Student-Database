@@ -20,7 +20,7 @@ const Sidebar = () => {
     };
 
     return (
-        <Layout className="layout-container" style={{ display: 'flex', flexDirection: 'column', backgroundColor: '#00b4d8', height: '100vh' }}>
+        <Layout className="layout-container" style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white', height: '100vh' }}>
             <Sider
                 className="side__bar"
                 collapsed={collapsed}
@@ -28,7 +28,7 @@ const Sidebar = () => {
                 width={200}
                 style={{ height: '100vh', transition: '0.3s ease-in-out', backgroundColor: '#00b4d8' }}
             >
-                <div className="top-bar" onClick={toggleCollapse} style={{ padding: '10px', backgroundColor: '#00b4d8', cursor: 'pointer' }}>
+                <div className="top-bar" onClick={toggleCollapse} style={{ padding: '10px', backgroundColor: 'white', cursor: 'pointer' }}>
                     {collapsed ? (
                         <RiMenuUnfoldFill fontSize={30} />
                     ) : (
@@ -91,7 +91,7 @@ const Sidebar = () => {
                     position: 'absolute',
                     bottom: '20px',
                     left: '20px',
-                    backgroundColor: '#00b4d8',
+                    backgroundColor: 'white',
                 }}
             >
                 <div

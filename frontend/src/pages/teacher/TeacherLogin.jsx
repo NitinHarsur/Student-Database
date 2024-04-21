@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Login.css';
+import './teacherLogin.css';
 import { useNavigate } from 'react-router-dom';
 import { toast,Bounce } from 'react-toastify';
 import DBwelcome from '../../IndexTexts/DBwelcome';

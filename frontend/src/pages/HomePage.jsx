@@ -12,7 +12,7 @@ import './Homepage.css';
 function HomePage() {
   return (
   <>
-    <div className='home' style={{background:'#cdc1ff'}}>
+    <div className='home' style={{background:'white'}}>
       <Navbar />
       <div className="homepage">
         <main>

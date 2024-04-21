@@ -46,9 +46,9 @@ function Navbar() {
             <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
-        <div className="login_box">
-          <select name="login" id="login" value={selectOption} onChange={handleSelectChange}>
-            <option selected>Login</option>
+        <div className="login__box">
+          <select name="login__container" id="login" value={selectOption} onChange={handleSelectChange}>
+            <option value='' selected>Login</option>
             <option value="teacher">Teacher</option>
             <option value="student">Student</option>
           </select>

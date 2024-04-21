@@ -1,0 +1,83 @@
+/* Overall login page styling */
+.Student__loginpage {
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* Center the items horizontally */
+  align-items: center; /* Center the items vertically */
+  background: rgb(140,221,178);
+  background: linear-gradient(156deg, rgba(140,221,178,1) 49%, rgba(255,255,255,1) 97%);
+}
+/* Student login container styling */
+.student__logincontainer {
+  width: 100%;
+  margin-right: 15%;
+  margin-left: 15%;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+border-radius: 20px;
+
+}
+
+/* Adjusting the background image */
+
+
+/* Styling the image within the div */
+.student__logincontainer img {
+  position: relative;
+  width: 50%;
+  height: 500px;
+  background-size: cover;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: #f0f0f0;
+}
+
+/* Adjusting the student form style */
+.stduent__loginform {
+  width: 50%; /* The form takes up the right 50% of the container */
+  background: rgb(255,255,255);
+
+
+border-radius: 0 20px 20px 0 ;
+  display: flex; /* Use flexbox for alignment */
+  flex-direction: column; /* Flex direction for column layout */
+  align-items: center; /* Center form elements horizontally */
+}
+
+/* Optional: Style for the form itself */
+
+
+/* Style for form elements inside the form */
+.stduent__loginform h2,
+.stduent__loginform input,
+.stduent__loginform button {
+  margin-bottom: 15px; /* Spacing between form elements */
+}
+
+.stduent__loginform input {
+  width: 80%; /* Adjust the width of input fields */
+  padding: 10px; /* Padding around input fields */
+  border: 1px solid #ccc; /* Border styling */
+  border-radius: 3px; /* Rounded corners */
+}
+
+.stduent__loginform button {
+  padding: 10px 20px; /* Padding around the button */
+  border: none; /* Remove border */
+  border-radius: 3px; /* Rounded corners */
+  background-color: #007bff; /* Button background color */
+  color: white; /* Button text color */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.stduent__loginform button:hover {
+  background-color: #0056b3; /* Darker background on hover */
+}
+
+.error {
+  color: red; /* Error message color */
+  font-weight: bold; /* Bold text */
+  margin-top: 10px; /* Space above the error message */
+}

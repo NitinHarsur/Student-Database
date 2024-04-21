@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
+import student__bgimage from '../../images/student__bgimage.jpg'
+import students from '../../images/students.jpg'
 
 import {  toast,Bounce } from 'react-toastify';
 
+import './studentLogin.css'
 
 const LoginForm = () => {
   const [studentname, setStudentname] = useState('');
@@ -68,12 +71,16 @@ else{
   };
 
   return (
-    <div>
+    <div className='Student__loginpage'>
+      <div className="student__logincontainer" >
+<img src={students} alt="" />
 
-      <h2>Login Form</h2>
-      <form onSubmit={handleSubmit}>
+
+<div className='stduent__loginform'>
+      <h2>Welcome! PLease Login to continue</h2>
+      <form onSubmit={handleSubmit} className='studentform'>
         <div>
-          <label htmlFor="studentname">Student Name:</label>
+          <label htmlFor="studentname" className='stduentinput'>Student Name:</label>
           <input
             type="text"
             id="studentname"
@@ -82,7 +89,7 @@ else{
           />
         </div>
         <div>
-          <label htmlFor="regnumber">Registration Number:</label>
+          <label htmlFor="regnumber" className='stduentinput'>Registration Number:</label>
           <input
             type="text"
             id="regnumber"
@@ -90,10 +97,11 @@ else{
             onChange={(e) => setRegnumber(e.target.value)} required
           />
         </div>
-        <button type="submit" >Login</button>
+        <button className='studentSubmitbtn'  type="submit" >Login</button>
         {error && <div>{error}</div>}
       </form>
-
+      </div>
+      </div>
     </div>
   );
 };
