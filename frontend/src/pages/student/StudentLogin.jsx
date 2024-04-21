@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
-import student__bgimage from '../../images/student__bgimage.jpg'
 import students from '../../images/students.jpg'
 
 import {  toast,Bounce } from 'react-toastify';

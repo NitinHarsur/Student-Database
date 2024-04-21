@@ -90,8 +90,10 @@ border-radius: 20px;
 .studentform .studentSubmitbtn{
   background: white;
   border-radius: 20px;
-  width: 110px;
+  width: 100px;
   height: 50px;
+  font-weight: bold;
+  
 }
 
 /* Styling for the student submit button when hovered or clicked */
