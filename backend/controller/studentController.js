@@ -102,22 +102,33 @@ const deleteStudentsByYear = async (req,res)=>{
 
 }
 
-const updateStudent = async (req, res) => {
-  try {
-    const {regnumber} = req.body;
-    const { studentname, year } = req.body;
 
+const updateStudent = async (req,res)=>{
+  try {
+    const { regnumber, studentname, year } = req.body;
+
+    // Find the student by registration number
     const student = await Student.findOne({ regnumber });
 
+    // If student not found, return 404 status with error message
     if (!student) {
       return res.status(404).json({ message: 'Student not found' });
     }
 
-    if (studentname) student.studentname = studentname;
-    if (year) student.year = year;
+    // If student name is provided, update the student's name
+    if (studentname) {
+      student.studentname = studentname;
+    }
 
+    // If year is provided, update the student's year
+    if (year) {
+      student.year = year;
+    }
+
+    // Save the updated student details
     await student.save();
 
+    // Return success message
     res.json({ message: 'Student information updated successfully' });
   } catch (error) {
     console.error('Error updating student:', error);
@@ -125,20 +136,31 @@ const updateStudent = async (req, res) => {
   }
 };
 
+
 const updateStudentsYear = async(req,res)=>{
 
   try {
-    const { year } = req.body;
+    // Define the new year value
+    const newYear = req.body.newYear;
+    const oldYear = req.body.oldYear;
 
-    await Student.updateMany({ year });
 
-    res.json({ message: 'Year updated for all students' });
+    // Update students where the current year is "1st year"
+    const result = await Student.updateMany({ year: oldYear }, { year: newYear });
+
+    // Check if any students were updated
+    if (result === 0) {
+      return res.status(404).json({ message: 'No students found with year as "1st year"' });
+    }
+
+    // Return success message
+    res.json({ message: `Updated ${oldYear} students to ${newYear} year` });
   } catch (error) {
-    console.error('Error updating students:', error);
-    res.status(500).json({ error: 'Server error' });
+    console.error('Error updating students year:', error);
+    res.status(500).json({ message: 'Server error' });
   }
+};
 
-}
 
 
 module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,updateStudent,updateStudentsYear};
