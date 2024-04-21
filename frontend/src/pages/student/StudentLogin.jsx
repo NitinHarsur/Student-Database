@@ -70,36 +70,62 @@ else{
     }
   };
 
+ // This function changes the background color of the student form to white on hover
+const handleMouseEnter = () => {
+  const studentForm = document.querySelector('.studentform');
+  studentForm.style.backgroundColor = 'white';
+  studentForm.style.transition = '0.3s ease-in-out';
+};
+
+// This function reverts the background color change when the mouse leaves the button
+const handleMouseLeave = () => {
+  const studentForm = document.querySelector('.studentform');
+  studentForm.style.backgroundColor = 'rgb(140, 221, 178)'; // Revert to original background color
+  studentForm.style.transition = '0.3s ease-in-out';
+};
+
+
   return (
     <div className='Student__loginpage'>
+
       <div className="student__logincontainer" >
-<img src={students} alt="" />
+          <img src={students} alt="" />
 
 
-<div className='stduent__loginform'>
-      <h2>Welcome! PLease Login to continue</h2>
-      <form onSubmit={handleSubmit} className='studentform'>
-        <div>
-          <label htmlFor="studentname" className='stduentinput'>Student Name:</label>
-          <input
-            type="text"
-            id="studentname"
-            value={studentname}
-            onChange={(e) => setStudentname(e.target.value)} required
-          />
-        </div>
-        <div>
-          <label htmlFor="regnumber" className='stduentinput'>Registration Number:</label>
-          <input
-            type="text"
-            id="regnumber"
-            value={regnumber}
-            onChange={(e) => setRegnumber(e.target.value)} required
-          />
-        </div>
-        <button className='studentSubmitbtn'  type="submit" >Login</button>
-        {error && <div>{error}</div>}
-      </form>
+        <div className='stduent__loginform'>
+       
+          <form onSubmit={handleSubmit} className='studentform'>
+          <h2>Welcome! PLease Login to continue</h2>
+              <div>
+                  <input
+                    type="text"
+                    id="studentname"
+                    placeholder='Enter your Name'
+                    value={studentname}
+                    onChange={(e) => setStudentname(e.target.value)} required
+                      />
+              </div>
+              <div>
+                    <input
+                      type="text"
+                      id="regnumber"
+                      placeholder='Enter your RegisterNumber'
+                      value={regnumber}
+                      onChange={(e) => setRegnumber(e.target.value)} required
+                    />
+                </div>
+                <center>
+                <button
+                                className='studentSubmitbtn'
+                                type="submit"
+
+                                onMouseEnter={handleMouseEnter} // Handle mouse enter events
+                                onMouseLeave={handleMouseLeave} // Handle mouse leave events
+                            >
+                                Login
+                            </button></center>
+                {error && <div>{error}</div>}
+          </form>
       </div>
       </div>
     </div>

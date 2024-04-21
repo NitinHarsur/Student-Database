@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import { RiMenuFoldFill, RiMenuUnfoldFill } from 'react-icons/ri';
 import { AiFillHome } from 'react-icons/ai';
-import { PiStudentBold, PiExamFill } from 'react-icons/pi';
+import { PiStudentBold, PiExamFill,PiUserListFill  } from 'react-icons/pi';
 import { FaBookBookmark, FaUserCheck } from 'react-icons/fa6';
 import { HiUserAdd } from 'react-icons/hi';
 import { MdPersonRemoveAlt1 } from 'react-icons/md';
-import { UserOutlined } from '@ant-design/icons';
+import { CgProfile } from "react-icons/cg";
+
+
 import './Sidebar.css';
 
 const { Sider, Footer } = Layout;
@@ -80,6 +82,11 @@ const Sidebar = () => {
                             icon: <PiExamFill size={collapsed ? '20' : '25'} />,
                             label: <Link to="/TeacherDashboard/Result">Result</Link>,
                         },
+                        {
+                            key: '/TeacherDashboard/Students',
+                            icon: <PiUserListFill  size={collapsed ? '20' : '25'} />,
+                            label: <Link to="/TeacherDashboard/Result">StudentList</Link>,
+                        },
                     ]}
                 />
             </Sider>
@@ -103,7 +110,7 @@ const Sidebar = () => {
                     }}
                 >
                     {collapsed ? (
-                        <UserOutlined style={{ fontSize: '20px' }} />
+                        <CgProfile style={{ fontSize: '20px' }} />
                     ) : (
                         <Link to="/TeacherDashboard/TeacherProfile" style={{
                             display: 'flex',
@@ -112,7 +119,7 @@ const Sidebar = () => {
                             color: 'black',
                             transition: 'opacity 0.3s ease-in-out',
                         }}>
-                            <UserOutlined style={{ fontSize: '20px', marginRight: '10px' }} />
+                            <CgProfile style={{ fontSize: '25px', marginRight: '10px' }} />
                             <b>Profile</b>
                         </Link>
                     )}
