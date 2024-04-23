@@ -7,7 +7,9 @@
     gap: 30px;
     font-size: 1rem;
 }
-
+.menu__bar a{
+    text-decoration: none;
+}
 /* Hover styles for menu items */
 .ant-menu-item:hover {
     background-color: #00b4d8;
