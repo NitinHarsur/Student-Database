@@ -7,7 +7,7 @@ const deleteStudentByRegnumber = require('../controller/studentController');
 const deleteStudentsByYear = require('../controller/studentController');
 const updateStudent = require('../controller/studentController')
 const updateStudentsYear = require('../controller/studentController')
-
+const studentsList = require('../controller/studentController')
 
 //student
 router.post('/studentlogin', studentLogin.studentLogin);
@@ -20,6 +20,7 @@ router.delete('/deleteStudentsByYear',deleteStudentsByYear.deleteStudentsByYear)
 router.put('/updateStudent',updateStudent.updateStudent);
 //Update students year
 router.put('/updateStudentsYear',updateStudentsYear.updateStudentsYear)
+router.get('/studentsList',studentsList.studentsList)
 
 
 

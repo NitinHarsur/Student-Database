@@ -1,5 +1,8 @@
 const Student  = require ('../model/studentSchema')
 
+
+
+// Function to handle student login requests and authenticate students
 const studentLogin= async (req, res) => {
     const { studentname, regnumber } = req.body;
   
@@ -26,7 +29,7 @@ const studentLogin= async (req, res) => {
 
 
 
-
+// Function to Add Student Data to the Databse System
   const addStudent = async (req, res) => {
     try {
       const { studentname, regnumber,year } = req.body;
@@ -56,7 +59,7 @@ const studentLogin= async (req, res) => {
 }
 
 
-
+// Function to delete a specific student from the system using their register number
 const deleteStudentByRegnumber = async (req,res)=>{
   try {
     const {regnumber} = req.body;
@@ -79,7 +82,7 @@ const deleteStudentByRegnumber = async (req,res)=>{
 
 }
 
-
+//Function to Delete Stduents By using there Year from the Database System
 const deleteStudentsByYear = async (req,res)=>{
   try {
     const {year} = req.body;
@@ -102,7 +105,7 @@ const deleteStudentsByYear = async (req,res)=>{
 
 }
 
-
+// Function to Update the Details of an Existing Student in the Databse system
 const updateStudent = async (req,res)=>{
   try {
     const { regnumber, studentname, year } = req.body;
@@ -137,6 +140,7 @@ const updateStudent = async (req,res)=>{
 };
 
 
+// Function to update the academic year for all students
 const updateStudentsYear = async(req,res)=>{
 
   try {
@@ -161,6 +165,24 @@ const updateStudentsYear = async(req,res)=>{
   }
 };
 
+// Function to fetch and display a list of all registered students for a specific academic year
+const studentsList = async (req, res) => {
+  try {
+      const { year } = req.query;
+      const students = await Student.find({ year });
 
+      if (!students) {  //{students.length==0}
+          return res.status(404).json({ message: 'No students found for the specified year.' });
+      }
 
-module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,updateStudent,updateStudentsYear};
+      else{
+        res.status(200).json(students)
+      }
+
+  } catch (error) {
+      // Handle any errors that may occur during the process
+      return res.status(500).json({ message: 'Server error. Please try again later.' });
+  }
+};
+
+module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,updateStudent,updateStudentsYear,studentsList};

@@ -21,6 +21,19 @@ const Sidebar = () => {
         setCollapsed(!collapsed);
     };
 
+
+    const [isHovered, setIsHovered] = useState(false);
+
+    const handleMouseEnter = () => {
+        setIsHovered(true);
+    };
+
+    const handleMouseLeave = () => {
+        setIsHovered(false);
+    };
+
+
+
     return (
         <Layout className="layout-container" style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white', height: '100vh' }}>
             <Sider
@@ -83,27 +96,32 @@ const Sidebar = () => {
                             label: <Link to="/TeacherDashboard/Result">Result</Link>,
                         },
                         {
-                            key: '/TeacherDashboard/Students',
+                            key: '/TeacherDashboard/StudentsList',
                             icon: <PiUserListFill  size={collapsed ? '20' : '25'} />,
-                            label: <Link to="/TeacherDashboard/Result">StudentList</Link>,
+                            label: <Link to="/TeacherDashboard/StudentsList">StudentList</Link>,
                         },
                     ]}
                 />
             </Sider>
 
             {/* Footer */}
-            <Footer
+            <Footer className='sidebar__footer'  onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
                 style={{
-                    padding: 0,
+              
+                    padding: '10px',
                     position: 'absolute',
                     bottom: '20px',
-                    left: '20px',
-                    backgroundColor: 'white',
+                    margin:'10px',
+                    backgroundColor: isHovered ? '#00b4d8' : 'white',
+                    transition: 'background-color 0.3s ease-in-out',
+                    borderRadius:'10px'
                 }}
             >
                 <div
                     className="profile-section"
                     style={{
+                    
                         display: 'flex',
                         alignItems: 'center',
                         transition: 'opacity 0.3s ease-in-out', // Transition effect for smooth appearance
@@ -128,5 +146,8 @@ const Sidebar = () => {
         </Layout>
     );
 };
+
+
+
 
 export default Sidebar;

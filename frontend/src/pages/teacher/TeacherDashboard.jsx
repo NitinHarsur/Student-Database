@@ -1,10 +1,12 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+
 import TeacherHome from './TeacherHome';
 import Sidebar from './sidebar/Sidebar';
 import Attendance from './sidebar/Attendance';
 import StudentManager from './sidebar/StudentManager';
 import Result from './sidebar/Result';
+import StudentsList from './sidebar/StudentsList';
 import TeacherProfile from './sidebar/TeacherProfile';
 
 
@@ -24,6 +26,7 @@ const TeacherDashboard = () => {
         <Route path="/Attendance" element={<Attendance />} />
         <Route path="/StudentManager/*" element={<StudentManager/>} />
         <Route path="/Result" element={<Result />} />
+        <Route path="/StudentsList" element={<StudentsList />} />
         <Route path="/TeacherProfile" element={<TeacherProfile />} />
       </Routes>
       </div>
