@@ -122,7 +122,7 @@ font-weight: bold;
 }
 @media (max-width: 1300px) {
   .navbar .menu-list {
-    gap: 100px;
+    gap: 80px;
     font-size: 1.1rem;
     margin-left: 50px;
   }
