@@ -49,12 +49,12 @@
 .navbar .menu-list a:hover::after {
   transform: translateX(0); /* Show the effect on hover */
   width: 100%; /* Expand underline width on hover */
-  background-color: #C850C0; /* Change underline color to match text on hover */
+  background-color: #4158D0; /* Change underline color to match text on hover */
 }
 
 .navbar .menu-list a:hover {
   /* Change color on hover (same as underline color) */
-  color: #C850C0; /* New color on hover */
+  color: #4158D0; /* New color on hover */
 }
 
 
