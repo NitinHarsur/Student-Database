@@ -38,8 +38,8 @@ function Navbar() {
         </div>
         <div className={`menu ${showMenu ? 'show' : ''}`}>
           <ul className="menu-list">
-            <li><Link to="/faculty">Faculty</Link></li>
-            <li><Link to="/departments">Departments</Link></li>
+            
+            <li><Link to="/departments">Department</Link></li>
             <li><Link to="/syllabus">Syllabus</Link></li>
             <li><Link to="/admission">Admission</Link></li>
             <li><Link to="/about">About us</Link></li>
