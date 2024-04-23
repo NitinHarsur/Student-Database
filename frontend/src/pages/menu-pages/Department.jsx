@@ -114,11 +114,11 @@ export default function Department() {
         The Department of CSE is approved by AICTE.
       </p>
 
-      <div className="faculty-section">
+      <div className="faculty-section table-responsive">
         <h2 className="faculty-heading">Faculty</h2>
-        {/* Table to display faculty details */}
-        <table className="table table-striped table-bordered">
-          <thead>
+        {/* Table to display faculty details */} 
+        <table className="table table-striped table-bordered border-black ">
+          <thead className='table-primary'>
             <tr>
               <th>Name</th>
               <th>Qualification</th>
@@ -126,7 +126,7 @@ export default function Department() {
               <th>Email</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className='table-group-divider table-light'>
             {/* Map over the faculty data to create a row for each faculty member */}
             {facultyData.map((faculty, index) => (
               <tr key={index}>

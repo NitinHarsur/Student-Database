@@ -81,6 +81,7 @@ const handleMouseLeave = () => {
   const studentForm = document.querySelector('.studentform');
   studentForm.style.backgroundColor = 'rgb(140, 221, 178)'; // Revert to original background color
   studentForm.style.transition = '0.3s ease-in-out';
+
 };
 
 
@@ -94,7 +95,7 @@ const handleMouseLeave = () => {
         <div className='stduent__loginform'>
        
           <form onSubmit={handleSubmit} className='studentform'>
-          <h2>Welcome! PLease Login to continue</h2>
+          <h2 className='login__h2' style={{color:'black'}}>Welcome! Please Login to continue</h2>
               <div>
                   <input
                     type="text"

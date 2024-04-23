@@ -97,11 +97,6 @@ border-radius: 20px;
 }
 
 /* Styling for the student submit button when hovered or clicked */
-.studentform .studentSubmitbtn:hover,
-.studentform .studentSubmitbtn:active {
-  background-color: rgb(140, 221, 178); /* Changes button background color to rgb(140, 221, 178) */
-  transition: background-color 0.3s ease-in-out; /* Smooth transition for background color change */
-}
 
 
 
