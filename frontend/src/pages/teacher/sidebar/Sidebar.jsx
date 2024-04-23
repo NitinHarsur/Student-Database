@@ -98,7 +98,7 @@ const Sidebar = () => {
                         {
                             key: '/TeacherDashboard/StudentsList',
                             icon: <PiUserListFill  size={collapsed ? '20' : '25'} />,
-                            label: <Link to="/TeacherDashboard/StudentsList">StudentList</Link>,
+                            label: <Link to="/TeacherDashboard/StudentsList">StudentsList</Link>,
                         },
                     ]}
                 />
