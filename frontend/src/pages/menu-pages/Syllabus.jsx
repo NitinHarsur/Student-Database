@@ -29,7 +29,7 @@ export default function Syllabus() {
         }
         `}
       </style>
-      <div className="syllabus">
+      <div className="syllabus fw-bold">
         <h1>Computer Science Syllabus</h1>
         <p>
           The Computer Science program at Government Polytechnic, Kalaburagi provides students with a solid foundation in the theoretical and practical aspects of the field. The curriculum is designed to prepare students for various opportunities in the industry and academia by covering a wide range of topics.
