@@ -17,9 +17,10 @@ const TeacherDashboard = () => {
   return (
     <div style={{display:'flex',height:'100vh'}}>
     
-<div className='__side__bar' theme="dark">  
+    <div className='__side__bar'>  
   <Sidebar />
 </div>
+
     <div className='teacherDashboard'   style={{ backgroundColor: '#d7e3fc',width:'100%'}} >
       <Routes>
         <Route path="/" element={<TeacherHome />} />

@@ -106,7 +106,7 @@ export default function Department() {
       </style>
       <h1 className="text-center">COMPUTER SCIENCE OVERVIEW</h1>
 
-      <p className='dept-overview'>
+      <p className='dept-overview fw-bold'>
         Department of Computer Science and Engineering (CSE) in Government Polytechnic, Kalaburagi was established in the year 1990 to lead and guide the students in computing education and innovation. The advanced computing, industry-ready, skill-based academic programs prescribed by the Department of Collegiate and Technical Education, Bangalore have provided students with opportunities for the public good and broadened societal impact.
         <br /><br />
         Specific courses provide fundamental knowledge, industry readiness, and skills in core aspects of computing like programming, data structure, hardware and maintenance, operating systems, algorithms, computer networks, and Database/PL SQL. New horizons required by industries like Full Stack Development, Artificial Intelligence, Cloud Computing, and Cybersecurity are learned by the students by selecting one of the above subjects as their pathway subjects.
