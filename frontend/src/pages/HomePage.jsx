@@ -1,10 +1,8 @@
 import React from 'react';
-import Navbar from '../NavAndFoot/Navbar';
+import {Navbar,Footer} from '../NavAndFoot/Navbar';
 import LMS from '../images/lms1.png';
 import SSP from '../images/ssp1.png';
-import WhatsAppIcon from '../images/whatsapp.png'
-import InstagramIcon from '../images/instagram.png'
-import FacebookIcon from '../images/facebook.png'
+
 import './Homepage.css';
 
 
@@ -34,26 +32,10 @@ function HomePage() {
 
         
       </div>
-      <footer>
-          <div>Student Database Management System - Powered by React</div>
-        </footer>
-    </div>
+    
 
-        <footer>
-        <div className="social-icons">
-            <a href="..whatsapp" target="_blank" rel="noopener noreferrer">
-              <img src={WhatsAppIcon} alt="WhatsApp" />
-            </a>
-            <a href="..instagram" target="_blank" rel="noopener noreferrer">
-              <img src={InstagramIcon} alt="Instagram" />
-            </a>
-            <a href=".. facebook" target="_blank" rel="noopener noreferrer">
-              <img src={FacebookIcon} alt="Facebook" />
-            </a>
-          </div>
-          
-        </footer>
-
+      </div>
+      <Footer/> 
       </>
   );
 }

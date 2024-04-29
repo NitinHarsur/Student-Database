@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../../NavAndFoot/Navbar';
+import {Navbar,Footer} from '../../NavAndFoot/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
 export default function Department() {
@@ -139,6 +139,7 @@ export default function Department() {
           </tbody>
         </table>
       </div>
+      <Footer/>
     </div>
   );
 }

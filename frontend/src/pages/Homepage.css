@@ -13,6 +13,7 @@ main .image-section {
     gap: 20px;
   }
   
+  
   .homepage main .image-section .image-wrapper {
     display: flex;
     justify-content: center;
@@ -20,6 +21,34 @@ main .image-section {
     width: 100%; /* Ensure the wrapper takes full width */ 
      gap:200px;
 }
+/* Style the image-wrapper container */
+.image-wrapper {
+  display: flex; /* Use flexbox for layout */
+  gap: 20px; /* Add space between the images */
+}
+
+/* Style the images within the wrapper */
+.image-wrapper img {
+  width: 50%; /* Set the width of each image */
+  height: auto; /* Maintain the aspect ratio */
+  border-radius: 10px; /* Add rounded corners to images */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  /* For screens with a width of 768px or less */
+  .image-wrapper {
+    flex-direction: column; /* Change the flex direction to column */
+    align-items: center; /* Center the images */
+  }
+
+  /* Style the images for smaller screens */
+  .image-wrapper img {
+    width: 80%; /* Reduce the width of each image */
+    margin-bottom: 10px; /* Add some margin below the image */
+  }
+}
+
 
 .homepage main .image-section .image-wrapper a {
     text-decoration: none; /* Remove underline from links */
@@ -28,8 +57,8 @@ main .image-section {
 }
 
 .homepage main .image-section .image-wrapper a img {
-  width: 500px; /* Set width of images */
-  height: 350px; /* Set height of images */
+  width: 200px; /* Set width of images */
+  height: 150px; /* Set height of images */
   border-radius: 20px; /* Add rounded corners to images */
   box-shadow: 0px 3px 10px black;  transition: transform 0.3s ease;
    /* Add smooth transition effect */

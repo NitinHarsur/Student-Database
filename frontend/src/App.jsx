@@ -8,7 +8,6 @@ import TeacherDashboard from './pages/teacher/TeacherDashboard';
 
 import StudentDashboard from './pages/student/StudentDashboard';
 import Contact from './pages/menu-pages/Contact'; // Import the ContactPage component
-import Faculty from './pages/menu-pages/Faculty'; // Import the FacultyPage component
 import Department from './pages/menu-pages/Department'; // Import the DepartmentsPage component
 import Syllabus from './pages/menu-pages/Syllabus'; // Import the SyllabusPage component
 import Admission from './pages/menu-pages/Admission'; // Import the AdmissionPage component
@@ -29,7 +28,6 @@ function App() {
 
            {/* Home Page Navbar */}
         <Route path="/contact" element={<Contact />} />
-        <Route path="/faculty" element={<Faculty />} />
         <Route path="/departments" element={<Department />} />
         <Route path="/syllabus" element={<Syllabus />} />
         <Route path="/admission" element={<Admission />} />
