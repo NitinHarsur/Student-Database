@@ -4,18 +4,20 @@
   display: flex;
   justify-content: center; /* Center the items horizontally */
   align-items: center; /* Center the items vertically */
-  background: rgb(140,221,178);
-  background: linear-gradient(156deg, rgba(140,221,178,1) 49%, rgba(255,255,255,1) 97%);
+  background-image: url(../../images/studentlogin.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 /* Student login container styling */
 .student__logincontainer {
   width: 100%;
+  margin-top: 80px;
   margin-right: 15%;
   margin-left: 15%;
   height: 500px;
   display: flex;
   flex-direction: row;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 border-radius: 20px;
 
 }
@@ -26,8 +28,9 @@ border-radius: 20px;
 /* Styling the image within the div */
 .student__logincontainer img {
   position: relative;
-  width: 50%;
-  height: 500px;
+  margin-left: 130px;
+  width: 40%;
+  height: 450px;
   background-size: cover;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
@@ -36,7 +39,8 @@ border-radius: 20px;
 
 /* Adjusting the student form style */
 .stduent__loginform {
-  width: 50%; /* The form takes up the right 50% of the container */
+  width: 40%;
+  height: 450px; /* The form takes up the right 50% of the container */
   background: rgb(255,255,255);
   display: flex; /* Use flexbox for alignment */
   flex-direction: column; /* Flex direction for column layout */
@@ -50,7 +54,7 @@ border-radius: 20px;
 /* Form container styling */
 /* Form container styling */
 .studentform {
-  top:30px;
+  top:20px;
   height: 350px;
   position: relative;
   width: 350px; /* Set form width to match container width */
@@ -58,7 +62,6 @@ border-radius: 20px;
   border-radius: 20px; /* Adjusted border radius */
   padding: 25px 35px; /* Padding around form elements */
   border: 5px solid rgb(255, 255, 255);
-  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -10px;
   margin: 30px auto; /* Center form */
 }
 
@@ -67,12 +70,12 @@ border-radius: 20px;
   font-weight: bold;
 
   width: 100%;/* Adjust input width based on form padding */
-  background: white;
+  background: transparent;
   border: none;
   padding: 20px 5px;
-  border-radius: 20px;
   margin-bottom: 20px;
-  box-shadow: #cff0ff 0px 10px 10px -5px;
+  border-bottom: 1px solid #242222;
+
   border-inline: 2px solid transparent; /* Transparent border */
 }
 
@@ -89,7 +92,7 @@ border-radius: 20px;
   border-inline: 2px solid #18bed4; /* Blue border on focus */
 }
 .studentform .studentSubmitbtn{
-  background: white;
+  background: rgba(101, 237, 187, 0.588);
   border-radius: 20px;
   width: 100px;
   height: 50px;

@@ -70,10 +70,13 @@ const TeacherLoginForm = () => {
       <div className="teacher__logincontainer">
         <img src={teacherLoginImage} alt="Teacher login" />
 
+  
+
         <div className='teacher__loginform'>
           <form onSubmit={handleSubmit} className='teacherform'>
+          <div className='inbox'>
             <h2 className='login__h2' style={{ color: 'black' }}>Welcome! Please Login to continue</h2>
-            <div>
+              <div>
               <input
                 type="text"
                 id="teacherName"
@@ -101,6 +104,7 @@ const TeacherLoginForm = () => {
                 Login
               </button>
             </center>
+            </div>
             {error && <div className="error-message">{error}</div>}
           </form>
         </div>
