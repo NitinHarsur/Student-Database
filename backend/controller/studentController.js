@@ -185,4 +185,23 @@ const studentsList = async (req, res) => {
   }
 };
 
-module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,updateStudent,updateStudentsYear,studentsList};
+// Function to fetch and display a list of all registered students for a specific academic year
+const attendance = async (req, res) => {
+  try {
+      const { year } = req.query;
+      const students = await Student.find({ year });
+
+      if (!students) {  //{students.length==0}
+          return res.status(404).json({ message: 'No students found for the specified year.' });
+      }
+
+      else{
+        res.status(200).json(students)
+      }
+
+  } catch (error) {
+      // Handle any errors that may occur during the process
+      return res.status(500).json({ message: 'Server error. Please try again later.' });
+  }
+};
+module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,updateStudent,updateStudentsYear,studentsList,attendance};
