@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import { RiMenuFoldFill, RiMenuUnfoldFill } from 'react-icons/ri';
 import { AiFillHome } from 'react-icons/ai';
-import { PiStudentBold, PiExamFill, PiUserListFill } from 'react-icons/pi';
-import { FaBookBookmark, FaUserCheck } from 'react-icons/fa6';
-import { HiUserAdd } from 'react-icons/hi';
-import { MdPersonRemoveAlt1 } from 'react-icons/md';
+import {  PiExamFill } from 'react-icons/pi';
+import { FaBookBookmark } from 'react-icons/fa6';
 import { CgProfile } from 'react-icons/cg';
 
 import './sidebar.css';
@@ -37,7 +35,8 @@ const StntSidebar = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 height: '100vh',
-                backgroundColor: 'rgb(140, 221, 178)', // Set background color for Layout
+                backgroundColor: 'white'
+               // Set background color for Layout
             }}
         >
             <Sider
@@ -48,10 +47,10 @@ const StntSidebar = () => {
                 style={{
                     height: '100vh',
                     transition: '0.3s ease-in-out',
-                    backgroundColor: 'rgb(140, 221, 178)', // Set background color for Sider
+                    backgroundColor: 'white', // Set background color for Sider
                 }}
             >
-                <div className="top-bar" onClick={toggleCollapse} style={{ padding: '10px', backgroundColor: ' rgb(140,221,178)', cursor: 'pointer' }}>
+                <div className="top-bar" onClick={toggleCollapse} style={{ padding: '10px', cursor: 'pointer' }}>
                     {collapsed ? (
                         <RiMenuUnfoldFill fontSize={30} />
                     ) : (
@@ -62,7 +61,7 @@ const StntSidebar = () => {
                 </div>
 
                 {/* Menu */}
-                <Menu style={{background:' rgb(140,221,178)'}}
+                <Menu
                     className="menu__bar"
                     mode="inline"
                     
@@ -70,18 +69,18 @@ const StntSidebar = () => {
                         {
                             key: '/TeacherDashboard',
                             icon: <AiFillHome size={collapsed ? '20' : '25'} />,
-                            label: <Link to="/TeacherDashboard">Home</Link>,
+                            label: <Link to="/StudentDashboard">Home</Link>,
                         },
                         
                         {
                             key: '/TeacherDashboard/Attendance',
                             icon: <FaBookBookmark size={collapsed ? '20' : '25'} />,
-                            label: <Link to="/TeacherDashboard/Attendance">Attendance</Link>,
+                            label: <Link to="/StntAttendance">Attendance</Link>,
                         },
                         {
                             key: '/TeacherDashboard/Result',
                             icon: <PiExamFill size={collapsed ? '20' : '25'} />,
-                            label: <Link to="/TeacherDashboard/Result">Result</Link>,
+                            label: <Link to="/StudentDashboard/StntResult">Result</Link>,
                         }
             
                     ]}
@@ -98,7 +97,7 @@ const StntSidebar = () => {
                     position: 'absolute',
                     bottom: '20px',
                     margin: '10px',
-                    backgroundColor: isHovered ? '#00b4d8' : 'rgb(140, 221, 178)', // Set background color for Footer
+                    backgroundColor: isHovered ? 'rgb(140, 221, 178)': 'white', // Set background color for Footer
                     transition: 'background-color 0.3s ease-in-out',
                     borderRadius: '10px',
                 }}

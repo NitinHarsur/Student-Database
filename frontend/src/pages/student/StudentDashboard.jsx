@@ -1,22 +1,24 @@
 import React from 'react';
 import StntSidebar from './stne__sidebar/StntSidebar';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-
+import { Route, Routes } from 'react-router-dom';
+import StntResult from './StntResult';
+import StntAttendance from './StntAttendance';
+import StudentHome from './StudentHome';
 const StudentDashboard = () => {
   return (
     <div className="Main__Stntdashboard d-flex ">
-      <div
-        className="__stnt__sidebar flex-shrink-0" // Adds margin to the left, top, and bottom
-        style={{
-          boxShadow: '3px 0 6px rgba(0, 0, 0, 0.1)', // Adds box shadow to the sidebar
-        }}
-      >
-        {/* Sidebar */}
+      <div className="__stnt__sidebar flex-shrink-0" style={{boxShadow: '3px 0 6px rgba(0, 0, 0, 0.1)'}}>
         <StntSidebar />
       </div>
 
       <div className="__Stnt__dashborad flex-grow-1">
-        {/* Main content area */}
+
+        <Routes>
+        <Route path="/" element={<StudentHome/>} />
+        <Route path="/Attendance" element={<StntAttendance />} />
+        <Route path="/Result" element={<StntResult/>} />
+        </Routes>
         StudentDashboard
       </div>
     </div>
