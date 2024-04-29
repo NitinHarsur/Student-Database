@@ -228,3 +228,5 @@ const result=async(req,res)=>{
 };
 
 module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,updateStudent,updateStudentsYear,studentsList,attendance,result};
+module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,
+  updateStudent,updateStudentsYear,studentsList,attendance};
