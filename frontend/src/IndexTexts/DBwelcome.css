@@ -6,7 +6,7 @@
   }
   .heading{
     position: relative;
-    top: -125px;
+
     left: -100px;
   }
   /*Heading H1*/
@@ -23,3 +23,4 @@
     animation: typing 8s steps(28) infinite, cursor .4s step-end infinite alternate;
     animation-fill-mode: forwards;
   }
+  

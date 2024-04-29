@@ -6,7 +6,7 @@ function DBwelcome() {
     <div className="body-page">
     <div className="heading">
         <h1 >
-          Welcome to Student  Database.
+          Welcome to Student Hub.
         </h1>
       </div>
     </div>
