@@ -9,9 +9,10 @@ const Attendance = () => {
     const [studentsAttendance, setStudentsAttendance] = useState([]);
     const [error, setError] = useState(null);
 
-    // Function to fetch registration numbers
+    // Function to fetch registration numbers based on selected year
     const fetchRegistrationNumbers = async (e) => {
         e.preventDefault();
+        setError(null); // Clear previous errors
         try {
             const response = await fetch(`http://localhost:3001/attendance?year=${selectedYear}`, {
                 method: 'GET',
@@ -21,22 +22,22 @@ const Attendance = () => {
             });
 
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                throw new Error(`Failed to fetch data, status code: ${response.status}`);
             }
 
             const data = await response.json();
             setStudentsData(data);
 
-            // Initialize studentsAttendance with the fetched data
+            // Initialize studentsAttendance based on fetched data
             const initialAttendance = data.map((student) => ({
                 regnumber: student.regnumber,
-                presentDays: 0,  // Start with zero present days for each student
-                percentage: 0,   // Start with zero percentage for each student
+                presentDays: 0,
+                percentage: 0,
             }));
             setStudentsAttendance(initialAttendance);
         } catch (err) {
             console.error('Error fetching registration numbers:', err);
-            setError('Error fetching registration numbers');
+            setError(`Failed to fetch data: ${err.message}`);
         }
     };
 
@@ -48,28 +49,56 @@ const Attendance = () => {
         setTotalDays(Number(e.target.value));
     };
 
+    // Function to update present days and calculate percentage for a student
     const handlePresentDaysChange = (index, e) => {
-        // Update present days for the specific student at the given index
         const newPresentDays = Number(e.target.value);
         const updatedStudentsAttendance = [...studentsAttendance];
-
         updatedStudentsAttendance[index].presentDays = newPresentDays;
 
-        // Calculate and update the attendance percentage for the student
-        if (totalDays > 0) {
-            updatedStudentsAttendance[index].percentage = ((newPresentDays / totalDays) * 100).toFixed(2);
-        } else {
-            updatedStudentsAttendance[index].percentage = 0;
-        }
-
+        // Calculate attendance percentage
+        const percentage = totalDays > 0 ? ((newPresentDays / totalDays) * 100).toFixed(2) : 0;
+        updatedStudentsAttendance[index].percentage = parseFloat(percentage);
+        
         setStudentsAttendance(updatedStudentsAttendance);
     };
 
     // Function to handle sending a message about low attendance
-    const handleSendMessage = (regnumber) => {
-        // Implement your logic here to send a message regarding low attendance
-        console.log(`Sending message about low attendance to registration number: ${regnumber}`);
-        // Example: Call an API or send an email/SMS to the student or their guardian
+    const handleSendMessage = async (regnumber) => {
+        setError(null); // Clear previous errors
+        try {
+            const studentData = studentsData.find((student) => student.regnumber === regnumber);
+            if (!studentData) {
+                throw new Error(`Student with registration number ${regnumber} not found`);
+            }
+
+            const attendanceData = studentsAttendance.find((att) => att.regnumber === regnumber);
+            if (!attendanceData) {
+                throw new Error(`Attendance data for registration number ${regnumber} not found`);
+            }
+
+            const data = {
+                regnumber: studentData.regnumber,
+                phone: studentData.phone,
+                attendancePercentage: attendanceData.percentage,
+            };
+
+            const response = await fetch('http://localhost:3001/handleSendMessage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            if (!response.ok) {
+              const errorMessage = await response.text(); // Read the response body as text
+              throw new Error(errorMessage);
+          }
+else{
+            const responseData = await response.json();
+            console.log('Message sent successfully:', responseData);}
+        } catch (error) {
+            console.error('Error sending message:', error);
+        }
     };
 
     return (
@@ -94,7 +123,9 @@ const Attendance = () => {
                     </select>
                 </div>
                 <div className="col-auto d-flex align-items-end">
-                    <button className="btn btn-primary" onClick={fetchRegistrationNumbers}>Fetch Registration Numbers</button>
+                    <button className="btn btn-primary" onClick={fetchRegistrationNumbers}>
+                        Fetch Registration Numbers
+                    </button>
                 </div>
             </div>
 
