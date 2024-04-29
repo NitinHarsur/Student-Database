@@ -50,6 +50,7 @@ border-radius: 20px;
 /* Form container styling */
 /* Form container styling */
 .studentform {
+  top:30px;
   height: 350px;
   position: relative;
   width: 350px; /* Set form width to match container width */

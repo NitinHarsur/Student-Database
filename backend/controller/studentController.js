@@ -204,4 +204,5 @@ const attendance = async (req, res) => {
       return res.status(500).json({ message: 'Server error. Please try again later.' });
   }
 };
-module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,updateStudent,updateStudentsYear,studentsList,attendance};
+module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,
+  updateStudent,updateStudentsYear,studentsList,attendance};

@@ -23,6 +23,7 @@ router.put('/updateStudent',updateStudent.updateStudent);
 router.put('/updateStudentsYear',updateStudentsYear.updateStudentsYear)
 
 router.get('/studentsList',studentsList.studentsList)
+
 router.get('/attendance',attendance.attendance)
 
 
