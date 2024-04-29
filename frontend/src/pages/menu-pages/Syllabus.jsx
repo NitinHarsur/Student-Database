@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../../NavAndFoot/Navbar';
+import {Navbar,Footer} from '../../NavAndFoot/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
 export default function Syllabus() {
@@ -75,6 +75,7 @@ export default function Syllabus() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

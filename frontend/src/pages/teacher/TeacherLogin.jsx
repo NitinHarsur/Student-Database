@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import './teacherLogin.css';
 import { useNavigate } from 'react-router-dom';
-import { toast,Bounce } from 'react-toastify';
-import DBwelcome from '../../IndexTexts/DBwelcome';
+import { toast, Bounce } from 'react-toastify';
+import teacherLoginImage from '../../images/teacher.jpg'; // Add your teacher login image path
+import './teacherLogin.css'; // Keep the existing CSS
 
-const LoginForm = () => {
+const TeacherLoginForm = () => {
   const navigate = useNavigate();
-
-  const [name, setName] = useState('');
-  const [password, setPassword] = useState('');
+  const [teacherName, setTeacherName] = useState('');
+  const [employeeNumber, setEmployeeNumber] = useState('');
   const [error] = useState('');
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -20,11 +20,11 @@ const LoginForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, password }),
+        body: JSON.stringify({ teacherName, employeeNumber }),
       });
 
       if (!response.ok) {
-        toast.error('Invalid username and password', {
+        toast.error('Invalid username or employee number', {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
@@ -34,10 +34,10 @@ const LoginForm = () => {
           progress: undefined,
           theme: "light",
           transition: Bounce,
-          });
+        });
       } else {
         navigate('/TeacherDashboard');
-        toast.success('Login Successfull', {
+        toast.success('Login successful', {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
@@ -47,11 +47,11 @@ const LoginForm = () => {
           progress: undefined,
           theme: "light",
           transition: Bounce,
-          });
+        });
       }
     } catch (error) {
       console.error('Error logging in:', error.message);
-      toast.error('Netwok Error', {
+      toast.error('Network error', {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -61,33 +61,52 @@ const LoginForm = () => {
         progress: undefined,
         theme: "light",
         transition: Bounce,
-        });
+      });
     }
   };
 
   return (
-    <div className="__login__container">
-    <DBwelcome />
+    <div className="Teacher__loginpage">
+      <div className="teacher__logincontainer">
+        <img src={teacherLoginImage} alt="Teacher login" />
 
-    <div className="login-box">
-      <form onSubmit={handleSubmit}>
-        <div className="user-box">
-          <input type="text" id="name" required placeholder="Username" onChange={(e)=>setName(e.target.value)}/>
-          <label>Username</label>
+        <div className='teacher__loginform'>
+          <form onSubmit={handleSubmit} className='teacherform'>
+            <h2 className='login__h2' style={{ color: 'black' }}>Welcome! Please Login to continue</h2>
+            <div>
+              <input
+                type="text"
+                id="teacherName"
+                placeholder='Enter your Name'
+                value={teacherName}
+                onChange={(e) => setTeacherName(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                id="employeeNumber"
+                placeholder='Enter your Employee Number'
+                value={employeeNumber}
+                onChange={(e) => setEmployeeNumber(e.target.value)}
+                required
+              />
+            </div>
+            <center>
+              <button
+                className='teacherSubmitbtn'
+                type="submit"
+              >
+                Login
+              </button>
+            </center>
+            {error && <div className="error-message">{error}</div>}
+          </form>
         </div>
-        <div className="user-box">
-          <input type="password" id="password" required placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
-          <label>Password</label>
-        </div>
-        <center>
-          <button type="submit">LOGIN<span></span></button>
-        </center>  {error && <div className="error-message">{error}</div>}
-      </form>
+      </div>
     </div>
-
-  </div>
-  
   );
 };
 
-export default LoginForm;
+export default TeacherLoginForm;

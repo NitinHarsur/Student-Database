@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../../NavAndFoot/Navbar';
+import {Navbar,Footer} from '../../NavAndFoot/Navbar';
 
 export default function Admission() {
   return (
@@ -73,6 +73,7 @@ export default function Admission() {
           <li>Fees: Check the institution's website for details on admission fees and tuition fees.</li>
         </ul>
       </div>
+      <Footer/>
     </div>
   );
 }
