@@ -9,6 +9,8 @@ const updateStudent = require('../controller/studentController')
 const updateStudentsYear = require('../controller/studentController')
 const studentsList = require('../controller/studentController')
 const attendance = require('../controller/studentController')
+const result = require('../controller/studentController')
+
 
 //student
 router.post('/studentlogin', studentLogin.studentLogin);
@@ -24,6 +26,9 @@ router.put('/updateStudentsYear',updateStudentsYear.updateStudentsYear)
 
 router.get('/studentsList',studentsList.studentsList)
 router.get('/attendance',attendance.attendance)
+
+//Result
+router.post('/addResult',result.result)
 
 
 //teacher

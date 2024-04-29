@@ -204,4 +204,27 @@ const attendance = async (req, res) => {
       return res.status(500).json({ message: 'Server error. Please try again later.' });
   }
 };
-module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,updateStudent,updateStudentsYear,studentsList,attendance};
+
+
+const result=async(req,res)=>{
+  try {
+    const { regnumber, semester, subject, internalMarks, externalMarks } = req.body;
+
+    // Find the student by registration number
+    const existingStudent = await Student.findOne({ regnumber });
+    if (!existingStudent) {
+      return res.status(404).json({ error: 'Student not found' });
+    }
+
+    // Add the result to the student's record
+    existingStudent.result.push({ semester, subject, internalMarks, externalMarks });
+    await existingStudent.save();
+
+    res.status(200).json({ message: 'Result added successfully' });
+  } catch (error) {
+    console.error('Error adding result:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,updateStudent,updateStudentsYear,studentsList,attendance,result};

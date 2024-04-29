@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast, Bounce } from 'react-toastify';
-import teacherLoginImage from '../../images/teacher.jpg'; // Add your teacher login image path
+import teacherLoginImage from '../../images/teacherlogin.jpg'; // Add your teacher login image path
 import './teacherLogin.css'; // Keep the existing CSS
 
 const TeacherLoginForm = () => {

@@ -13,7 +13,19 @@ const studentSchema = new mongoose.Schema({
   year: {
     type: String,
     required: true // Ensure that the year is required
-  }
+  },
+  phone: {
+    type: Number,
+    required: true // Ensure that the year is required
+  },
+  result: [
+    {
+      semester: String,
+      subject: String,
+      internalMarks: Number,
+      externalMarks: Number
+    }
+  ]
 });
 
 // Create and export User model
