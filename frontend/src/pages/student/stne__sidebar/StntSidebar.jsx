@@ -67,20 +67,20 @@ const StntSidebar = () => {
                     
                     items={[
                         {
-                            key: '/TeacherDashboard',
+                            key: '/StudentDashboard',
                             icon: <AiFillHome size={collapsed ? '20' : '25'} />,
                             label: <Link to="/StudentDashboard">Home</Link>,
                         },
                         
                         {
-                            key: '/TeacherDashboard/Attendance',
+                            key: '/StudentDashboard/Attendance',
                             icon: <FaBookBookmark size={collapsed ? '20' : '25'} />,
-                            label: <Link to="/StntAttendance">Attendance</Link>,
+                            label: <Link to="/StudentDashboard/stntAttendance">Attendance</Link>,
                         },
                         {
-                            key: '/TeacherDashboard/Result',
+                            key: '/StudentDashboard/Result',
                             icon: <PiExamFill size={collapsed ? '20' : '25'} />,
-                            label: <Link to="/StudentDashboard/StntResult">Result</Link>,
+                            label: <Link to="/StudentDashboard/stntResult">Result</Link>,
                         }
             
                     ]}

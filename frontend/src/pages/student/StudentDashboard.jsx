@@ -2,9 +2,9 @@ import React from 'react';
 import StntSidebar from './stne__sidebar/StntSidebar';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import { Route, Routes } from 'react-router-dom';
-import StntResult from './StntResult';
-import StntAttendance from './StntAttendance';
-import StudentHome from './StudentHome';
+import StntResult from './stne__sidebar/StntResult';
+import StntAttendance from './stne__sidebar/StntAttendance';
+import StudentHome from './stne__sidebar/StudentHome';
 const StudentDashboard = () => {
   return (
     <div className="Main__Stntdashboard d-flex ">
@@ -16,8 +16,8 @@ const StudentDashboard = () => {
 
         <Routes>
         <Route path="/" element={<StudentHome/>} />
-        <Route path="/Attendance" element={<StntAttendance />} />
-        <Route path="/Result" element={<StntResult/>} />
+        <Route path="/stntAttendance" element={<StntAttendance />} />
+        <Route path="/stntResult" element={<StntResult/>} />
         </Routes>
         StudentDashboard
       </div>

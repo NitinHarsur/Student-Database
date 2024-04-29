@@ -8,4 +8,4 @@ const StntAttendance = () => {
   )
 }
 
-export default StntAttendance
+export default StntAttendance;

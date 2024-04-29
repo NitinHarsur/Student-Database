@@ -6,8 +6,8 @@ import './teacherLogin.css'; // Keep the existing CSS
 
 const TeacherLoginForm = () => {
   const navigate = useNavigate();
-  const [teacherName, setTeacherName] = useState('');
-  const [employeeNumber, setEmployeeNumber] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
   const [error] = useState('');
 
   // Handle form submission
@@ -20,7 +20,7 @@ const TeacherLoginForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ teacherName, employeeNumber }),
+        body: JSON.stringify({ name, password }),
       });
 
       if (!response.ok) {
@@ -78,18 +78,18 @@ const TeacherLoginForm = () => {
                 type="text"
                 id="teacherName"
                 placeholder='Enter your Name'
-                value={teacherName}
-                onChange={(e) => setTeacherName(e.target.value)}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 required
               />
             </div>
             <div>
               <input
-                type="text"
-                id="employeeNumber"
-                placeholder='Enter your Employee Number'
-                value={employeeNumber}
-                onChange={(e) => setEmployeeNumber(e.target.value)}
+                type="password"
+                id="passwor"
+                placeholder='Enter your password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
