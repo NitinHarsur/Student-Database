@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Attendance = () => {
@@ -94,7 +94,7 @@ const Attendance = () => {
                     </select>
                 </div>
                 <div className="col-auto d-flex align-items-end">
-                    <button className="btn btn-primary" onClick={fetchRegistrationNumbers}>Fetch Registration Numbers</button>
+                    <button className="btn" style={{backgroundColor:'#00b4d8'}} onClick={fetchRegistrationNumbers}>Fetch Registration Numbers</button>
                 </div>
             </div>
 

@@ -1,91 +1,69 @@
-// ResultPage.js
-
 import React, { useState } from 'react';
 
-const ResultPage = () => {
+const MarkSubject = () => {
   const [regNumber, setRegNumber] = useState('');
   const [semester, setSemester] = useState('');
-  const [subjectData, setSubjectData] = useState([{ subject: '', internalMarks: '', externalMarks: '' }]);
+  const [subjectName, setSubjectName] = useState('');
+  const [internalMarks, setInternalMarks] = useState(0);
+  const [externalMarks, setExternalMarks] = useState(0);
 
-  const handleSubjectChange = (index, field, value) => {
-    const updatedSubjectData = [...subjectData];
-    updatedSubjectData[index][field] = value;
-    setSubjectData(updatedSubjectData);
-  };
-
-  const addSubject = () => {
-    setSubjectData([...subjectData, { subject: '', internalMarks: '', externalMarks: '' }]);
-  };
-
-  const handleSubmit = async () => {
+  const markSubject = async () => {
     try {
-      const response = await fetch('http://localhost:3001/addResult', {
+      const response = await fetch('http://localhost:3001/result', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ regnumber: regNumber,
-          semester: semester,
-          subjectData: subjectData }),
+        body: JSON.stringify({
+          regNumber,
+          semester,
+          subjectName,
+          internalMarks: parseInt(internalMarks), // Parse as number
+          externalMarks: parseInt(externalMarks) // Parse as number
+        })
       });
-      const data = await response.json(); // Assuming the response contains JSON data
+
       if (response.ok) {
-        alert('Result added successfully');
+        alert('Marks updated successfully');
       } else {
-        alert(data.error || 'Failed to add result');
+        throw new Error('Failed to mark subject');
       }
     } catch (error) {
-      console.error('Error adding result:', error);
-      alert('Failed to add result');
+      console.error('Error marking subject:', error);
+      alert(error.message);
     }
   };
 
   return (
     <div>
-      <h2>Teacher Result Page</h2>
+      <h2>Mark Subject</h2>
       <div>
-        <label htmlFor="regNumber">Registration Number:</label>
-        <input type="text" id="regNumber" value={regNumber} onChange={(e) => setRegNumber(e.target.value)} />
+        <label>Registration Number:</label>
+        <input type="text" value={regNumber} onChange={e => setRegNumber(e.target.value)} />
       </div>
       <div>
-        <label htmlFor="semester">Semester:</label>
-        <input type="text" id="semester" value={semester} onChange={(e) => setSemester(e.target.value)} />
+        <label>Semester:</label>
+        <select value={semester} onChange={e => setSemester(e.target.value)}>
+          <option value="">Select Semester</option>
+          <option value="1st Sem">1st Semester</option>
+          <option value="2nd Sem">2nd Semester</option>
+        </select>
       </div>
-      {subjectData.map((subject, index) => (
-        <div key={index}>
-          <div>
-            <label htmlFor={`subject_${index}`}>Subject:</label>
-            <input
-              type="text"
-              id={`subject_${index}`}
-              value={subject.subject}
-              onChange={(e) => handleSubjectChange(index, 'subject', e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor={`internalMarks_${index}`}>Internal Marks:</label>
-            <input
-              type="text"
-              id={`internalMarks_${index}`}
-              value={subject.internalMarks}
-              onChange={(e) => handleSubjectChange(index, 'internalMarks', e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor={`externalMarks_${index}`}>External Marks:</label>
-            <input
-              type="text"
-              id={`externalMarks_${index}`}
-              value={subject.externalMarks}
-              onChange={(e) => handleSubjectChange(index, 'externalMarks', e.target.value)}
-            />
-          </div>
-        </div>
-      ))}
-      <button onClick={addSubject}>Add Subject</button>
-      <button onClick={handleSubmit}>Submit</button>
+      <div>
+        <label>Subject:</label>
+        <input type="text" value={subjectName} onChange={e => setSubjectName(e.target.value)} />
+      </div>
+      <div>
+        <label>Internal Marks:</label>
+        <input type="number" value={internalMarks} onChange={e => setInternalMarks(e.target.value)} />
+      </div>
+      <div>
+        <label>External Marks:</label>
+        <input type="number" value={externalMarks} onChange={e => setExternalMarks(e.target.value)} />
+      </div>
+      <button onClick={markSubject}>Mark Subject</button>
     </div>
   );
 };
 
-export default ResultPage;
+export default MarkSubject;

@@ -4,8 +4,12 @@ import {  toast,Bounce } from 'react-toastify';
 
 const AddStudent = () => {
   const [studentname, setStudentname] = useState('');
+  const [fathername, setFathername] = useState('');
+  const [mothername, setMothername] = useState('');
+  const [email, setEmail] = useState('');
   const [year, setYear] = useState('');
   const [regnumber, setRegnumber] = useState('');
+  const [phone, setPhone] = useState('');
   const [error] = useState('');
  
 
@@ -70,6 +74,18 @@ else{
     <div className='add-student-container'>
       <h2>Add Student</h2>
       <form onSubmit={handleSubmit}>
+        <div className="addbox">
+        <div className="left">
+      <div>
+          <label htmlFor="regnumber">Registration Number:</label>
+          <input
+            type="text"
+            id="regnumber"
+            value={regnumber}
+            onChange={(e) => setRegnumber(e.target.value)} required
+          />
+        </div>
+
         <div>
           <label htmlFor="studentname">Student Name:</label>
           <input
@@ -80,12 +96,32 @@ else{
           />
         </div>
         <div>
-          <label htmlFor="regnumber">Registration Number:</label>
+          <label htmlFor="fathername">Student Father Name:</label>
           <input
             type="text"
-            id="regnumber"
-            value={regnumber}
-            onChange={(e) => setRegnumber(e.target.value)} required
+            id="fathername"
+            value={fathername}
+            onChange={(e) => setFathername(e.target.value)} required
+          />
+        </div>
+        <div>
+          <label htmlFor="mothername">Student Mother Name :</label>
+          <input
+            type="text"
+            id="mothername"
+            value={mothername}
+            onChange={(e) => setMothername(e.target.value)} required
+          />
+        </div>
+        </div>
+        <div className="right">
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="text"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)} required
           />
         </div>
 
@@ -99,6 +135,18 @@ else{
             onChange={(e) => setYear(e.target.value)} required
           />
         </div>
+        <div>
+          <label htmlFor="phone">Phone Number:</label>
+          <input
+            type="text"
+            id="phone"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)} required
+          />
+        </div>
+        </div>
+        </div>
+
         <center>
         <button type="submit" >Add Student</button></center>
         {error && <div>{error}

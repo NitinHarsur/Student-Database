@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './DeleteStudent.css'
 import {  toast,Bounce } from 'react-toastify';
 
 const DeleteStudent = () => {
@@ -116,12 +117,14 @@ const DeleteStudent = () => {
 
   return (
     <div className='delete-student-container'>
-
+ 
+  <div className='deleter'>
       <h2>Delete Student By Register Number</h2>
       <form onSubmit={handleDelete}>
+      
 
-        <div>
-          <label htmlFor="regnumber">Register :</label>
+       
+          <label htmlFor="regnumber">Register Number:</label>
           <input
             type="text"
             id="regnumber"
@@ -132,13 +135,17 @@ const DeleteStudent = () => {
 
         <button type="submit" >Delete Student</button>
         {error && <div>{error}</div>}
-        </div>
+        
+        
       </form>
-
+      </div>
+      
+ 
+      <div className='deletey'>
       <h2>Delete Students By Year</h2>
       <form onSubmit={handleDeleteMany}>
-
-        <div>
+       
+       
           <label htmlFor="year"> Year :</label>
           <input
             type="text"
@@ -146,12 +153,15 @@ const DeleteStudent = () => {
             value={year}
             onChange={(e) => setYear(e.target.value)} required
           />
-      
+    
+   
 
         <button type="submit" >Delete Students</button>
         {error && <div>{error}</div>}
-        </div>
+        
+       
       </form>
+      </div>
 
 
     </div>

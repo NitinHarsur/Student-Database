@@ -1,0 +1,71 @@
+.update-student-container {
+    display: flex;
+    gap:50px;
+    margin-bottom: 20px;
+  }
+  
+  .stntupdate {
+    width: 50%;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+  }
+  
+  .yearupdate {
+    width: 50%;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+  }
+  .yearupdate form{
+    margin-top: 130px;
+  }
+  
+  .update-student-container h2 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .update-student-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color:#42b0fa4a;
+    border-radius: 20px;
+    justify-content: space-between;
+    padding: 30px;
+  }
+  
+
+  
+  .update-student-container form select,
+  .update-student-container form input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    background: transparent;
+    gap: 10px;
+    outline: none;
+
+    border: none;
+    border-bottom: black solid 1px;
+  }
+  
+  .update-student-container form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #00b4d8;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .update-student-container form button:hover {
+    background-color: #00b4d8;
+  }
+  
+  .update-student-container .error-message {
+    color: red;
+  }
+  

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './UpdateStudent.css'
 import { toast, Bounce } from 'react-toastify';
 
 const UpdateStudent = () => {
@@ -108,9 +109,10 @@ const UpdateStudent = () => {
   return (
     <div>
       <div className='update-student-container'>
+        <div className="stntupdate">
         <h2>Update Student Information</h2>
         <form onSubmit={handleUpdate}>
-          <div>
+         
             <label htmlFor="regnumber">Registration Number:</label>
             <input
               type="text"
@@ -118,8 +120,7 @@ const UpdateStudent = () => {
               value={regnumber}
               onChange={(e) => setRegnumber(e.target.value)} required
             />
-          </div>
-          <div>
+         
             <label htmlFor="fieldToUpdate">Field to Update:</label>
             <select
               id="fieldToUpdate"
@@ -130,8 +131,7 @@ const UpdateStudent = () => {
               <option value="studentname">Student Name</option>
               <option value="year">Year</option>
             </select>
-          </div>
-          <div>
+          
             <label htmlFor="newValue">New Value:</label>
             <input
               type="text"
@@ -139,16 +139,18 @@ const UpdateStudent = () => {
               value={newValue}
               onChange={(e) => setNewValue(e.target.value)} required
             />
-          </div>
+          
           <button type="submit">Update Student</button>
           {error && <div>{error}</div>}
         </form>
-      </div>
+        </div>
+    
 
-      <div className='update-students-year-container'>
+    
+        <div className="yearupdate">
         <h2>Update Students Year</h2>
         <form onSubmit={handleUpdateYears}>
-          <div>
+          
             <label htmlFor="oldYear">Current Year:</label>
             <input
               type="text"
@@ -156,8 +158,7 @@ const UpdateStudent = () => {
               value={oldYear}
               onChange={(e) => setOldYear(e.target.value)} required
             />
-          </div>
-          <div>
+          
             <label htmlFor="newYear">New Year:</label>
             <input
               type="text"
@@ -165,10 +166,11 @@ const UpdateStudent = () => {
               value={newYear}
               onChange={(e) => setNewYear(e.target.value)} required
             />
-          </div>
+          
           <button type="submit">Update Students Year</button>
           {error && <div>{error}</div>}
         </form>
+      </div>
       </div>
     </div>
   );

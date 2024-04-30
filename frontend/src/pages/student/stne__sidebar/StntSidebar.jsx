@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
-import { RiMenuFoldFill, RiMenuUnfoldFill } from 'react-icons/ri';
-import { AiFillHome } from 'react-icons/ai';
+import { RiMenuFoldFill, RiMenuUnfoldFill,RiLogoutCircleLine } from 'react-icons/ri';
 import {  PiExamFill } from 'react-icons/pi';
 import { FaBookBookmark } from 'react-icons/fa6';
 import { CgProfile } from 'react-icons/cg';
@@ -13,6 +12,7 @@ const { Sider, Footer } = Layout;
 
 const StntSidebar = () => {
     const [collapsed, setCollapsed] = useState(true);
+    const navigate = useNavigate();
 
     const toggleCollapse = () => {
         setCollapsed(!collapsed);
@@ -68,8 +68,8 @@ const StntSidebar = () => {
                     items={[
                         {
                             key: '/StudentDashboard',
-                            icon: <AiFillHome size={collapsed ? '20' : '25'} />,
-                            label: <Link to="/StudentDashboard">Home</Link>,
+                            icon: <CgProfile size={collapsed ? '20' : '25'} />,
+                            label: <Link to="/StudentDashboard">Profile</Link>,
                         },
                         
                         {
@@ -111,17 +111,17 @@ const StntSidebar = () => {
                     }}
                 >
                     {collapsed ? (
-                        <CgProfile style={{ fontSize: '20px' }} />
+                        <RiLogoutCircleLine style={{ fontSize: '20px' }}  onClick={() => navigate('/student/studentLogin')}/>
                     ) : (
-                        <Link to="/TeacherDashboard/TeacherProfile" style={{
+                        <Link to="/" style={{
                             display: 'flex',
                             alignItems: 'center',
                             textDecoration: 'none',
                             color: 'black',
                             transition: 'opacity 0.3s ease-in-out',
                         }}>
-                            <CgProfile style={{ fontSize: '25px', marginRight: '10px' }} />
-                            <b>Profile</b>
+                            <RiLogoutCircleLine style={{ fontSize: '25px', marginRight: '10px' }} />
+                            <b  onClick={() => navigate('/student/studentLogin')}>logout</b>
                         </Link>
                     )}
                 </div>

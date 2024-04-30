@@ -60,7 +60,7 @@ const StudentsList = () => {
                 </div>
                 {/* Place the button right beside the select */}
                 <div className="col-auto d-flex align-items-end">
-                    <button className="btn btn-primary" onClick={fetchStudents}>Fetch Students</button>
+                    <button className="btn " style={{backgroundColor:'#00b4d8'}}  onClick={fetchStudents}>Fetch Students</button>
                 </div>
             </div>
 
