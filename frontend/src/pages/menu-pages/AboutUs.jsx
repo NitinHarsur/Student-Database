@@ -8,22 +8,22 @@ import developer4 from '../../images/developer4.jpg';
 // Define developer data
 const developers = [
   {
-    name: 'Developer 1',
+    name: 'Adarshyogi',
     email: 'developer1@example.com',
     image: developer1 // Provide the imported image
   },
   {
-    name: 'Developer 2',
+    name: 'Nitin',
     email: 'developer2@example.com',
     image: developer2
   },
   {
-    name: 'Developer 3',
+    name: 'Siddaram',
     email: 'developer3@example.com',
     image: developer3
   },
   {
-    name: 'Developer 4',
+    name: 'Saffura Fatima',
     email: 'developer4@example.com',
     image: developer4
   }
