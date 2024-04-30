@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar } from '../../NavAndFoot/Navbar';
+import {Navbar,Footer} from '../../NavAndFoot/Navbar';
 import developer1 from '../../images/developer1.jpg';
 import developer2 from '../../images/developer2.jpg';
 import developer3 from '../../images/developer3.jpg';
@@ -73,6 +73,7 @@ export default function AboutUs() {
           ))}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

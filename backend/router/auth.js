@@ -11,6 +11,7 @@ const studentsList = require('../controller/studentController')
 const attendance = require('../controller/studentController')
 const result = require('../controller/studentController')
 
+const contact = require('../controller/contactController')
 
 //student
 router.post('/studentlogin', studentLogin.studentLogin);
@@ -34,5 +35,8 @@ router.post('/addResult',result.result)
 
 //teacher
 router.post('/teacherlogin', teacherLogin );
+
+
+router.post('/contact', contact );
 
 module.exports = router;

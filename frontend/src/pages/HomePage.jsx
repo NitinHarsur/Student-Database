@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Footer } from '../NavAndFoot/Navbar';
-import CLG from '../images/clg.jpg';
+
 import LMS from '../images/lms1.png';
 import SSP from '../images/ssp1.png';
 import './Homepage.css';
@@ -17,9 +17,7 @@ function HomePage() {
        
         <div className="homepage">
           <div className="clg-container">
-            <div className="clgimg">
-              <img src={CLG} alt="BG" width={'1000px'} height={'700px'} />
-            </div>
+            
             
           </div>
           <main>
