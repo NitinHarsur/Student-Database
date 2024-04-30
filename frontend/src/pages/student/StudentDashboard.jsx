@@ -19,7 +19,6 @@ const StudentDashboard = () => {
         <Route path="/stntAttendance" element={<StntAttendance />} />
         <Route path="/stntResult" element={<StntResult/>} />
         </Routes>
-        StudentDashboard
       </div>
     </div>
   );

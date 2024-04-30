@@ -26,7 +26,7 @@ const contactSchema = new mongoose.Schema({
 const db = mongoose.connection.useDb('GPTDATA');
 
 // Create the contact model using the schema
-const contactModel = mongoose.model('Contact', contactSchema);
+const contactModel = db.model('Contact', contactSchema);
 
 // Export the model
 module.exports = contactModel;
