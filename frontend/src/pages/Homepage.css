@@ -16,8 +16,9 @@ main .image-section {
 
   .homepage main .image-section .image-wrapper {
     display: flex;
+    position: absolute;
+    top: 725px;
     justify-content: center;
-    align-items: center;
     width: 100%; /* Ensure the wrapper takes full width */ 
      gap:200px;
 }
@@ -89,6 +90,30 @@ main .image-section {
   .image-wrapper img:hover {
     transform: scale(1.1); /* Optional: adds a zoom effect on hover */
   }
+  /* Apply a transition effect to the images */
+.image-wrapper img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-wrapper img:hover {
+  transform: scale(1.1); /* Zoom effect on hover */
+}
+
+/* Add animation to the images */
+.image-wrapper img {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Define the fade-in animation */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
   
   /* Footer styles */
   footer {
@@ -128,12 +153,36 @@ main .image-section {
   width: 100%; /* Full width of the container */
   margin-bottom: 20px; /* Space below the container */
 }
-
-/* Example styles for clgimg and clg-text */
-.clgimg {
-  /* Add your styles here */
-  /* Remove the border property or set it to none */
-  border: none;
+/* Styling for the text row */
+.text-row {
+  display: flex; /* Use flexbox to center the text */
+  justify-content: center; /* Center the text horizontally */
+  align-items: center; /* Center the text vertically */
+  height: 94%; /* Full height of the home div */
+  text-align: center; /* Center the text */
+  color: white; /* White text color for better contrast against the background image */
+  padding: 20px; /* Add some padding around the text */
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: Add a semi-transparent black background for better readability */
 }
+
+/* Additional styling for the text content */
+.text-content h2 {
+  font-size: 24px; /* Customize the font size */
+  margin-bottom: 10px; /* Add some space below the heading */
+}
+
+.text-content  {
+  color:white;
+  font-size: 16px; /* Customize the font size */
+}
+/* Styling for the thought in text content */
+.thought {
+  font-style: italic; /* Italicize the thought */
+  font-size: 16px; /* Adjust the font size */
+  color: #f1e8e8; /* Dark gray color */
+  margin-top: 10px; /* Add space above the thought */
+}
+
+
 
 

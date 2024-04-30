@@ -1,5 +1,5 @@
 const Student  = require ('../model/studentSchema')
-
+const { client, twilioPhoneNumber } = require('../twilioConfig');
 
 
 // Function to handle student login requests and authenticate students
@@ -209,6 +209,36 @@ const attendance = async (req, res) => {
   }
 };
 
+const handleSendMessage = async (req, res) => {
+  const { regnumber, phone, attendancePercentage } = req.body;
+  if (attendancePercentage < 75) {
+    // Message body for the SMS
+    const messageBody = `Your attendance is below 75%. Registration number: ${regnumber}`;
+
+    try {
+        // Send the SMS using Twilio's client
+        const message = await client.messages.create({
+            body: messageBody,
+            from: twilioPhoneNumber,
+            to:   `+91${phone}`
+        });
+
+        // Log the message SID
+        console.log(`Message sent to ${phone}. SID: ${message.sid}`);
+
+        // Respond with a success message
+        res.status(200).send('Message sent successfully');
+    } catch (error) {
+        console.error(`Error sending SMS to ${phone}:`, error);
+        res.status(500).send(`Failed to send SMS to ${phone}`);
+    }
+} else {
+    // Respond with a message indicating no SMS was sent
+    res.status(200).send('No message sent: Attendance percentage is 75% or higher');
+}
+
+};
+
 
 const result=async(req,res)=>{
   const { regNumber, semesterName, subjectName, internalMarks, externalMarks } = req.body;
@@ -253,4 +283,10 @@ const result=async(req,res)=>{
   }
 };
 
+<<<<<<< HEAD
 module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,updateStudent,updateStudentsYear,studentsList,attendance,result};
+=======
+module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,
+  updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result};
+
+>>>>>>> d3904df794a94b454ff0a88897bce24ef55c5f98
