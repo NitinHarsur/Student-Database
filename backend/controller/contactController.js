@@ -1,7 +1,8 @@
-const contactModel = require('./model/contactModel'); // Import the contact model
-const {email,message}=req.body
+const contactModel = require('../model/contactSchema'); // Adjust the path if necessary
+
 // Endpoint for handling form submissions
 const contact = async (req, res) => {
+    const {email,message}=req.body
     try {
         // Create a new contact message document using the contact model
         const newContactMessage = new contactModel({

@@ -40,9 +40,8 @@ router.post('/addResult',result.result)
 router.post('/teacherlogin', teacherLogin );
 
 
-<<<<<<< HEAD
+
 router.post('/contact', contact );
-=======
 // Route for sending attendance messages
 
 
@@ -50,6 +49,5 @@ router.post('/contact', contact );
 
 
 
->>>>>>> 83081f6e (added messaging service)
 
 module.exports = router;

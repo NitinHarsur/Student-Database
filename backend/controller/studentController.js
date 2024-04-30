@@ -257,10 +257,6 @@ const result=async(req,res)=>{
   }
 };
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 83081f6e (added messaging service)
 module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,
   updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result};
 

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // Define the schema for the contact form
-const contactSchema = new Schema({
+const contactSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
