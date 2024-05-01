@@ -44,7 +44,7 @@ const studentSchema = new mongoose.Schema({
     type: Number,
     required: true // Ensure that the phone number is required
   },
-
+  image: {type:String,required:true}, 
   firstSemResult: [semesterSchema],
   secondSemResult: [semesterSchema]
 });

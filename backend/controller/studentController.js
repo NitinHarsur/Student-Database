@@ -30,37 +30,42 @@ const studentLogin= async (req, res) => {
 
 
 // Function to Add Student Data to the Databse System
-  const addStudent = async (req, res) => {
-    try {
-      const { studentname,fathername,mothername,email, regnumber,year } = req.body;
+const addStudent = async (req, res) => {
+  try {
+      // Destructure properties from the request body
+      const { studentname, fathername, mothername, email, regnumber, year, phone, image } = req.body;
 
-        const existingStudent = await Student.findOne({
-            regnumber:regnumber
-        });
+      // Check if a student with the same registration number already exists
+      const existingStudent = await Student.findOne({ regnumber });
 
-        if (existingStudent) {
-          return res.status(400).json({ error: 'Register number already exsist' });
-        }
-        else {
-            const student = new Student({
-                studentname,
-                fathername,
-                mothername,
-                email,
-                regnumber,
-                year,
-                phone
-            });
+      if (existingStudent) {
+          // If a student with the same registration number already exists, return an error response
+          return res.status(400).json({ error: 'Registration number already exists' });
+      }
 
-            let result = await student.save();
+      // Create a new Student instance with the provided data
+      const student = new Student({
+          studentname,
+          fathername,
+          mothername,
+          email,
+          regnumber,
+          year,
+          phone,
+          image, // Include the image in the student document
+      });
 
-            res.status(201).json({ message: 'Student added successfully' });
-        }
-    } catch (error) {
+      // Save the new student document to the database
+      await student.save();
+
+      // Return a success response
+      res.status(201).json({ message: 'Student added successfully' });
+  } catch (error) {
+      // Handle errors and return an error response
       console.error('Error adding student:', error);
-      res.status(500).json({ message: 'Server error' });
-    }
-}
+      res.status(500).json({ error: 'Server error' });
+  }
+};
 
 
 // Function to delete a specific student from the system using their register number
