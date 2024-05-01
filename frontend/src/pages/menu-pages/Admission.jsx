@@ -13,29 +13,34 @@ export default function Admission() {
           font-weight: bold; /* Make all text bold */
         }
         h1 {
-          font-size: 24px;
+          font-family: ui-sans-serif;
+          font-size: 41px;
           color: black;
           text-align: center;
-          margin-bottom: 20px;
-          font-weight: bold;
+          margin-bottom: 40px;
+          font-weight: lighter;
         }
         h2 {
-          font-size: 20px;
+          font-family: ui-sans-serif;
+          font-size: 30px;
           color: black;
           margin-top: 20px;
-          font-weight: bold;
+          font-weight: 500;
         }
         p {
-          line-height: 1.6;
+          font-size: 22px;
+          line-height: 3.6;
           color: black;
-          font-weight: bold;
+          font-weight: inherit;
         }
         ul {
+          font-family: ui-sans-serif;
           margin: 0;
           padding: 0;
           list-style-type: none;
           font-weight: bold;
           color:black;
+          font-size: 20px;
         }
         li {
           padding: 10px 0;

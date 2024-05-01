@@ -30,35 +30,37 @@ const studentLogin= async (req, res) => {
 
 
 // Function to Add Student Data to the Databse System
-const addStudent = async (req, res) => {
-  try {
-    const { studentname, fathername, mothername, email, regnumber, year, phone } = req.body;
+  const addStudent = async (req, res) => {
+    try {
+      const { studentname,fathername,mothername,email, regnumber,year } = req.body;
 
-    const existingStudent = await Student.findOne({ regnumber });
+        const existingStudent = await Student.findOne({
+            regnumber:regnumber
+        });
 
-    if (existingStudent) {
-      return res.status(400).json({ error: 'Registration number already exists' });
-    } else {
-      const student = new Student({
-        studentname,
-        fathername,
-        mothername,
-        email,
-        regnumber,
-        year,
-        phone
-      });
+        if (existingStudent) {
+          return res.status(400).json({ error: 'Register number already exsist' });
+        }
+        else {
+            const student = new Student({
+                studentname,
+                fathername,
+                mothername,
+                email,
+                regnumber,
+                year,
+                phone
+            });
 
-      let result = await student.save();
+            let result = await student.save();
 
-      res.status(201).json({ message: 'Student added successfully' });
+            res.status(201).json({ message: 'Student added successfully' });
+        }
+    } catch (error) {
+      console.error('Error adding student:', error);
+      res.status(500).json({ message: 'Server error' });
     }
-  } catch (error) {
-    console.error('Error adding student:', error);
-    res.status(500).json({ message: 'Server error' });
-  }
 }
-
 
 
 // Function to delete a specific student from the system using their register number
@@ -288,7 +290,10 @@ const submitResult = async (req, res) => {
   }
 };
 
+<<<<<<< HEAD
+module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,updateStudent,updateStudentsYear,studentsList,attendance,result};
+=======
+module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,
+  updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result};
 
-module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,updateStudent,updateStudentsYear,studentsList,attendance,submitResult,handleSendMessage};
-
-
+>>>>>>> d3904df794a94b454ff0a88897bce24ef55c5f98

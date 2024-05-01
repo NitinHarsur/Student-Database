@@ -34,7 +34,7 @@ export default function AboutUs() {
     <div>
       <Navbar />
       <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-        <p style={{ fontSize: '20px', lineHeight: '1.6' }}>
+        <p style={{ fontSize: '20px', lineHeight: '1.6' }} className="text-start">
           A student database management system is a software application designed to efficiently organize, store, and manage information related to students in educational institutions. This comprehensive system offers a centralized platform to maintain various data points, ensuring streamlined administrative processes and enhanced educational experiences for both students and faculty.
         </p>
         <h2 style={{ fontSize: '24px', margin: '20px 0', textAlign: 'center' }}>Key Features</h2>
@@ -49,9 +49,10 @@ export default function AboutUs() {
           <li><strong>User-Friendly Interface:</strong> A user-friendly interface ensures that educators, administrators, and students can navigate the system easily, enhancing overall usability and adoption.</li>
         </ul>
         <h2 style={{ fontSize: '24px', margin: '20px 0', textAlign: 'center' }}>About Us Component</h2>
-        <p style={{ fontSize: '18px', lineHeight: '1.6' }}>
-          Incorporating additional elements such as an "About Us" section within the software can help provide a personalized touch to the user experience. For example, the section can showcase the team behind the application, with details about developers such as their names, email addresses, and photos. This adds a human element to the software and fosters a sense of community and collaboration.
-        </p>
+        <p style={{ fontSize: '18px', lineHeight: '1.6' }} className="text-start">
+    Incorporating additional elements such as an "About Us" section within the software can help provide a personalized touch to the user experience. For example, the section can showcase the team behind the application, with details about developers such as their names, email addresses, and photos. This adds a human element to the software and fosters a sense of community and collaboration.
+</p>
+
         <h2 style={{ fontSize: '24px', margin: '20px 0', textAlign: 'center' }}>Conclusion</h2>
         <p style={{ fontSize: '18px', lineHeight: '1.6' }}>
           A student database management system plays a critical role in modern educational institutions by providing an efficient and effective way to manage student information. By offering features such as attendance tracking, academic record management, data analysis, and secure data storage, the system supports educators in delivering a high-quality educational experience. Additionally, its ability to integrate with other systems and ensure data privacy makes it an indispensable tool for schools and universities.
@@ -79,6 +80,7 @@ export default function AboutUs() {
 }
 
 // Internal CSS styles
+
 const developerBoxStyle = {
   margin: '20px auto',
   border: '1px solid #ccc',

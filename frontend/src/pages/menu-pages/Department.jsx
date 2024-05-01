@@ -2,6 +2,7 @@ import React from 'react';
 import {Navbar,Footer} from '../../NavAndFoot/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
+
 export default function Department() {
   // Define the faculty data as an array of objects
   const facultyData = [
@@ -67,25 +68,34 @@ export default function Department() {
       <style>
         {`
         h1 {
-          font-family: 'Helvetica', sans-serif;
-          font-size: 22px; /* Reduced font size */
-          color: #2c3e50;
-          font-weight: bold;
+          font-family: ui-sans-serif;
+          font-size: 41px; /* Reduced font size */
+          color: black;
+          font-weight: lighter;
           text-align: center;
           margin-bottom: 20px;
         }
         .dept-overview {
-          font-family: Arial, sans-serif;
-          font-size: 16px;
+          font-family:ui-sans-serif ;
+          font-size: 21px;
           line-height: 1.6;
-          color: #333;
+          color: black;
           margin: 40px; /* Adjusted margin */
           padding: 20px; /* Adjusted padding */
           border-radius: 5px;
         }
         .faculty-section {
+          font-family:ui-sans-serif ;
           margin: 20px;
           text-align: center; /* Centered faculty section */
+        }
+        .h2,h2{
+          font-family:ui-sans-serif ;
+          font-size: 41px; /* Reduced font size */
+          color: black;
+          font-weight: lighter;
+          text-align: center;
+          margin-bottom: 20px;
         }
         table {
           width: 100%; /* Same width as the parent container */
@@ -93,6 +103,7 @@ export default function Department() {
           margin: 0 auto; /* Center the table */
         }
         th, td {
+          font-family:ui-sans-serif ;
           border: 1px solid #ddd;
           padding: 8px;
           text-align: left;
@@ -102,6 +113,8 @@ export default function Department() {
           color: #333;
           font-weight: bold;
         }
+       
+
         `}
       </style>
       <h1 className="text-center">COMPUTER SCIENCE OVERVIEW</h1>

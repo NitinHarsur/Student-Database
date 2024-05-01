@@ -1,30 +1,56 @@
 import React, { useState } from 'react';
 import './AddStudent.css';
-import {  toast,Bounce } from 'react-toastify';
+import { toast, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddStudent = () => {
-  const [studentname, setStudentname] = useState('');
-  const [fathername, setFathername] = useState('');
-  const [mothername, setMothername] = useState('');
-  const [email, setEmail] = useState('');
-  const [year, setYear] = useState('');
-  const [regnumber, setRegnumber] = useState('');
-  const [phone, setPhone] = useState('');
-  const [error] = useState('');
- 
+  // State to store student data including the image
+  const [studentData, setStudentData] = useState({
+    studentname: '',
+    fathername: '',
+    mothername: '',
+    email: '',
+    year: '',
+    regnumber: '',
+    phone: '',
+    image: '', // New state for storing the image as a Base64 string
+  });
 
+  // Handle input change
+  const handleChange = (e) => {
+    const { id, value } = e.target;
 
+    // Handle file input separately for the image
+    if (id === 'image') {
+      const file = e.target.files[0];
+      const reader = new FileReader();
 
+      reader.onloadend = () => {
+        // Convert image file to Base64 string and update state
+        setStudentData({ ...studentData, image: reader.result });
+      };
 
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    } else {
+      // Update state for other input fields
+      setStudentData({ ...studentData, [id]: value });
+    }
+  };
+
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      // Send POST request to the backend with student data
       const response = await fetch('http://localhost:3001/AddStudent', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+<<<<<<< HEAD
         body: JSON.stringify({ studentname,
           fathername,
           mothername,
@@ -32,133 +58,161 @@ const AddStudent = () => {
           regnumber,
           year,
           phone}),
+=======
+        body: JSON.stringify(studentData),
+>>>>>>> 7a2e31359aba67b52c83575c4cd3a9d4b356a301
       });
 
+      // Check response status
       if (!response.ok) {
-        toast.error('Register number already exsist', {
-          position: "top-right",
+        toast.error('Registration number already exists', {
+          position: 'top-right',
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
-          progress: undefined,
-          theme: "light",
+          theme: 'light',
           transition: Bounce,
-      });}
-
-else{
-      toast.success('Added successfully', {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-        });}      
-    } catch (error) {
-      console.error('Error logging in:', error.message);
-      toast.error('Netwok Error', {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
         });
+      } else {
+        toast.success('Student added successfully', {
+          position: 'top-right',
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: 'light',
+          transition: Bounce,
+        });
+
+        // Reset the form after successful submission
+        setStudentData({
+          studentname: '',
+          fathername: '',
+          mothername: '',
+          email: '',
+          year: '',
+          regnumber: '',
+          phone: '',
+          image: '',
+        });
+      }
+    } catch (error) {
+      // Handle network errors
+      console.error('Network error:', error.message);
+      toast.error('Network error', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: 'light',
+        transition: Bounce,
+      });
     }
   };
 
-  
   return (
     <div className='add-student-container'>
       <h2>Add Student</h2>
       <form onSubmit={handleSubmit}>
-        <div className="addbox">
-        <div className="left">
-      <div>
-          <label htmlFor="regnumber">Registration Number:</label>
-          <input
-            type="text"
-            id="regnumber"
-            value={regnumber}
-            onChange={(e) => setRegnumber(e.target.value)} required
-          />
+        <div className='addbox'>
+          {/* Left section of the form */}
+          <div className='left'>
+            <div>
+              <label htmlFor='studentname'>Student Name:</label>
+              <input
+                type='text'
+                id='studentname'
+                value={studentData.studentname}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='fathername'>Father's Name:</label>
+              <input
+                type='text'
+                id='fathername'
+                value={studentData.fathername}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='mothername'>Mother's Name:</label>
+              <input
+                type='text'
+                id='mothername'
+                value={studentData.mothername}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='image'>Upload Image:</label>
+              <input
+                type='file'
+                id='image'
+                accept='image/*'
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+
+          {/* Right section of the form */}
+          <div className='right'>
+            <div>
+              <label htmlFor='email'>Email:</label>
+              <input
+                type='email'
+                id='email'
+                value={studentData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='year'>Year:</label>
+              <input
+                type='text'
+                id='year'
+                value={studentData.year}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='phone'>Phone Number:</label>
+              <input
+                type='text'
+                id='phone'
+                value={studentData.phone}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor='regnumber'>Registration Number:</label>
+              <input
+                type='text'
+                id='regnumber'
+                value={studentData.regnumber}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="studentname">Student Name:</label>
-          <input
-            type="text"
-            id="studentname"
-            value={studentname}
-            onChange={(e) => setStudentname(e.target.value)} required
-          />
-        </div>
-        <div>
-          <label htmlFor="fathername">Student Father Name:</label>
-          <input
-            type="text"
-            id="fathername"
-            value={fathername}
-            onChange={(e) => setFathername(e.target.value)} required
-          />
-        </div>
-        <div>
-          <label htmlFor="mothername">Student Mother Name :</label>
-          <input
-            type="text"
-            id="mothername"
-            value={mothername}
-            onChange={(e) => setMothername(e.target.value)} required
-          />
-        </div>
-        </div>
-        <div className="right">
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="text"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)} required
-          />
-        </div>
-
-        
-        <div>
-          <label htmlFor="year">Year:</label>
-          <input
-            type="text"
-            id="year"
-            value={year}
-            onChange={(e) => setYear(e.target.value)} required
-          />
-        </div>
-        <div>
-          <label htmlFor="phone">Phone Number:</label>
-          <input
-            type="text"
-            id="phone"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)} required
-          />
-        </div>
-        </div>
-        </div>
-
+        {/* Form submission button */}
         <center>
-        <button type="submit" >Add Student</button></center>
-        {error && <div>{error}
-        </div>}
+          <button type='submit'>Add Student</button>
+        </center>
       </form>
-  
     </div>
   );
 };

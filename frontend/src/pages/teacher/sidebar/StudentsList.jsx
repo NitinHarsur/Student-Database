@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const StudentsList = () => {
-    // State variables
     const [studentsData, setStudentsData] = useState([]);
     const [selectedYear, setSelectedYear] = useState('');
     const [error, setError] = useState(null);
@@ -42,7 +41,6 @@ const StudentsList = () => {
 
             {/* Year selection and Fetch button */}
             <div className="row mb-3">
-                {/* Specify smaller width for the select and align button beside it */}
                 <div className="col-auto">
                     <label htmlFor="yearSelect" className="form-label">Select Year:</label>
                     <select
@@ -58,9 +56,8 @@ const StudentsList = () => {
                         <option value="3rd year">3rd year</option>
                     </select>
                 </div>
-                {/* Place the button right beside the select */}
                 <div className="col-auto d-flex align-items-end">
-                    <button className="btn " style={{backgroundColor:'#00b4d8'}}  onClick={fetchStudents}>Fetch Students</button>
+                    <button className="btn" style={{ backgroundColor: '#00b4d8' }} onClick={fetchStudents}>Fetch Students</button>
                 </div>
             </div>
 
@@ -70,12 +67,11 @@ const StudentsList = () => {
             {/* Students table */}
             {studentsData.length > 0 ? (
                 <div className="row justify-content-center mt-3">
-                    {/* Centered column with fixed width */}
                     <div className="col-md-8 col-lg-6">
-                        {/* The table is placed inside a container for centered and fixed width */}
                         <table className="table table-info table-hover table-bordered border-black" style={{ width: '100%' }}>
                             <thead>
                                 <tr>
+                                    <th>Image</th>
                                     <th>Name</th>
                                     <th>Registration Number</th>
                                     <th>Year</th>
@@ -84,6 +80,16 @@ const StudentsList = () => {
                             <tbody>
                                 {studentsData.map((student, index) => (
                                     <tr key={index}>
+                                        {/* Display the image using an img tag */}
+                                        <td>
+                                            {student.image && (
+                                                <img
+                                                    src={student.image}
+                                                    alt={`${student.studentname}'s image`}
+                                                    style={{ width: '50px', height: '50px', borderRadius: '50%' }}
+                                                />
+                                            )}
+                                        </td>
                                         <td>{student.studentname}</td>
                                         <td>{student.regnumber}</td>
                                         <td>{student.year}</td>

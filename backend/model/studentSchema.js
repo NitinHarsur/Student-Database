@@ -33,6 +33,7 @@ const studentSchema = new mongoose.Schema({
     type: Number,
     required: true // Ensure that the phone number is required
   },
+<<<<<<< HEAD
   semesters: [{
     semesterNumber: {
       type: Number,
@@ -45,6 +46,11 @@ const studentSchema = new mongoose.Schema({
       totalMarks: {type:Number,  required: true} // New field for total marks
     }],
   }],
+=======
+  image: {type:String,required:true}, 
+  firstSemResult: [semesterSchema],
+  secondSemResult: [semesterSchema]
+>>>>>>> 7a2e31359aba67b52c83575c4cd3a9d4b356a301
 });
 
 
