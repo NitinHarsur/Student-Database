@@ -125,9 +125,7 @@ else{
                 <div className="col-auto d-flex align-items-end">
                     <button className="btn" style={{backgroundColor:'#00b4d8'}} onClick={fetchRegistrationNumbers}>Fetch Registration Numbers</button>
 
-                    <button className="btn btn-primary" onClick={fetchRegistrationNumbers}>
-                        Fetch Registration Numbers
-                    </button>
+     
 
                 </div>
             </div>
