@@ -10,7 +10,7 @@ const updateStudentsYear = require('../controller/studentController')
 const studentsList = require('../controller/studentController')
 const attendance = require('../controller/studentController')
 const handleSendMessage = require('../controller/studentController')
-const result = require('../controller/studentController')
+const submitResult = require('../controller/studentController')
 
 const contact = require('../controller/contactController')
 
@@ -33,7 +33,7 @@ router.get('/attendance',attendance.attendance)
 router.post('/handleSendMessage',handleSendMessage.handleSendMessage)
 
 //Result
-router.post('/addResult',result.result)
+router.post('/submitResult',submitResult.submitResult)
 
 
 //teacher

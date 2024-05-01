@@ -25,7 +25,13 @@ const AddStudent = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ studentname, regnumber,year }),
+        body: JSON.stringify({ studentname,
+          fathername,
+          mothername,
+          email,
+          regnumber,
+          year,
+          phone}),
       });
 
       if (!response.ok) {

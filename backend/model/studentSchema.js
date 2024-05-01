@@ -1,18 +1,7 @@
 const mongoose = require('mongoose');
 
 // Define subject schema
-const subjectSchema = new mongoose.Schema({
-  subjectName: String,
-  internalMarks: Number,
-  externalMarks: Number,
-  totalMarks: Number
-});
 
-// Define semester schema
-const semesterSchema = new mongoose.Schema({
-  semesterName: String,
-  subjects: [subjectSchema]
-});
 
 // Define user schema
 const studentSchema = new mongoose.Schema({
@@ -44,19 +33,24 @@ const studentSchema = new mongoose.Schema({
     type: Number,
     required: true // Ensure that the phone number is required
   },
-
-  firstSemResult: [semesterSchema],
-  secondSemResult: [semesterSchema]
+  semesters: [{
+    semesterNumber: {
+      type: Number,
+      required: true
+    },
+    subjects: [{
+      subjectName:{type:String ,  required: true} ,
+      internalMarks:{type:Number,  required: true} ,
+      externalMarks:{type:Number,  required: true} ,
+      totalMarks: {type:Number,  required: true} // New field for total marks
+    }],
+  }],
 });
+
 
 // Create and export Student model
 const db = mongoose.connection.useDb('GPTDATA');
 const Student = db.model('STUDENTDATA', studentSchema);
 
-// Add method to the model to add a new semester
-studentSchema.methods.addSemester = function(semesterData) {
-  this.result.push(semesterData);
-  return this.save();
-};
 
 module.exports = Student;

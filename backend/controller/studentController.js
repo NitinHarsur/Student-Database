@@ -30,37 +30,35 @@ const studentLogin= async (req, res) => {
 
 
 // Function to Add Student Data to the Databse System
-  const addStudent = async (req, res) => {
-    try {
-      const { studentname,fathername,mothername,email, regnumber,year } = req.body;
+const addStudent = async (req, res) => {
+  try {
+    const { studentname, fathername, mothername, email, regnumber, year, phone } = req.body;
 
-        const existingStudent = await Student.findOne({
-            regnumber:regnumber
-        });
+    const existingStudent = await Student.findOne({ regnumber });
 
-        if (existingStudent) {
-          return res.status(400).json({ error: 'Register number already exsist' });
-        }
-        else {
-            const student = new Student({
-                studentname,
-                fathername,
-                mothername,
-                email,
-                regnumber,
-                year,
-                phone
-            });
+    if (existingStudent) {
+      return res.status(400).json({ error: 'Registration number already exists' });
+    } else {
+      const student = new Student({
+        studentname,
+        fathername,
+        mothername,
+        email,
+        regnumber,
+        year,
+        phone
+      });
 
-            let result = await student.save();
+      let result = await student.save();
 
-            res.status(201).json({ message: 'Student added successfully' });
-        }
-    } catch (error) {
-      console.error('Error adding student:', error);
-      res.status(500).json({ message: 'Server error' });
+      res.status(201).json({ message: 'Student added successfully' });
     }
+  } catch (error) {
+    console.error('Error adding student:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
 }
+
 
 
 // Function to delete a specific student from the system using their register number
@@ -239,54 +237,58 @@ const handleSendMessage = async (req, res) => {
 
 };
 
+const submitResult = async (req, res) => {
+  const { regnumber, semesterNumber, subjects } = req.body;
 
-const result=async(req,res)=>{
-  const { regNumber, semesterName, subjectName, internalMarks, externalMarks } = req.body;
-  
   try {
-    // Find the user by registration number
-    const user = await User.findOne({ regNumber });
+    // Find the student by registration number
+    let student = await Student.findOne({ regnumber });
 
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+    if (!student) {
+      return res.status(404).json({ error: 'Student not found' });
     }
 
-    // Find the semester
-    let semester;
-    if (semesterName === '1st Sem') {
-      semester = Student.firstSemResult;
-    } else if (semesterName === '2nd Sem') {
-      semester = Student.secondSemResult;
-    } else {
-      return res.status(400).json({ error: 'Invalid semester name' });
+    // Find or create the semester in the student's semesters array
+    let semester = student.semesters.find(sem => sem.semesterNumber === semesterNumber);
+
+    if (!semester) {
+      // If the semester doesn't exist, create a new semester
+      semester = {
+        semesterNumber,
+        subjects: [], // Initialize an empty subjects array
+      };
+      student.semesters.push(semester);
     }
 
-    // Find the subject in the semester
-    const subject = semester.subjects.find(sub => sub.subjectName === subjectName);
+    // Update the semester's subjects
+    subjects.forEach(subjectItem => {
+      const { name, internalMarks, externalMarks } = subjectItem;
+      const totalMarks = Number(internalMarks) + Number(externalMarks);
 
-    if (!subject) {
-      return res.status(404).json({ error: 'Subject not found' });
-    }
+      // Check if subject already exists in the semester
+      const existingSubject = semester.subjects.find(s => s.subjectName === name);
+      if (existingSubject) {
+        // If subject exists, update its marks
+        existingSubject.internalMarks = internalMarks;
+        existingSubject.externalMarks = externalMarks;
+        existingSubject.totalMarks = totalMarks;
+      } else {
+        // If subject doesn't exist, add it to the semester
+        semester.subjects.push({ subjectName: name, internalMarks, externalMarks, totalMarks });
+      }
+    });
 
-    // Update marks
-    subject.internalMarks = internalMarks;
-    subject.externalMarks = externalMarks;
-    subject.totalMarks = internalMarks + externalMarks; // Corrected calculation
+    // Save the updated student document
+    await student.save();
 
-    // Save the updated user
-    await Student.save();
-
-    res.status(200).json({ message: 'Marks updated successfully' });
+    res.status(200).json({ message: 'Marks submitted successfully' });
   } catch (error) {
-    console.error('Error marking subject:', error);
-    res.status(500).json({ error: 'Server error' });
+    console.error('Error submitting marks:', error.message);
+    res.status(500).json({ error: 'Internal server error' });
   }
 };
 
-<<<<<<< HEAD
-module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,updateStudent,updateStudentsYear,studentsList,attendance,result};
-=======
-module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,
-  updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result};
 
->>>>>>> d3904df794a94b454ff0a88897bce24ef55c5f98
+module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,updateStudent,updateStudentsYear,studentsList,attendance,submitResult,handleSendMessage};
+
+

@@ -123,13 +123,11 @@ else{
                     </select>
                 </div>
                 <div className="col-auto d-flex align-items-end">
-<<<<<<< HEAD
                     <button className="btn" style={{backgroundColor:'#00b4d8'}} onClick={fetchRegistrationNumbers}>Fetch Registration Numbers</button>
-=======
+
                     <button className="btn btn-primary" onClick={fetchRegistrationNumbers}>
                         Fetch Registration Numbers
                     </button>
->>>>>>> d3904df794a94b454ff0a88897bce24ef55c5f98
                 </div>
             </div>
 
