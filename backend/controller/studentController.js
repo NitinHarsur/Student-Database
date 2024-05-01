@@ -32,7 +32,7 @@ const studentLogin= async (req, res) => {
 // Function to Add Student Data to the Databse System
   const addStudent = async (req, res) => {
     try {
-      const { studentname, regnumber,year } = req.body;
+      const { studentname,fathername,mothername,email, regnumber,year } = req.body;
 
         const existingStudent = await Student.findOne({
             regnumber:regnumber
@@ -44,8 +44,12 @@ const studentLogin= async (req, res) => {
         else {
             const student = new Student({
                 studentname,
+                fathername,
+                mothername,
+                email,
                 regnumber,
-                year
+                year,
+                phone
             });
 
             let result = await student.save();
@@ -237,26 +241,52 @@ const handleSendMessage = async (req, res) => {
 
 
 const result=async(req,res)=>{
+  const { regNumber, semesterName, subjectName, internalMarks, externalMarks } = req.body;
+  
   try {
-    const { regnumber, semester, subject, internalMarks, externalMarks } = req.body;
+    // Find the user by registration number
+    const user = await User.findOne({ regNumber });
 
-    // Find the student by registration number
-    const existingStudent = await Student.findOne({ regnumber });
-    if (!existingStudent) {
-      return res.status(404).json({ error: 'Student not found' });
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
     }
 
-    // Add the result to the student's record
-    existingStudent.result.push({ semester, subject, internalMarks, externalMarks });
-    await existingStudent.save();
+    // Find the semester
+    let semester;
+    if (semesterName === '1st Sem') {
+      semester = Student.firstSemResult;
+    } else if (semesterName === '2nd Sem') {
+      semester = Student.secondSemResult;
+    } else {
+      return res.status(400).json({ error: 'Invalid semester name' });
+    }
 
-    res.status(200).json({ message: 'Result added successfully' });
+    // Find the subject in the semester
+    const subject = semester.subjects.find(sub => sub.subjectName === subjectName);
+
+    if (!subject) {
+      return res.status(404).json({ error: 'Subject not found' });
+    }
+
+    // Update marks
+    subject.internalMarks = internalMarks;
+    subject.externalMarks = externalMarks;
+    subject.totalMarks = internalMarks + externalMarks; // Corrected calculation
+
+    // Save the updated user
+    await Student.save();
+
+    res.status(200).json({ message: 'Marks updated successfully' });
   } catch (error) {
-    console.error('Error adding result:', error);
-    res.status(500).json({ message: 'Server error' });
+    console.error('Error marking subject:', error);
+    res.status(500).json({ error: 'Server error' });
   }
 };
 
+<<<<<<< HEAD
+module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,updateStudent,updateStudentsYear,studentsList,attendance,result};
+=======
 module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,
   updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result};
 
+>>>>>>> d3904df794a94b454ff0a88897bce24ef55c5f98

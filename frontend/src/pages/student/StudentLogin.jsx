@@ -41,8 +41,11 @@ const LoginForm = () => {
       });}
 
 else{
-      navigate('/StudentDashboard')
-      toast.success('Login Successfull', {
+  sessionStorage.setItem('studentname', studentname);
+sessionStorage.setItem('regnumber', regnumber);
+navigate(`/StudentDashboard`);
+
+    toast.success('Login Successfull', {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -79,7 +82,7 @@ const handleMouseEnter = () => {
 // This function reverts the background color change when the mouse leaves the button
 const handleMouseLeave = () => {
   const studentForm = document.querySelector('.studentform');
-  studentForm.style.backgroundColor = 'rgb(140, 221, 178)'; // Revert to original background color
+  studentForm.style.backgroundColor = 'rgba(34, 252, 172, 0.484)'; // Revert to original background color
   studentForm.style.transition = '0.3s ease-in-out';
 
 };

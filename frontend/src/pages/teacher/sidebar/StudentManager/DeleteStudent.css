@@ -1,0 +1,73 @@
+.delete-student-container{
+    width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    gap: 88px;
+  }
+  
+  .delete-student-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .delete-student-container form {
+    flex-wrap: wrap;
+    margin-top: 55px;
+    gap: 50px;
+    background-color:#42b0fa4a;
+    border-radius: 20px;
+    justify-content: space-between;
+    padding: 30px;
+  }
+  
+  .delete-student-container form label {
+    width: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .delete-student-container form input {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+  
+    border: none;
+    border-bottom: black solid 1px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    background: transparent;
+    gap:50px,
+  
+  }
+  .delete-student-container .deleter,.deletey{
+
+    width: 60%;
+    height: 400px;
+   
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+
+
+
+   
+  
+  }
+
+  
+  .delete-student-container form button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #00b4d8;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .delete-student-container form button:hover {
+    background-color: #00b4d8;
+  }
+  

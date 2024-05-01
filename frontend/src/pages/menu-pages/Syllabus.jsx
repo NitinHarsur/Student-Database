@@ -1,5 +1,5 @@
 import React from 'react';
-import {Navbar,Footer} from '../../NavAndFoot/Navbar';
+import { Navbar, Footer } from '../../NavAndFoot/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 
 export default function Syllabus() {
@@ -8,24 +8,42 @@ export default function Syllabus() {
       <Navbar />
       <style>
         {`
+        /* Internal CSS for Syllabus component */
         .syllabus {
           font-family: Arial, sans-serif;
           padding: 20px;
+          background-color:white ; /* Background color for the syllabus component */
         }
         h1, h2 {
           font-size: 24px;
           font-weight: bold;
-          color: #333;
+          color: black;
           text-align: center; /* Center h1 and h2 tags */
         }
         h2 {
           font-size: 20px;
-          color: #555;
+          color: black;
           margin-top: 20px;
         }
         p {
           line-height: 1.6;
-          color: #333;
+          color: black;
+        }
+
+        /* Internal CSS for the table section */
+        .table-section {
+          background-color: white; /* Background color for the table section */
+          padding: 20px;
+          border-radius: 8px;
+        }
+
+        /* Optional: Styling for the links */
+        .syllabus a {
+          color: blue; /* Bootstrap primary color */
+          text-decoration: none;
+        }
+        .syllabus a:hover {
+          text-decoration: underline;
         }
         `}
       </style>
@@ -46,31 +64,33 @@ export default function Syllabus() {
 
         {/* Table to display syllabus files links */}
         <h2>Syllabus Links</h2>
-        <div className="container"> {/* Use Bootstrap's container */}
-          <div className="row justify-content-center"> {/* Center the content */}
-            <div className="col-md-6"> {/* Set the table width to 6 columns in a medium-sized screen */}
-              <table className="table table-striped table-bordered table-hover">
-                <thead>
-                  <tr>
-                    <th>Semester Group</th>
-                    <th>Syllabus Links</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1st & 2nd Semester</td>
-                    <td><a href="https://dtek.karnataka.gov.in/storage/pdf-files/C-20%20syllabus/C_20_CSE_1_2_Sem.pdf" target="_blank" rel="noopener noreferrer">1st & 2nd Semester Syllabus</a></td>
-                  </tr>
-                  <tr>
-                    <td>3rd & 4th Semester</td>
-                    <td><a href="https://dtek.karnataka.gov.in/storage/pdf-files/C-20%20syllabus/C_20_CS_3_4_Sem.pdf" target="_blank" rel="noopener noreferrer">3rd & 4th Semester Syllabus</a></td>
-                  </tr>
-                  <tr>
-                    <td>5th & 6th Semester</td>
-                    <td><a href="https://dtek.karnataka.gov.in/storage/pdf-files/CDC/C20_5_6_sem_CSE.pdf" target="_blank" rel="noopener noreferrer">5th & 6th Semester Syllabus</a></td>
-                  </tr>
-                </tbody>
-              </table>
+        <div className="table-section">
+          <div className="container">
+            <div className="row justify-content-center">
+              <div className="col-md-6">
+                <table className="table table-striped table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>Semester Group</th>
+                      <th>Syllabus Links</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1st & 2nd Semester</td>
+                      <td><a href="https://dtek.karnataka.gov.in/storage/pdf-files/C-20%20syllabus/C_20_CSE_1_2_Sem.pdf" target="_blank" rel="noopener noreferrer">1st & 2nd Semester Syllabus</a></td>
+                    </tr>
+                    <tr>
+                      <td>3rd & 4th Semester</td>
+                      <td><a href="https://dtek.karnataka.gov.in/storage/pdf-files/C-20%20syllabus/C_20_CS_3_4_Sem.pdf" target="_blank" rel="noopener noreferrer">3rd & 4th Semester Syllabus</a></td>
+                    </tr>
+                    <tr>
+                      <td>5th & 6th Semester</td>
+                      <td><a href="https://dtek.karnataka.gov.in/storage/pdf-files/CDC/C20_5_6_sem_CSE.pdf" target="_blank" rel="noopener noreferrer">5th & 6th Semester Syllabus</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

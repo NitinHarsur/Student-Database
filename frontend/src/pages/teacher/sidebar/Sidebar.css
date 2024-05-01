@@ -13,7 +13,7 @@
 
 /* Hover styles for menu items */
 .ant-menu-item:hover {
-    background-color: #00b4d8;
+    background-color:#00b4d8 ;
     color: black;
     border-radius: 5px; /* Optional: round the corners */
 }
