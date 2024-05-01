@@ -283,10 +283,7 @@ const result=async(req,res)=>{
   }
 };
 
-<<<<<<< HEAD
-module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,updateStudent,updateStudentsYear,studentsList,attendance,result};
-=======
+
 module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,
   updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result};
 
->>>>>>> d3904df794a94b454ff0a88897bce24ef55c5f98
