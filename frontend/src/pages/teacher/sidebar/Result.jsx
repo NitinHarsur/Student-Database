@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-<<<<<<< HEAD
 const SubmitMarksForm = () => {
   const [regnumber, setRegnumber] = useState('');
   const [semesterNumber, setSemesterNumber] = useState('');
@@ -95,8 +94,8 @@ const SubmitMarksForm = () => {
   );
 };
 
-export default SubmitMarksForm;
-=======
+export {SubmitMarksForm} ;
+
 const Result = () => {
     const [regNumber, setRegNumber] = useState('');
     const [semesterName, setSemesterName] = useState('');
@@ -227,4 +226,3 @@ const MarkSubject = () => {
 
 export default Result;
 export { MarkSubject };
->>>>>>> 7a2e31359aba67b52c83575c4cd3a9d4b356a301

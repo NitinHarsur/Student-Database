@@ -239,7 +239,7 @@ const handleSendMessage = async (req, res) => {
 
 };
 
-const submitResult = async (req, res) => {
+const result = async (req, res) => {
   const { regnumber, semesterNumber, subjects } = req.body;
 
   try {
@@ -290,10 +290,7 @@ const submitResult = async (req, res) => {
   }
 };
 
-<<<<<<< HEAD
-module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,updateStudent,updateStudentsYear,studentsList,attendance,result};
-=======
+
 module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,
   updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result};
 
->>>>>>> d3904df794a94b454ff0a88897bce24ef55c5f98

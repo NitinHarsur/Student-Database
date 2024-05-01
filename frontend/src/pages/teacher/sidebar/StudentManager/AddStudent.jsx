@@ -50,17 +50,7 @@ const AddStudent = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-<<<<<<< HEAD
-        body: JSON.stringify({ studentname,
-          fathername,
-          mothername,
-          email,
-          regnumber,
-          year,
-          phone}),
-=======
-        body: JSON.stringify(studentData),
->>>>>>> 7a2e31359aba67b52c83575c4cd3a9d4b356a301
+        body: JSON.stringify(studentData), // Pass studentData directly as the request body
       });
 
       // Check response status
