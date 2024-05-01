@@ -11,38 +11,35 @@ export default function Syllabus() {
       
         /* Internal CSS for Syllabus component */
         .syllabus {
-          font-family: Arial, sans-serif;
           padding: 20px;
           background-color:white ; /* Background color for the syllabus component */
         }
         h1, h2 {
-          font-family: ui-sans-serif;
           font-size: 41px;
-          font-weight: lighter;
+          font-weight: 600;
           color: black;
           text-align: center; /* Center h1 and h2 tags */
           margin-bottom: 20px;
         }
         h2 {
-          font-family: ui-sans-serif;
           font-size: 41px;
           color: black;
           margin-top: 85px;
         }
         p {
-          font-family: ui-sans-serif;
-          font-size: 21px;
+          font-size: 24px;
           line-height: 1.6;
           color: black;
+          font-weight: 700;
         }
 
         /* Internal CSS for the table section */
         .table-section {
-          font-family: ui-sans-serif;
-          font-size: 21px;
+          font-size: 24px;
           background-color: white; /* Background color for the table section */
           padding: 20px;
           border-radius: 8px;
+          font-weight: 700;
         }
 
         /* Optional: Styling for the links */

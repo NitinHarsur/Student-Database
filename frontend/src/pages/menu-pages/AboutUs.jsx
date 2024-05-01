@@ -34,64 +34,110 @@ export default function AboutUs() {
     <div>
       <Navbar />
       <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-        <p style={{ fontSize: '20px', lineHeight: '1.6' }} className="text-start">
+        <p style={{ fontSize: '24px',fontWeight:"700", lineHeight: '1.6',marginTop:'20px',color:"black" }} className="text-start">
           A student database management system is a software application designed to efficiently organize, store, and manage information related to students in educational institutions. This comprehensive system offers a centralized platform to maintain various data points, ensuring streamlined administrative processes and enhanced educational experiences for both students and faculty.
         </p>
-        <h2 style={{ fontSize: '24px', margin: '20px 0', textAlign: 'center' }}>Key Features</h2>
-        <ul style={{ textAlign: 'left', fontSize: '18px' }}>
-          <li><strong>Centralized Data Storage:</strong> The system provides a centralized repository for storing a variety of student-related information, including personal details, academic records, attendance, and grades. This allows easy access and management of student data.</li>
-          <li><strong>Attendance Tracker:</strong> The system includes an attendance tracker to monitor students' class attendance. It can alert parents if a student's attendance falls below 75%, promoting accountability and fostering communication between the school and students' families.</li>
-          <li><strong>Academic Records:</strong> The system maintains comprehensive academic records for each student, including courses taken, grades received, and academic achievements. This helps in tracking students' progress and identifying areas where support may be needed.</li>
-          <li><strong>Data Analysis and Reporting:</strong> The system offers tools for generating reports and analyzing data, providing valuable insights for decision-making. Administrators and educators can utilize this data to assess students' performance and tailor interventions as necessary.</li>
-          <li><strong>Integration with Other Systems:</strong> The student database management system can integrate with other software applications, such as learning management systems (LMS) and finance systems, to create a seamless experience across various aspects of education.</li>
-          <li><strong>Secure Data Management:</strong> Data privacy and security measures are implemented to protect student information and comply with relevant regulations and institutional policies. Access controls and encryption help safeguard sensitive data.</li>
-          <li><strong>Efficient Communication:</strong> The system facilitates communication between students, parents, teachers, and administrators. Features such as notifications and messaging can keep all parties informed about important updates and events.</li>
-          <li><strong>User-Friendly Interface:</strong> A user-friendly interface ensures that educators, administrators, and students can navigate the system easily, enhancing overall usability and adoption.</li>
-        </ul>
-        <h2 style={{ fontSize: '24px', margin: '20px 0', textAlign: 'center' }}>About Us Component</h2>
-        <p style={{ fontSize: '18px', lineHeight: '1.6' }} className="text-start">
+        <div class="container text-start">
+    <h2 style={{fontSize:'41px',fontWeight:'600',textAlign:'center'}} >Key Features</h2> 
+
+    <ul>
+        <li style={{fontSize: '30px',fontWeight:"700"}}>
+            <strong>Centralized Data Storage:</strong>
+            <p style={{fontSize: '24px',fontWeight:"700"}}>The system provides a centralized repository for storing a variety of student-related information, including personal details, academic records, attendance, and grades. This allows easy access and management of student data.</p>
+        </li>
+
+        <li style={{fontSize: '30px',fontWeight:"700"}}>
+            <strong>Attendance Tracker:</strong>
+            <p style={{fontSize: '24px',fontWeight:"700"}}>The system includes an attendance tracker to monitor students' class attendance. It can alert parents if a student's attendance falls below 75%, promoting accountability and fostering communication between the school and students' families.</p>
+        </li>
+
+        <li style={{fontSize: '30px',fontWeight:"700"}}>
+            <strong>Academic Records:</strong>
+            <p style={{fontSize: '24px',fontWeight:"700"}}>The system maintains comprehensive academic records for each student, including courses taken, grades received, and academic achievements. This helps in tracking students' progress and identifying areas where support may be needed.</p>
+        </li>
+
+        <li style={{fontSize: '30px',fontWeight:"700"}}>
+            <strong>Data Analysis and Reporting:</strong>
+            <p style={{fontSize: '24px',fontWeight:"700"}}>The system offers tools for generating reports and analyzing data, providing valuable insights for decision-making. Administrators and educators can utilize this data to assess students' performance and tailor interventions as necessary.</p>
+        </li>
+
+        <li style={{fontSize: '30px',fontWeight:"700"}}>
+            <strong>Integration with Other Systems:</strong>
+            <p style={{fontSize: '24px',fontWeight:"700"}}>The student database management system can integrate with other software applications, such as learning management systems (LMS) and finance systems, to create a seamless experience across various aspects of education.</p>
+        </li>
+
+        <li style={{fontSize: '30px',fontWeight:"700"}}>
+            <strong>Secure Data Management:</strong>
+            <p style={{fontSize: '24px',fontWeight:"700"}}>Data privacy and security measures are implemented to protect student information and comply with relevant regulations and institutional policies. Access controls and encryption help safeguard sensitive data.</p>
+        </li>
+
+        <li style={{fontSize: '30px',fontWeight:"700"}}>
+            <strong>Efficient Communication:</strong>
+            <p style={{fontSize: '24px',fontWeight:"700"}}>The system facilitates communication between students, parents, teachers, and administrators. Features such as notifications and messaging can keep all parties informed about important updates and events.</p>
+        </li>
+
+        <li style={{fontSize: '30px',fontWeight:"700"}}>
+            <strong>User-Friendly Interface:</strong>
+            <p style={{fontSize: '24px',fontWeight:"700"}}>A user-friendly interface ensures that educators, administrators, and students can navigate the system easily, enhancing overall usability and adoption.</p>
+        </li>
+    </ul>
+
+
+
+        <h2 style={{ fontSize: '41px', margin: '40px 0', textAlign: 'center',fontWeight:'600' }}>About Us Component</h2>
+        <p style={{ fontSize: '24px',fontWeight:'700', lineHeight: '1.6' }} className="text-start">
     Incorporating additional elements such as an "About Us" section within the software can help provide a personalized touch to the user experience. For example, the section can showcase the team behind the application, with details about developers such as their names, email addresses, and photos. This adds a human element to the software and fosters a sense of community and collaboration.
 </p>
 
-        <h2 style={{ fontSize: '24px', margin: '20px 0', textAlign: 'center' }}>Conclusion</h2>
-        <p style={{ fontSize: '18px', lineHeight: '1.6' }}>
+        <h2 style={{ fontSize: '41px', margin: '20px 0', textAlign: 'center',fontWeight:'600' }}>Conclusion</h2>
+        <p style={{ fontSize: '24px',fontWeight:'700', lineHeight: '1.6' }}>
           A student database management system plays a critical role in modern educational institutions by providing an efficient and effective way to manage student information. By offering features such as attendance tracking, academic record management, data analysis, and secure data storage, the system supports educators in delivering a high-quality educational experience. Additionally, its ability to integrate with other systems and ensure data privacy makes it an indispensable tool for schools and universities.
         </p>
       </div>
       <div style={{ display: 'flex', justifyContent: 'space-around', flexDirection: 'column' }}>
-        <h1 style={{ textAlign: 'center' }}>Developers</h1>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          {developers.map((developer, index) => (
+    <h1 style={{ fontSize: '41px', textAlign: 'center', fontWeight: '600',marginTop:'65px' }}>Developers</h1>
+    <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+        {developers.map((developer, index) => (
             <div key={index} style={developerBoxStyle}>
-              <img
-                src={developer.image}
-                alt={developer.name}
-                style={imageStyle}
-              />
-              <h3 style={nameStyle}>{developer.name}</h3>
-              <p style={emailStyle}>{developer.email}</p>
+                <img
+                    src={developer.image}
+                    alt={developer.name}
+                    style={imageStyle}
+                />
+                <h3 style={{ fontSize: '30px', fontWeight: '600' }}>{developer.name}</h3>
+                <p style={{ fontSize: '20px', fontWeight: 'bolder' }}>{developer.email}</p>
             </div>
           ))}
         </div>
       </div>
+      </div>
       <Footer/>
     </div>
+    
   );
 }
 
 // Internal CSS styles
 
 const developerBoxStyle = {
-  margin: '20px auto',
-  border: '1px solid #ccc',
-  padding: '20px',
-  borderRadius: '5px',
-  maxWidth: '300px'
+  width: '250px',
+    padding: '20px',
+    margin: '10px',
+    borderRadius: '10px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Shadow effect
+    transition: 'box-shadow 0.3s ease', // Transition effect for shadow
+    textAlign: 'center',
+    backgroundColor: 'white', // White background
 };
 
+
 const imageStyle = {
-  width: '150px',
-  borderRadius: '50%'
+  width: '100px', // Set the desired width of the image
+  height: '100px', // Set the desired height of the image
+  borderRadius: '50%', // Make the image circular
+  border: '2px solid #ccc', // Add a solid border with a specific color (#ccc is a light gray)
+  marginBottom: '10px', // Add a margin below the image for spacing
+  objectFit: 'cover', // Ensure the image covers the entire area of the circular shape
 };
 
 const nameStyle = {

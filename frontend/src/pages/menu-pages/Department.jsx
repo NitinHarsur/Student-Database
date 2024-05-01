@@ -68,16 +68,14 @@ export default function Department() {
       <style>
         {`
         h1 {
-          font-family: ui-sans-serif;
           font-size: 41px; /* Reduced font size */
           color: black;
-          font-weight: lighter;
+          font-weight: 600;
           text-align: center;
           margin-bottom: 20px;
         }
         .dept-overview {
-          font-family:ui-sans-serif ;
-          font-size: 21px;
+          font-size: 24px;
           line-height: 1.6;
           color: black;
           margin: 40px; /* Adjusted margin */
@@ -85,15 +83,14 @@ export default function Department() {
           border-radius: 5px;
         }
         .faculty-section {
-          font-family:ui-sans-serif ;
           margin: 20px;
-          text-align: center; /* Centered faculty section */
+          text-align: center; 
+
         }
         .h2,h2{
-          font-family:ui-sans-serif ;
           font-size: 41px; /* Reduced font size */
           color: black;
-          font-weight: lighter;
+          font-weight: 600;
           text-align: center;
           margin-bottom: 20px;
         }
@@ -103,14 +100,15 @@ export default function Department() {
           margin: 0 auto; /* Center the table */
         }
         th, td {
-          font-family:ui-sans-serif ;
           border: 1px solid #ddd;
           padding: 8px;
           text-align: left;
+          font-size: 24px;
+          font-weight: 700;
         }
         th {
-          background-color: #f2f2f2;
-          color: #333;
+          background-color: black;
+          color: black;
           font-weight: bold;
         }
        
