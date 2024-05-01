@@ -63,77 +63,9 @@ function Navbar() {
 function Footer() {
     return (
         <footer className="footer">
-            <style>
-                {`
-                    /* General footer styles */
-                    footer {
-                        background-color:black ;
-                        padding: 20px;
-                        text-align: center;
-                    }
+            
                     
-                    .footer-container {
-                        display: flex;
-                        justify-content: space-around;
-                        align-items: start;
-                        flex-wrap: wrap;
-                    }
-
-                    .footer-box {
-                        width: 30%;
-                        padding: 10px;
-                        color: white
-                    }
-
-                    .footer-box h4 {
-                        margin-bottom: 10px;
-                        font-size: 18px;
-                    }
-
-                    .footer-box p, .footer-box ul {
-                        font-size: 14px;
-                        margin: 0;
-                        color:white
-                    }
-
-                    .footer-box ul {
-                        list-style: none;
-                        padding: 0;
-                        color:white
-                    }
-
-                    .footer-box ul li {
-                        margin-bottom: 5px;
-                        color:white
-                    }
-
-                    .footer-box ul li a {
-                        color: black;
-                        text-decoration: none;
-                    }
-
-                    .footer-box ul li a:hover {
-                        text-decoration: underline;
-                    }
-                    /* Social media icons styles */
-                    .social-media {
-                        display: flex;
-                        justify-content: center;
-                        gap: 20px; /* Space between icons */
-                    }
-
-                    .social-media svg {
-                        fontSize: 40px; /* Increase icon size */
-                        color: white; /* Set icon color */
-                        transition: color 0.3s ease; /* Smooth color transition */
-                    }
-
-                    .social-media svg:hover {
-                        color: lightblue; /* Change icon color on hover */
-                    }
-                    
-                `}
-            </style>
+              
 
             <div className="footer-container">
                 {/* Disclaimer box */}

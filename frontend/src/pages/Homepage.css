@@ -17,7 +17,7 @@ main .image-section {
   .homepage main .image-section .image-wrapper {
     display: flex;
     position: absolute;
-    top: 725px;
+    top: 927px;
     justify-content: center;
     width: 100%; /* Ensure the wrapper takes full width */ 
      gap:200px;
@@ -29,12 +29,13 @@ main .image-section {
   gap: 20px; /* Add space between the images */
 }
 
-/* Adjust the image-section to be below the college image */
+/* Styling for the image section */
 .image-section {
-  margin-top: 20px; /* Add margin to create space between college image and SSP/LMS images */
-  display: flex;
-  justify-content: center;
+  background-color: transparent; /* Set the background to transparent */
+  padding: 20px; /* Adjust padding as needed */
+  /* Add other styling as needed */
 }
+
 
 .image-wrapper {
   display: flex;
@@ -42,9 +43,9 @@ main .image-section {
 }
 
 .image-wrapper img {
-  width: 200px;
-  height: 200px;
-  border-radius: 8px;
+  width: 223px;
+  height: 187px;
+  border-radius: 20px;
   transition: transform 0.3s ease;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
 }
@@ -84,10 +85,7 @@ main .image-section {
    /* Add smooth transition effect */
 
 }
-
-
-  
-  .image-wrapper img:hover {
+.image-wrapper img:hover {
     transform: scale(1.1); /* Optional: adds a zoom effect on hover */
   }
   /* Apply a transition effect to the images */
@@ -145,44 +143,20 @@ main .image-section {
   .social-icons img:hover {
     opacity: 0.8; /* Reduce opacity on hover */
   }
- /* Container for college image and text */
-.clg-container {
-  display: flex; /* Use flexbox for layout */
-  justify-content: space-between; /* Space between the image and text */
-  align-items: center; /* Align items in the center */
-  width: 100%; /* Full width of the container */
-  margin-bottom: 20px; /* Space below the container */
-}
-/* Styling for the text row */
-.text-row {
-  display: flex; /* Use flexbox to center the text */
-  justify-content: center; /* Center the text horizontally */
-  align-items: center; /* Center the text vertically */
-  height: 94%; /* Full height of the home div */
-  text-align: center; /* Center the text */
-  color: white; /* White text color for better contrast against the background image */
-  padding: 20px; /* Add some padding around the text */
-  background-color: rgba(0, 0, 0, 0.5); /* Optional: Add a semi-transparent black background for better readability */
-}
+ 
 
-/* Additional styling for the text content */
-.text-content h2 {
-  font-size: 24px; /* Customize the font size */
-  margin-bottom: 10px; /* Add some space below the heading */
-}
-
-.text-content  {
-  color:white;
-  font-size: 16px; /* Customize the font size */
-}
-/* Styling for the thought in text content */
-.thought {
-  font-style: italic; /* Italicize the thought */
-  font-size: 16px; /* Adjust the font size */
-  color: #f1e8e8; /* Dark gray color */
-  margin-top: 10px; /* Add space above the thought */
+.background-video {
+  position: absolute;
+  top: 100;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the video covers the entire area */
+  z-index: -1; /* Send the video to the back */
 }
 
 
 
 
+
+ 

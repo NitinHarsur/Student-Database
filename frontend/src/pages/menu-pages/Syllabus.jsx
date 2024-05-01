@@ -8,6 +8,7 @@ export default function Syllabus() {
       <Navbar />
       <style>
         {`
+      
         /* Internal CSS for Syllabus component */
         .syllabus {
           font-family: Arial, sans-serif;
@@ -15,23 +16,30 @@ export default function Syllabus() {
           background-color:white ; /* Background color for the syllabus component */
         }
         h1, h2 {
-          font-size: 24px;
-          font-weight: bold;
+          font-family: ui-sans-serif;
+          font-size: 41px;
+          font-weight: lighter;
           color: black;
           text-align: center; /* Center h1 and h2 tags */
+          margin-bottom: 20px;
         }
         h2 {
-          font-size: 20px;
+          font-family: ui-sans-serif;
+          font-size: 41px;
           color: black;
-          margin-top: 20px;
+          margin-top: 85px;
         }
         p {
+          font-family: ui-sans-serif;
+          font-size: 21px;
           line-height: 1.6;
           color: black;
         }
 
         /* Internal CSS for the table section */
         .table-section {
+          font-family: ui-sans-serif;
+          font-size: 21px;
           background-color: white; /* Background color for the table section */
           padding: 20px;
           border-radius: 8px;
