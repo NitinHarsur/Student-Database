@@ -23,13 +23,14 @@ const studentSchema = new mongoose.Schema({
   regnumber: { type: String, required: true },
   year: { type: String, required: true },
   phone: { type: Number, required: true },
-
   image: { type: String }, // If this is supposed to be an image URL, string type is appropriate.
   semesters: [semesterSchema]
   
 
 
+
 });
+
 
 // Create and export Student model
 const db = mongoose.connection.useDb('GPTDATA');
