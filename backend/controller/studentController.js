@@ -53,97 +53,6 @@ const studentLogin= async (req, res) => {
 };
 
 
-
-
-<<<<<<< HEAD
-    // Update students where the current year is "1st year"
-    const result = await Student.updateMany({ year: oldYear }, { year: newYear });
-
-    // Check if any students were updated
-    if (result === 0) {
-      return res.status(404).json({ message: 'No students found with year as "1st year"' });
-    }
-
-    // Return success message
-    res.json({ message: `Updated ${oldYear} students to ${newYear} year` });
-  } catch (error) {
-    console.error('Error updating students year:', error);
-    res.status(500).json({ message: 'Server error' });
-  }
-};
-
-// Function to fetch and display a list of all registered students for a specific academic year
-const studentsList = async (req, res) => {
-  try {
-      const { year } = req.query;
-      const students = await Student.find({ year });
-
-      if (!students) {  //{students.length==0}
-          return res.status(404).json({ message: 'No students found for the specified year.' });
-      }
-
-      else{
-        res.status(200).json(students)
-      }
-
-  } catch (error) {
-      // Handle any errors that may occur during the process
-      return res.status(500).json({ message: 'Server error. Please try again later.' });
-  }
-};
-
-// Function to fetch and display a list of all registered students for a specific academic year
-const attendance = async (req, res) => {
-  try {
-      const { year } = req.query;
-      const students = await Student.find({ year });
-
-      if (!students) {  //{students.length==0}
-          return res.status(404).json({ message: 'No students found for the specified year.' });
-      }
-
-      else{
-        res.status(200).json(students)
-      }
-
-  } catch (error) {
-      // Handle any errors that may occur during the process
-      return res.status(500).json({ message: 'Server error. Please try again later.' });
-  }
-};
-
-const handleSendMessage = async (req, res) => {
-  const { regnumber, phone, attendancePercentage } = req.body;
-  if (attendancePercentage < 75) {
-    // Message body for the SMS
-    const messageBody = `Your attendance is below 75%. Registration number: ${regnumber}`;
-
-    try {
-        // Send the SMS using Twilio's client
-        const message = await client.messages.create({
-            body: messageBody,
-            from: twilioPhoneNumber,
-            to:   `+91${phone}`
-        });
-
-        // Log the message SID
-        console.log(`Message sent to ${phone}. SID: ${message.sid}`);
-
-        // Respond with a success message
-        res.status(200).send('Message sent successfully');
-    } catch (error) {
-        console.error(`Error sending SMS to ${phone}:`, error);
-        res.status(500).send(`Failed to send SMS to ${phone}`);
-    }
-} else {
-    // Respond with a message indicating no SMS was sent
-    res.status(200).send('No message sent: Attendance percentage is 75% or higher');
-}
-
-};
-
-
-
 const result = async (req, res) => {
   const { regnumber, semesterNumber, subjects } = req.body;
 
@@ -234,13 +143,10 @@ const getSemestersAndSubjects = async (req, res) => {
 };
 
 
-module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,
-  updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result,getSemestersAndSubjects};
 
-=======
+
     module.exports = {
       studentLogin,
-      studentDetails // Add `studentDetails` to the export object
+      studentDetails,result,getSemestersAndSubjects // Add `studentDetails` to the export object
   };
   
->>>>>>> 1fd2ad5f583dcca8223ebcb687788717f02e9ef3
