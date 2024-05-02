@@ -62,14 +62,14 @@ export default function Contact() {
         <div>
             <Navbar />
             <div className="container mt-5">
-                <h2 className="text-center">Contact Us:</h2>
-                <div className="card p-4">
+                <h2 className="text-center" style={{fontSize:'41px',fontWeight:'600'}}>Contact Us:</h2>
+                <div className="card p-4 shadow-lg rounded-3"> {/* Add shadow and rounded corners to the form container */}
                     <form onSubmit={handleSubmit}>
                         <div className="mb-3">
-                            <label htmlFor="email" className="form-label">Email:</label>
+                            <label htmlFor="email" className="form-label" style={{fontSize:'20px',fontWeight:'700'}}>Email:</label>
                             <input
                                 type="email"
-                                className="form-control"
+                                className="form-control shadow-sm rounded-3" // Add shadow and rounded corners to the input
                                 id="email"
                                 name="email"
                                 value={formData.email}
@@ -78,9 +78,9 @@ export default function Contact() {
                             />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="message" className="form-label">Message:</label>
+                            <label htmlFor="message" className="form-label" style={{fontSize:'20px',fontWeight:'700'}}>Message:</label>
                             <textarea
-                                className="form-control"
+                                className="form-control shadow-sm rounded-3" // Add shadow and rounded corners to the textarea
                                 id="message"
                                 name="message"
                                 rows="4"
@@ -89,7 +89,7 @@ export default function Contact() {
                                 required
                             ></textarea>
                         </div>
-                        <button type="submit" className="btn btn-primary">Send</button>
+                        <button type="submit" className="btn btn-primary" style={{fontSize:'20px',fontWeight:'700'}}>Send</button>
                     </form>
                     {/* Display form submission feedback */}
                     {submissionStatus && (

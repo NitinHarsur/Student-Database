@@ -8,43 +8,39 @@ export default function Admission() {
       <style>
         {`
         .admission {
-          font-family: Arial, sans-serif;
           padding: 20px;
           font-weight: bold; /* Make all text bold */
         }
         h1 {
-          font-family: ui-sans-serif;
           font-size: 41px;
           color: black;
           text-align: center;
           margin-bottom: 40px;
-          font-weight: lighter;
+          font-weight: 600;
         }
         h2 {
-          font-family: ui-sans-serif;
           font-size: 30px;
           color: black;
           margin-top: 20px;
-          font-weight: 500;
+          font-weight: 600;
         }
         p {
-          font-size: 22px;
+          font-size: 24px;
           line-height: 3.6;
           color: black;
-          font-weight: inherit;
+          font-weight: 700;
         }
         ul {
-          font-family: ui-sans-serif;
           margin: 0;
           padding: 0;
           list-style-type: none;
           font-weight: bold;
           color:black;
-          font-size: 20px;
+          font-size: 24px;
         }
         li {
           padding: 10px 0;
-          font-weight: bold;
+          font-weight: 700;
           color:black;
         }
         `}
