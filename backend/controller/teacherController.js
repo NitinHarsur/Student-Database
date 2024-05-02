@@ -300,10 +300,40 @@ const result = async (req, res) => {
     console.error('Error submitting marks:', error.message);
     res.status(500).json({ error: 'Internal server error' });
   }
+<<<<<<< HEAD
+=======
+};
+
+const getSemestersAndSubjects = async (req, res) => {
+  try {
+    // Find the student by registration number
+    const student = await Student.findOne({ regnumber: req.body.regnumber });
+
+    if (!student) {
+      return res.status(404).json({ error: 'Student not found' });
+    }
+
+    // Prepare the response data
+    const semestersData = student.semesters.map(semester => ({
+      semesterNumber: semester.semesterNumber,
+      subjects: semester.subjects.map(subject => ({
+        subjectName: subject.subjectName,
+        internalMarks: subject.internalMarks,
+        externalMarks: subject.externalMarks,
+        totalMarks: subject.totalMarks
+      }))
+    }));
+
+    res.status(200).json({ semesters: semestersData });
+  } catch (error) {
+    console.error('Error fetching semesters and subjects:', error.message);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+>>>>>>> e9bc5915205bd24bcc92c1b23bc0688112990bca
 };
 
 
 
 
 module.exports={teacherLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,
-updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result};
+updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result,getSemestersAndSubjects};

@@ -13,9 +13,10 @@ const SubmitMarksForm = () => {
     newSubjects[index][event.target.name] = event.target.value;
     setSubjects(newSubjects);
   };
-  
+
+
   const addSubject = () => {
-    if (!regnumber || !semesterNumber) {
+    if (!regnumber || !semesterNumber ) {
       alert('Please fill in all fields for the new subject');
       return;
     }
@@ -50,7 +51,11 @@ const SubmitMarksForm = () => {
         body: JSON.stringify({
           regnumber,
           semesterNumber: Number(semesterNumber),
-          subjects,
+          subjects: subjects.map((subject) => ({
+            subjectName: subject.subjectName,
+            internalMarks: Number(subject.internalMarks),
+            externalMarks: Number(subject.externalMarks),
+          })),
         }),
       });
 
