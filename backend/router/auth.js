@@ -4,15 +4,16 @@ const router = express.Router();
 
 const contact = require('../controller/contactController')
 
+//---------------------------student---------------------------
 const studentLogin = require('../controller/studentController');
+
 const studentDetails = require('../controller/studentController');
 
+const getSemestersAndSubjects = require('../controller/studentController')
 
 
 
-const getSemestersAndSubjects = require('../controller/teacherController')
-
-
+//---------------------teacher---------------------
 const teacherLogin = require('../controller/teacherController');
 
 const addStudent = require('../controller/teacherController');
@@ -25,20 +26,7 @@ const attendance = require('../controller/teacherController');
 const handleSendMessage = require('../controller/teacherController');
 const result = require('../controller/teacherController');
 
-<<<<<<< HEAD
 
-=======
-const addStudent = require('../controller/studentController');
-const deleteStudentByRegnumber = require('../controller/studentController');
-const deleteStudentsByYear = require('../controller/studentController');
-const updateStudent = require('../controller/studentController')
-const updateStudentsYear = require('../controller/studentController')
-const studentsList = require('../controller/studentController')
-const attendance = require('../controller/studentController')
-const handleSendMessage = require('../controller/studentController')
-const result = require('../controller/studentController')
->>>>>>> e9bc5915205bd24bcc92c1b23bc0688112990bca
-const getSemestersAndSubjects = require('../controller/studentController')
 
 
 
@@ -81,18 +69,10 @@ router.get('/attendance',attendance.attendance)
 router.post('/handleSendMessage',handleSendMessage.handleSendMessage)
 
 //Result
-router.post('/submitResult',result.result)
+router.post('/result',result.result)
 
 
 
-<<<<<<< HEAD
-
-=======
-//teacher
-router.post('/teacherlogin', teacherLogin );
-=======
->>>>>>> 1fd2ad5f583dcca8223ebcb687788717f02e9ef3
->>>>>>> e9bc5915205bd24bcc92c1b23bc0688112990bca
 
 
 

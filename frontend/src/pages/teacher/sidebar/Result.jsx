@@ -43,7 +43,7 @@ const SubmitMarksForm = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:3001/submitResult', {
+      const response = await fetch('http://localhost:3001/result', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

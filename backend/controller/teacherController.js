@@ -260,7 +260,7 @@ const result = async (req, res) => {
     }
 
     // Find or create the semester in the student's semesters array
-    let semester = student.semesters.find(sem => sem.semesterNumber === semesterNumber);
+    const semester = student.semesters.find(sem => sem.semesterNumber === semesterNumber);
 
     if (!semester) {
       // If the semester doesn't exist, create a new semester
@@ -304,35 +304,10 @@ const result = async (req, res) => {
 
 };
 
-const getSemestersAndSubjects = async (req, res) => {
-  try {
-    // Find the student by registration number
-    const student = await Student.findOne({ regnumber: req.body.regnumber });
 
-    if (!student) {
-      return res.status(404).json({ error: 'Student not found' });
-    }
-
-    // Prepare the response data
-    const semestersData = student.semesters.map(semester => ({
-      semesterNumber: semester.semesterNumber,
-      subjects: semester.subjects.map(subject => ({
-        subjectName: subject.subjectName,
-        internalMarks: subject.internalMarks,
-        externalMarks: subject.externalMarks,
-        totalMarks: subject.totalMarks
-      }))
-    }));
-
-    res.status(200).json({ semesters: semestersData });
-  } catch (error) {
-    console.error('Error fetching semesters and subjects:', error.message);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-};
 
 
 
 
 module.exports={teacherLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,
-updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result,getSemestersAndSubjects};
+updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result};

@@ -26,11 +26,9 @@ const studentSchema = new mongoose.Schema({
 
   image: { type: String }, // If this is supposed to be an image URL, string type is appropriate.
   semesters: [semesterSchema]
-<<<<<<< HEAD
   
-=======
 
->>>>>>> e9bc5915205bd24bcc92c1b23bc0688112990bca
+
 });
 
 // Create and export Student model
