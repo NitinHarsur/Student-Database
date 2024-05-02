@@ -80,11 +80,19 @@ function Footer() {
                     <p>For any inquiries or feedback, feel free to reach out to us at <a href="mailto:info@example.com">info@example.com</a>.</p>
                     {/* Social media icons */}
                     <div className="social-media">
-                    <FaFacebook style={{fontSize:'40px'}}/>
+                    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                <FaFacebook style={{ fontSize: '40px', marginRight: '10px' }} /> {/* Add some margin for spacing */}
+            </a>
 
-                        <FaSquareWhatsapp style={{fontSize:'40px'}}/>
+            {/* Link to WhatsApp */}
+            <a href="https://www.whatsapp.com" target="_blank" rel="noopener noreferrer">
+                <FaSquareWhatsapp style={{ fontSize: '40px', marginRight: '10px' }} /> {/* Add some margin for spacing */}
+            </a>
 
-                        <FaSquareInstagram style={{fontSize:'40px'}}/>
+            {/* Link to Instagram */}
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                <FaSquareInstagram style={{ fontSize: '40px' }} />
+            </a>
 
                     </div>
                 </div>

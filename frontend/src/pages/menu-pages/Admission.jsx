@@ -1,10 +1,24 @@
 import React from 'react';
 import {Navbar,Footer} from '../../NavAndFoot/Navbar';
+import bgimg from '../../images/bgimg.jpg'; // Import your background image
+
 
 export default function Admission() {
   return (
     <div>
       <Navbar />
+      <div
+                className="container"
+                style={{
+                    padding: '20px',
+                    minHeight: '100vh',
+                    backgroundImage: `url(${bgimg})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    maxWidth:'1504px'
+                }}
+            >
       <style>
         {`
         .admission {
@@ -75,6 +89,7 @@ export default function Admission() {
         </ul>
       </div>
       <Footer/>
+    </div>
     </div>
   );
 }

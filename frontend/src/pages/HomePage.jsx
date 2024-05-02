@@ -4,14 +4,14 @@ import LMS from '../images/lms1.png';
 import SSP from '../images/ssp1.png';
 import NSP from '../images/nsp.png';
 import './Homepage.css';
-import DBwelcome from '../IndexTexts/DBwelcome';
+
 import backgroundVideo from '../images/clgbgv.mp4';
 
 function HomePage() {
     return (
         <>
             <Navbar />
-            <DBwelcome />
+            
 
             {/* Background video */}
             <div className="background-video-wrapper">

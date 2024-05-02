@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Navbar, Footer } from '../../NavAndFoot/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import bgimg from '../../images/bgimg.jpg'; // Import your background image
 
 export default function Contact() {
     // State for form inputs
@@ -61,6 +62,18 @@ export default function Contact() {
     return (
         <div>
             <Navbar />
+            <div
+                className="container"
+                style={{
+                    padding: '20px',
+                    minHeight: '100vh',
+                    backgroundImage: `url(${bgimg})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    maxWidth:'1504px'
+                }}
+            >
             <div className="container mt-5">
                 <h2 className="text-center" style={{fontSize:'41px',fontWeight:'600'}}>Contact Us:</h2>
                 <div className="card p-4 shadow-lg rounded-3"> {/* Add shadow and rounded corners to the form container */}
@@ -89,7 +102,7 @@ export default function Contact() {
                                 required
                             ></textarea>
                         </div>
-                        <button type="submit" className="btn btn-primary" style={{fontSize:'20px',fontWeight:'700'}}>Send</button>
+                        <button type="submit" className="btn btn-primary" style={{fontSize:'20px',fontWeight:'700',backgroundColor:'black'}}>Send</button>
                     </form>
                     {/* Display form submission feedback */}
                     {submissionStatus && (
@@ -100,6 +113,7 @@ export default function Contact() {
                 </div>
             </div>
             <Footer />
+        </div>
         </div>
     );
 }

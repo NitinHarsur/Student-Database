@@ -1,18 +1,32 @@
 import React from 'react';
 import { Navbar, Footer } from '../../NavAndFoot/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import bgimg from '../../images/bgimg.jpg'; // Import your background image
 
 export default function Syllabus() {
   return (
     <div>
       <Navbar />
+      <div
+                className="container"
+                style={{
+                    padding: '20px',
+                    minHeight: '100vh',
+                    backgroundImage: `url(${bgimg})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    maxWidth:'1504px'
+                }}
+            >
+      <style></style>
       <style>
         {`
       
         /* Internal CSS for Syllabus component */
         .syllabus {
           padding: 20px;
-          background-color:white ; /* Background color for the syllabus component */
+          
         }
         h1, h2 {
           font-size: 41px;
@@ -36,7 +50,7 @@ export default function Syllabus() {
         /* Internal CSS for the table section */
         .table-section {
           font-size: 24px;
-          background-color: white; /* Background color for the table section */
+          
           padding: 20px;
           border-radius: 8px;
           font-weight: 700;
@@ -101,6 +115,7 @@ export default function Syllabus() {
         </div>
       </div>
       <Footer />
+    </div>
     </div>
   );
 }

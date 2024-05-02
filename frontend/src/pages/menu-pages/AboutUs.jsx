@@ -4,27 +4,28 @@ import developer1 from '../../images/developer1.jpg';
 import developer2 from '../../images/developer2.jpg';
 import developer3 from '../../images/developer3.jpg';
 import developer4 from '../../images/developer4.jpg';
+import bgimg from '../../images/bgimg.jpg'; // Import your background image
 
 // Define developer data
 const developers = [
   {
     name: 'Adarshyogi',
-    email: 'developer1@example.com',
+    email: 'adarshyogi@gmail.com',
     image: developer1 // Provide the imported image
   },
   {
     name: 'Nitin',
-    email: 'developer2@example.com',
+    email: 'nitinharsur@gmail.com',
     image: developer2
   },
   {
     name: 'Siddaram',
-    email: 'developer3@example.com',
+    email: 'siddu141204@gmail.com',
     image: developer3
   },
   {
     name: 'Saffura Fatima',
-    email: 'developer4@example.com',
+    email: 'saffurafatima22@gmail.com',
     image: developer4
   }
 ];
@@ -33,8 +34,20 @@ export default function AboutUs() {
   return (
     <div>
       <Navbar />
+      <div
+                className="container"
+                style={{
+                    padding: '20px',
+                    minHeight: '100vh',
+                    backgroundImage: `url(${bgimg})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    maxWidth:'1504px'
+                }}
+            >
       <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-        <p style={{ fontSize: '24px',fontWeight:"700", lineHeight: '1.6',marginTop:'20px',color:"black" }} className="text-start">
+        <p style={{ fontSize: '24px',fontWeight:"700", lineHeight: '1.6',marginTop:'20px',color:"black", marginBottom: '50px' }} className="text-start">
           A student database management system is a software application designed to efficiently organize, store, and manage information related to students in educational institutions. This comprehensive system offers a centralized platform to maintain various data points, ensuring streamlined administrative processes and enhanced educational experiences for both students and faculty.
         </p>
         <div class="container text-start">
@@ -105,13 +118,15 @@ export default function AboutUs() {
                     style={imageStyle}
                 />
                 <h3 style={{ fontSize: '30px', fontWeight: '600' }}>{developer.name}</h3>
-                <p style={{ fontSize: '20px', fontWeight: 'bolder' }}>{developer.email}</p>
+                <p style={{ fontSize: '20px', fontWeight: 'bolder' }}><a style={{color:'black',textDecoration:'none'}}href={`mailto:${developer.email}`}>{developer.email}</a> {/* Convert email to a clickable link */}
+                 </p>
             </div>
           ))}
         </div>
       </div>
       </div>
       <Footer/>
+    </div>
     </div>
     
   );
@@ -120,7 +135,7 @@ export default function AboutUs() {
 // Internal CSS styles
 
 const developerBoxStyle = {
-  width: '250px',
+  width: '300px',
     padding: '20px',
     margin: '10px',
     borderRadius: '10px',

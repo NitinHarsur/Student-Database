@@ -1,7 +1,7 @@
 import React from 'react';
 import {Navbar,Footer} from '../../NavAndFoot/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-
+import bgimg from '../../images/bgimg.jpg'; // Import your background image
 
 export default function Department() {
   // Define the faculty data as an array of objects
@@ -65,6 +65,18 @@ export default function Department() {
   return (
     <div>
       <Navbar />
+      <div
+                className="container"
+                style={{
+                    padding: '20px',
+                    minHeight: '100vh',
+                    backgroundImage: `url(${bgimg})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    maxWidth:'1504px'
+                }}
+            >
       <style>
         {`
         h1 {
@@ -151,6 +163,7 @@ export default function Department() {
         </table>
       </div>
       <Footer/>
+      </div>
     </div>
   );
 }

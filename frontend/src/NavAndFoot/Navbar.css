@@ -1,10 +1,21 @@
 
 .navbar {
-    padding: 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* Apply a blur effect to the background */
+  backdrop-filter: blur(10px);
+  
+  /* Add a stronger box shadow effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Adjusted values for a stronger shadow */
+  
+  /* Add a lighter background color with transparency for the shade effect */
+  background-color: rgba(255, 255, 255, 0.2); /* Lighter shade effect */
+}
+
+
 .navbar .logo{
   mix-blend-mode: multiply;
 } 
@@ -211,9 +222,17 @@ font-weight: bold;
 /* General footer styles */
 .footer {
   margin-top: 250px;
-  background-color:black ;
-  padding: 20px;
+  padding: 40px;
   text-align: center;
+  
+  /* Set the background color to have some transparency and a darker shade */
+  background-color: rgba(0, 0, 0, 0.5);
+  
+  /* Apply a blur effect to the background */
+  backdrop-filter: blur(10px);
+  
+  /* Add a box shadow effect */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 3.0); /* Adjust values for desired offset, blur, and color */
 }
 
 .footer-container {
@@ -227,17 +246,21 @@ font-weight: bold;
   width: 30%;
   padding: 10px;
   color: white
+
 }
 
 .footer-box h4 {
-  margin-bottom: 10px;
-  font-size: 18px;
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: bolder;
 }
 
 .footer-box p, .footer-box ul {
-  font-size: 14px;
+  font-weight: bolder;
+  font-size: 17px;
   margin: 0;
   color:white
+  
 }
 
 .footer-box ul {
@@ -273,7 +296,7 @@ font-weight: bold;
 }
 
 .social-media svg:hover {
-  color: lightblue; /* Change icon color on hover */
+  color: black; /* Change icon color on hover */
 }
 
 
