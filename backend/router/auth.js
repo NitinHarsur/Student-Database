@@ -6,6 +6,11 @@ const studentLogin = require('../controller/studentController');
 const studentDetails = require('../controller/studentController');
 
 
+
+
+const getSemestersAndSubjects = require('../controller/teacherController')
+
+
 const teacherLogin = require('../controller/teacherController');
 
 const addStudent = require('../controller/teacherController');
@@ -18,16 +23,8 @@ const attendance = require('../controller/teacherController');
 const handleSendMessage = require('../controller/teacherController');
 const result = require('../controller/teacherController');
 
-const addStudent = require('../controller/studentController');
-const deleteStudentByRegnumber = require('../controller/studentController');
-const deleteStudentsByYear = require('../controller/studentController');
-const updateStudent = require('../controller/studentController')
-const updateStudentsYear = require('../controller/studentController')
-const studentsList = require('../controller/studentController')
-const attendance = require('../controller/studentController')
-const handleSendMessage = require('../controller/studentController')
-const result = require('../controller/studentController')
-const getSemestersAndSubjects = require('../controller/studentController')
+
+
 
 const contact = require('../controller/contactController')
 
@@ -76,7 +73,7 @@ router.post('/submitResult',result.result)
 router.post('/showResult',getSemestersAndSubjects.getSemestersAndSubjects)
 
 //teacher
-router.post('/teacherlogin', teacherLogin );
+router.post('/teacherlogin', teacherLogin.teacherLogin);
 
 
 
