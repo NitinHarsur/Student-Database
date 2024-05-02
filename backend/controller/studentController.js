@@ -80,11 +80,6 @@ const getSemestersAndSubjects = async (req, res) => {
 };
 
 
-
-
-
-
-
     module.exports = {
       studentLogin,
       studentDetails,getSemestersAndSubjects // Add `studentDetails` to the export object
