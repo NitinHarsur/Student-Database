@@ -30,6 +30,7 @@ const result = require('../controller/teacherController');
 
 
 
+
 //student
 router.post('/studentlogin', studentLogin.studentLogin);
 
@@ -74,13 +75,13 @@ router.post('/result',result.result)
 
 
 
+//teacher
+router.post('/teacherlogin', teacherLogin.teacherLogin);
+
 
 
 router.post('/contact', contact );
 // Route for sending attendance messages
-
-
-
 
 
 

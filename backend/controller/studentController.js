@@ -85,3 +85,27 @@ const getSemestersAndSubjects = async (req, res) => {
       studentDetails,getSemestersAndSubjects // Add `studentDetails` to the export object
   };
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
