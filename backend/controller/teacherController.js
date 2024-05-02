@@ -273,6 +273,7 @@ const result = async (req, res) => {
 
     // Update marks for existing subjects and add new subjects
     subjects.forEach(subject => {
+      
       const existingSubject = semester.subjects.find(sub => sub.subjectName === subject.subjectName);
       if (existingSubject) {
         // Update marks for existing subject
@@ -300,8 +301,7 @@ const result = async (req, res) => {
     console.error('Error submitting marks:', error.message);
     res.status(500).json({ error: 'Internal server error' });
   }
-<<<<<<< HEAD
-=======
+
 };
 
 const getSemestersAndSubjects = async (req, res) => {
@@ -329,7 +329,6 @@ const getSemestersAndSubjects = async (req, res) => {
     console.error('Error fetching semesters and subjects:', error.message);
     res.status(500).json({ error: 'Internal server error' });
   }
->>>>>>> e9bc5915205bd24bcc92c1b23bc0688112990bca
 };
 
 
