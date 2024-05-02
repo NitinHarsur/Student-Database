@@ -298,10 +298,9 @@ const result = async (req, res) => {
     res.status(200).json({ message: 'Marks submitted successfully' });
   } catch (error) {
     console.error('Error submitting marks:', error.message);
-    res.status(500).json({ error: 'Internal server error' });
-  }
+    res.status(500).json({ error: 'Internal server error' });
+  }
 };
-
 
 const getSemestersAndSubjects = async (req, res) => {
   try {
