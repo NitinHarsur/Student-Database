@@ -63,7 +63,7 @@ const StudentHome = () => {
     // Use map to iterate over the list of student details and display each student's information
     return (
         <div className="Student__Home">
-            <h2>Student Details:</h2>
+            <h2>Profile:</h2>
             {studentDetails.map((student, index) => (
                 <div key={index} className="student-detail">
                     {/* Check that student.image is defined and valid */}
