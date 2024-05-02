@@ -126,7 +126,7 @@ const Sidebar = () => {
                     }}
                 >
                     {collapsed ? (
-                        <RiLogoutCircleLine style={{ fontSize: '20px', cursor: 'pointer' }}  onClick={() => navigate('/teacher/teacherLogin')} />
+                        <RiLogoutCircleLine style={{ fontSize: '20px', cursor: 'pointer' }}  onClick={() => navigate('/')} />
                     ) : (
                         <div
                             style={{
@@ -139,8 +139,8 @@ const Sidebar = () => {
                             }}
                             
                         >
-                            <RiLogoutCircleLine style={{ fontSize: '25px', marginRight: '10px' }}  onClick={() => navigate('/teacher/teacherLogin')} />
-                            <b  onClick={() => navigate('/teacher/teacherLogin')}>Log Out</b>
+                            <RiLogoutCircleLine style={{ fontSize: '25px', marginRight: '10px' }}  onClick={() => navigate('/')} />
+                            <b  onClick={() => navigate('/')}>Log Out</b>
                         </div>
                     )}
                 </div>
