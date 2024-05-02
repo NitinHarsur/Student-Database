@@ -242,7 +242,6 @@ if (attendancePercentage < 75) {
 }
 
 };
-
 const result = async (req, res) => {
   const { regnumber, semesterNumber, subjects } = req.body;
 
@@ -266,12 +265,21 @@ const result = async (req, res) => {
       // If the semester doesn't exist, create a new semester
       semester = {
         semesterNumber,
-        subjects: [],
+        subjects: subjects.map(subject => {
+          // Validate internal and external marks (optional)
+          if (isNaN(subject.internalMarks) || isNaN(subject.externalMarks)) {
+            throw new Error('Invalid marks format');
+          }
+          return {
+            subjectName: subject.subjectName,
+            internalMarks: Number(subject.internalMarks),
+            externalMarks: Number(subject.externalMarks),
+            totalMarks: Number(subject.internalMarks) + Number(subject.externalMarks),
+          };
+        }),
       };
       student.semesters.push(semester);
     }
-
-    // Update marks for existing subjects and add new subjects
     subjects.forEach(subject => {
       const existingSubject = semester.subjects.find(sub => sub.subjectName === subject.subjectName);
       if (existingSubject) {
@@ -298,8 +306,8 @@ const result = async (req, res) => {
     res.status(200).json({ message: 'Marks submitted successfully' });
   } catch (error) {
     console.error('Error submitting marks:', error.message);
-    res.status(500).json({ error: 'Internal server error' });
-  }
+    res.status(500).json({ error: 'Internal server error' });
+  }
 };
 
 const getSemestersAndSubjects = async (req, res) => {

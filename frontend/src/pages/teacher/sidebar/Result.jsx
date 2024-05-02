@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Result.css'
+
 const SubmitMarksForm = () => {
   const [regnumber, setRegnumber] = useState('');
   const [semesterNumber, setSemesterNumber] = useState('');
@@ -8,15 +9,24 @@ const SubmitMarksForm = () => {
   const [internalMarks, setInternalMarks] = useState('');
   const [externalMarks, setExternalMarks] = useState('');
 
-  const handleSubjectChange = (event, index) => {
-    const newSubjects = [...subjects];
-    newSubjects[index][event.target.name] = event.target.value;
-    setSubjects(newSubjects);
-  };
+// eslint-disable-next-line
+const handleSubjectChange = (event, index) => {
+  const newSubjects = subjects.map((subject, i) => {
+    if (i === index) {
+      return {
+        ...subject,
+        [event.target.name]: event.target.value
+      };
+    }
+    return subject;
+  });
+  setSubjects(newSubjects);
+};
+
 
 
   const addSubject = () => {
-    if (!regnumber || !semesterNumber ) {
+    if (!regnumber || !semesterNumber) {
       alert('Please fill in all fields for the new subject');
       return;
     }
@@ -78,7 +88,7 @@ const SubmitMarksForm = () => {
 
   return (
     <center>
-    <div className='form-container'>
+    <div className='form-container '>
       <h2>Submit Marks</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -88,7 +98,7 @@ const SubmitMarksForm = () => {
         <div>
           <label htmlFor="semesterNumber">Semester Number:</label>
           <input type="number" id="semesterNumber" name="semesterNumber" value={semesterNumber} onChange={(e) => setSemesterNumber(e.target.value)} required />
-        </div >
+        </div>
 
         <h3>Subjects</h3>
         {subjects.length === 0 && <p>No subjects added yet.</p>}
@@ -109,6 +119,7 @@ const SubmitMarksForm = () => {
         <button type="submit">Submit Marks</button>
       </form>
     </div>
+    
     </center>
   );
 };
