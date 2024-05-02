@@ -21,7 +21,6 @@ const handleSendMessage = require('../controller/teacherController');
 const result = require('../controller/teacherController');
 
 
-const result = require('../controller/studentController')
 const getSemestersAndSubjects = require('../controller/studentController')
 
 
@@ -34,11 +33,12 @@ router.post('/studentlogin', studentLogin.studentLogin);
 router.get('/studentDetails',studentDetails.studentDetails)
 
 
+router.post('/showResult',getSemestersAndSubjects.getSemestersAndSubjects)
+
 
 
 //teacherLogin
 router.post('/teacherLogin', teacherLogin.teacherLogin );
-
 
 //Add student
 router.post('/addStudent', addStudent.addStudent );
@@ -68,10 +68,8 @@ router.post('/handleSendMessage',handleSendMessage.handleSendMessage)
 router.post('/submitResult',result.result)
 
 
-router.post('/showResult',getSemestersAndSubjects.getSemestersAndSubjects)
 
-//teacher
-router.post('/teacherlogin', teacherLogin );
+
 
 
 
