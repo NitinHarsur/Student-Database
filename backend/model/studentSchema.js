@@ -23,9 +23,15 @@ const studentSchema = new mongoose.Schema({
   regnumber: { type: String, required: true },
   year: { type: String, required: true },
   phone: { type: Number, required: true },
+<<<<<<< HEAD
 
   image: { type: String }, // If this is supposed to be an image URL, string type is appropriate.
   semesters: [semesterSchema]
+=======
+  image: { type: String, required: true }, // If this is supposed to be an image URL, string type is appropriate.
+  firstSemResult: [semesterSchema],
+  secondSemResult: [semesterSchema]
+>>>>>>> 1fd2ad5f583dcca8223ebcb687788717f02e9ef3
 });
 
 // Create and export Student model

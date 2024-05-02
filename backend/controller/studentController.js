@@ -1,5 +1,4 @@
 const Student  = require ('../model/studentSchema')
-const { client, twilioPhoneNumber } = require('../twilioConfig');
 
 
 // Function to handle student login requests and authenticate students
@@ -29,130 +28,34 @@ const studentLogin= async (req, res) => {
 
 
 
-// Function to Add Student Data to the Databse System
-  const addStudent = async (req, res) => {
+  const studentDetails = async (req, res) => {
     try {
-      const { studentname,fathername,mothername,email, regnumber,year } = req.body;
+        // Retrieve the regnumber from the request query parameters
+        const { regnumber } = req.query;
 
-        const existingStudent = await Student.findOne({
-            regnumber:regnumber
-        });
+        // Query the Student model for students with the specified regnumber
+        const students = await Student.find({ regnumber });
 
-        if (existingStudent) {
-          return res.status(400).json({ error: 'Register number already exsist' });
+        // Check if any students were found
+        if (students.length === 0) {
+            return res.status(404).json({ message: 'No students found for the specified registration number.' });
         }
-        else {
-            const student = new Student({
-                studentname,
-                fathername,
-                mothername,
-                email,
-                regnumber,
-                year,
-                phone
-            });
 
-            let result = await student.save();
-
-            res.status(201).json({ message: 'Student added successfully' });
-        }
+        // Return the list of students in a JSON response
+        return res.status(200).json(students);
     } catch (error) {
-      console.error('Error adding student:', error);
-      res.status(500).json({ message: 'Server error' });
+        // Handle any errors that occur during the process
+        console.error('Error fetching student details:', error);
+
+        // Return a 500 status code with an error message
+        return res.status(500).json({ message: 'Server error. Please try again later.' });
     }
-}
-
-
-// Function to delete a specific student from the system using their register number
-const deleteStudentByRegnumber = async (req,res)=>{
-  try {
-    const {regnumber} = req.body;
-
-    // Check if the student exists
-    const student = await Student.findOne({regnumber});
-    if (!student) {
-      return res.status(404).json({ message: 'Student not found' });
-    }
-
-    // Delete the student from the database
-    await Student.deleteOne({regnumber});
-
-    // Return success message
-    res.json({ message: 'Student deleted successfully' });
-  } catch (error) {
-    console.error('Error deleting student:', error);
-    res.status(500).json({ message: 'Server error' });
-  }
-
-}
-
-//Function to Delete Stduents By using there Year from the Database System
-const deleteStudentsByYear = async (req,res)=>{
-  try {
-    const {year} = req.body;
-
-    // Check if the student exists
-    const student = await Student.find({year});
-    if (!student) {
-      return res.status(404).json({ message: 'Students not found in this year' });
-    }
-
-    // Delete the student from the database
-    await Student.deleteMany({year});
-
-    // Return success message
-    res.json({ message: 'Students deleted successfully' });
-  } catch (error) {
-    console.error('Error deleting students:', error);
-    res.status(500).json({ message: 'Server error' });
-  }
-
-}
-
-// Function to Update the Details of an Existing Student in the Databse system
-const updateStudent = async (req,res)=>{
-  try {
-    const { regnumber, studentname, year } = req.body;
-
-    // Find the student by registration number
-    const student = await Student.findOne({ regnumber });
-
-    // If student not found, return 404 status with error message
-    if (!student) {
-      return res.status(404).json({ message: 'Student not found' });
-    }
-
-    // If student name is provided, update the student's name
-    if (studentname) {
-      student.studentname = studentname;
-    }
-
-    // If year is provided, update the student's year
-    if (year) {
-      student.year = year;
-    }
-
-    // Save the updated student details
-    await student.save();
-
-    // Return success message
-    res.json({ message: 'Student information updated successfully' });
-  } catch (error) {
-    console.error('Error updating student:', error);
-    res.status(500).json({ message: 'Server error' });
-  }
 };
 
 
-// Function to update the academic year for all students
-const updateStudentsYear = async(req,res)=>{
-
-  try {
-    // Define the new year value
-    const newYear = req.body.newYear;
-    const oldYear = req.body.oldYear;
 
 
+<<<<<<< HEAD
     // Update students where the current year is "1st year"
     const result = await Student.updateMany({ year: oldYear }, { year: newYear });
 
@@ -334,3 +237,10 @@ const getSemestersAndSubjects = async (req, res) => {
 module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,
   updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result,getSemestersAndSubjects};
 
+=======
+    module.exports = {
+      studentLogin,
+      studentDetails // Add `studentDetails` to the export object
+  };
+  
+>>>>>>> 1fd2ad5f583dcca8223ebcb687788717f02e9ef3
