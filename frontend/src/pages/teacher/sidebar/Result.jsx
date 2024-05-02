@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import './Result.css'
 const SubmitMarksForm = () => {
   const [regnumber, setRegnumber] = useState('');
   const [semesterNumber, setSemesterNumber] = useState('');
@@ -77,7 +77,8 @@ const SubmitMarksForm = () => {
   };
 
   return (
-    <div>
+    <center>
+    <div className='form-container'>
       <h2>Submit Marks</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -87,12 +88,12 @@ const SubmitMarksForm = () => {
         <div>
           <label htmlFor="semesterNumber">Semester Number:</label>
           <input type="number" id="semesterNumber" name="semesterNumber" value={semesterNumber} onChange={(e) => setSemesterNumber(e.target.value)} required />
-        </div>
+        </div >
 
         <h3>Subjects</h3>
         {subjects.length === 0 && <p>No subjects added yet.</p>}
         {subjects.map((subject, index) => (
-          <div key={index}>
+          <div key={index} className='subject-container'>
             <label htmlFor={`subjectName-${index}`}>Subject Name:</label>
             <input type="text" id={`subjectName-${index}`} name="subjectName" value={subject.subjectName} onChange={(event) => handleSubjectChange(event, index)} required />
             <br />
@@ -108,6 +109,7 @@ const SubmitMarksForm = () => {
         <button type="submit">Submit Marks</button>
       </form>
     </div>
+    </center>
   );
 };
 

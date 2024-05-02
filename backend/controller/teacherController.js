@@ -302,6 +302,7 @@ const result = async (req, res) => {
   }
 };
 
+
 const getSemestersAndSubjects = async (req, res) => {
   try {
     // Find the student by registration number
