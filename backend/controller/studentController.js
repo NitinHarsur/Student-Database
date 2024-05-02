@@ -239,10 +239,17 @@ const handleSendMessage = async (req, res) => {
 
 };
 
+
+
 const result = async (req, res) => {
   const { regnumber, semesterNumber, subjects } = req.body;
 
   try {
+    // Validate data
+    if (!regnumber || !semesterNumber || !subjects || !Array.isArray(subjects)) {
+      return res.status(400).json({ error: 'Invalid request body' });
+    }
+
     // Find the student by registration number
     let student = await Student.findOne({ regnumber });
 
@@ -257,31 +264,34 @@ const result = async (req, res) => {
       // If the semester doesn't exist, create a new semester
       semester = {
         semesterNumber,
-        subjects: [], // Initialize an empty subjects array
+        subjects: [],
       };
       student.semesters.push(semester);
     }
 
-    // Update the semester's subjects
-    subjects.forEach(subjectItem => {
-      const { name, internalMarks, externalMarks } = subjectItem;
-      const totalMarks = Number(internalMarks) + Number(externalMarks);
-
-      // Check if subject already exists in the semester
-      const existingSubject = semester.subjects.find(s => s.subjectName === name);
+    // Update marks for existing subjects and add new subjects
+    subjects.forEach(subject => {
+      const existingSubject = semester.subjects.find(sub => sub.subjectName === subject.subjectName);
       if (existingSubject) {
-        // If subject exists, update its marks
-        existingSubject.internalMarks = internalMarks;
-        existingSubject.externalMarks = externalMarks;
-        existingSubject.totalMarks = totalMarks;
+        // Update marks for existing subject
+        existingSubject.internalMarks = Number(subject.internalMarks);
+        existingSubject.externalMarks = Number(subject.externalMarks);
+        existingSubject.totalMarks = Number(subject.internalMarks) + Number(subject.externalMarks);
       } else {
-        // If subject doesn't exist, add it to the semester
-        semester.subjects.push({ subjectName: name, internalMarks, externalMarks, totalMarks });
+        // Add new subject
+        semester.subjects.push({
+          subjectName: subject.subjectName,
+          internalMarks: Number(subject.internalMarks),
+          externalMarks: Number(subject.externalMarks),
+          totalMarks: Number(subject.internalMarks) + Number(subject.externalMarks),
+        });
       }
     });
 
     // Save the updated student document
     await student.save();
+
+    console.log('Marks submitted successfully:', student); // Log the updated student document
 
     res.status(200).json({ message: 'Marks submitted successfully' });
   } catch (error) {
@@ -291,6 +301,36 @@ const result = async (req, res) => {
 };
 
 
+
+
+const getSemestersAndSubjects = async (req, res) => {
+  try {
+    // Find the student by registration number
+    const student = await Student.findOne({ regnumber: req.body.regnumber });
+
+    if (!student) {
+      return res.status(404).json({ error: 'Student not found' });
+    }
+
+    // Prepare the response data
+    const semestersData = student.semesters.map(semester => ({
+      semesterNumber: semester.semesterNumber,
+      subjects: semester.subjects.map(subject => ({
+        subjectName: subject.subjectName,
+        internalMarks: subject.internalMarks,
+        externalMarks: subject.externalMarks,
+        totalMarks: subject.totalMarks
+      }))
+    }));
+
+    res.status(200).json({ semesters: semestersData });
+  } catch (error) {
+    console.error('Error fetching semesters and subjects:', error.message);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+
 module.exports={studentLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,
-  updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result};
+  updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result,getSemestersAndSubjects};
 

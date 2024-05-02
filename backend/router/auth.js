@@ -15,6 +15,7 @@ const studentsList = require('../controller/studentController')
 const attendance = require('../controller/studentController')
 const handleSendMessage = require('../controller/studentController')
 const result = require('../controller/studentController')
+const getSemestersAndSubjects = require('../controller/studentController')
 
 const contact = require('../controller/contactController')
 
@@ -37,8 +38,10 @@ router.get('/attendance',attendance.attendance)
 router.post('/handleSendMessage',handleSendMessage.handleSendMessage)
 
 //Result
-router.post('/result',result.result)
+router.post('/submitResult',result.result)
 
+
+router.post('/showResult',getSemestersAndSubjects.getSemestersAndSubjects)
 
 //teacher
 router.post('/teacherlogin', teacherLogin );
