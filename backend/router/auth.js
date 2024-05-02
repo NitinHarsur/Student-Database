@@ -1,6 +1,11 @@
 const express = require('express');
 const router = express.Router();
+
+
 const studentLogin = require('../controller/studentController');
+const studentDetails = require('../controller/studentController');
+
+
 const teacherLogin = require('../controller/teacherController');
 
 const addStudent = require('../controller/teacherController');
@@ -19,31 +24,45 @@ const contact = require('../controller/contactController')
 
 //student
 router.post('/studentlogin', studentLogin.studentLogin);
-//Add student
+
+//studentDetails
+router.get('/studentDetails',studentDetails.studentDetails)
+
+
+
+
+//teacherLogin
 router.post('/teacherLogin', teacherLogin.teacherLogin );
 
 
-
-
+//Add student
 router.post('/addStudent', addStudent.addStudent );
+
 //Delete student
 router.delete('/deleteStudentByRegnumber',deleteStudentByRegnumber.deleteStudentByRegnumber);
+
+//deleteStudentsByYear
 router.delete('/deleteStudentsByYear',deleteStudentsByYear.deleteStudentsByYear);
+
 //Update Student 
 router.put('/updateStudent',updateStudent.updateStudent);
+
 //Update students year
 router.put('/updateStudentsYear',updateStudentsYear.updateStudentsYear)
 
+//studentLits
 router.get('/studentsList',studentsList.studentsList)
 
+//attendance
 router.get('/attendance',attendance.attendance)
+
+//handlesendMessage
 router.post('/handleSendMessage',handleSendMessage.handleSendMessage)
 
 //Result
 router.post('/result',result.result)
 
 
-//teacher
 
 
 

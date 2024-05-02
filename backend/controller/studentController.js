@@ -28,4 +28,35 @@ const studentLogin= async (req, res) => {
 
 
 
-module.exports={studentLogin};
+  const studentDetails = async (req, res) => {
+    try {
+        // Retrieve the regnumber from the request query parameters
+        const { regnumber } = req.query;
+
+        // Query the Student model for students with the specified regnumber
+        const students = await Student.find({ regnumber });
+
+        // Check if any students were found
+        if (students.length === 0) {
+            return res.status(404).json({ message: 'No students found for the specified registration number.' });
+        }
+
+        // Return the list of students in a JSON response
+        return res.status(200).json(students);
+    } catch (error) {
+        // Handle any errors that occur during the process
+        console.error('Error fetching student details:', error);
+
+        // Return a 500 status code with an error message
+        return res.status(500).json({ message: 'Server error. Please try again later.' });
+    }
+};
+
+
+
+
+    module.exports = {
+      studentLogin,
+      studentDetails // Add `studentDetails` to the export object
+  };
+  

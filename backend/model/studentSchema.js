@@ -23,7 +23,6 @@ const studentSchema = new mongoose.Schema({
   regnumber: { type: String, required: true },
   year: { type: String, required: true },
   phone: { type: Number, required: true },
-  semesters: [semesterSchema],
   image: { type: String, required: true }, // If this is supposed to be an image URL, string type is appropriate.
   firstSemResult: [semesterSchema],
   secondSemResult: [semesterSchema]

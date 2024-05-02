@@ -111,7 +111,7 @@ const StntSidebar = () => {
                     }}
                 >
                     {collapsed ? (
-                        <RiLogoutCircleLine style={{ fontSize: '20px' }}  onClick={() => navigate('/student/studentLogin')}/>
+                        <RiLogoutCircleLine style={{ fontSize: '20px' }}  onClick={() => navigate('/')}/>
                     ) : (
                         <Link to="/" style={{
                             display: 'flex',
@@ -121,7 +121,7 @@ const StntSidebar = () => {
                             transition: 'opacity 0.3s ease-in-out',
                         }}>
                             <RiLogoutCircleLine style={{ fontSize: '25px', marginRight: '10px' }} />
-                            <b  onClick={() => navigate('/student/studentLogin')}>logout</b>
+                            <b  onClick={() => navigate('/ ')}>logout</b>
                         </Link>
                     )}
                 </div>
