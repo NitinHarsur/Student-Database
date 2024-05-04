@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Link,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
-import { RiMenuFoldFill, RiMenuUnfoldFill,RiLogoutCircleLine } from 'react-icons/ri';
-import {  PiExamFill } from 'react-icons/pi';
+import { RiMenuFoldFill, RiMenuUnfoldFill, RiLogoutCircleLine } from 'react-icons/ri';
+import { PiExamFill } from 'react-icons/pi';
 import { FaBookBookmark } from 'react-icons/fa6';
 import { CgProfile } from 'react-icons/cg';
-
 import './sidebar.css';
 
 const { Sider, Footer } = Layout;
@@ -27,6 +26,25 @@ const StntSidebar = () => {
     const handleMouseLeave = () => {
         setIsHovered(false);
     };
+    const handleLogout = () => {
+        // Perform any additional logout actions if needed
+    
+        // Redirect to the home page
+        navigate('/');
+    
+        // Push a new state to the history stack for the home page
+        window.history.pushState(null, null, '/');
+    
+        // Optionally, add an event listener to prevent the user from navigating back using the back button
+        // If the user attempts to navigate back, prevent the action
+        window.onpopstate = (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            // Optionally, navigate back to the home page if needed
+            navigate('/');
+        };
+    };
+    
 
     return (
         <Layout
@@ -35,8 +53,7 @@ const StntSidebar = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 height: '100vh',
-                backgroundColor: 'white'
-               // Set background color for Layout
+                backgroundColor: 'white',
             }}
         >
             <Sider
@@ -50,7 +67,11 @@ const StntSidebar = () => {
                     backgroundColor: 'white', // Set background color for Sider
                 }}
             >
-                <div className="top-bar" onClick={toggleCollapse} style={{ padding: '10px', cursor: 'pointer' }}>
+                <div
+                    className="top-bar"
+                    onClick={toggleCollapse}
+                    style={{ padding: '10px', cursor: 'pointer' }}
+                >
                     {collapsed ? (
                         <RiMenuUnfoldFill fontSize={30} />
                     ) : (
@@ -64,14 +85,12 @@ const StntSidebar = () => {
                 <Menu
                     className="menu__bar"
                     mode="inline"
-                    
                     items={[
                         {
                             key: '/StudentDashboard',
                             icon: <CgProfile size={collapsed ? '20' : '25'} />,
                             label: <Link to="/StudentDashboard">Profile</Link>,
                         },
-                        
                         {
                             key: '/StudentDashboard/Attendance',
                             icon: <FaBookBookmark size={collapsed ? '20' : '25'} />,
@@ -81,8 +100,7 @@ const StntSidebar = () => {
                             key: '/StudentDashboard/Result',
                             icon: <PiExamFill size={collapsed ? '20' : '25'} />,
                             label: <Link to="/StudentDashboard/stntResult">Result</Link>,
-                        }
-            
+                        },
                     ]}
                 />
             </Sider>
@@ -97,7 +115,7 @@ const StntSidebar = () => {
                     position: 'absolute',
                     bottom: '20px',
                     margin: '10px',
-                    backgroundColor: isHovered ? 'rgb(140, 221, 178)': 'white', // Set background color for Footer
+                    backgroundColor: isHovered ? 'rgb(140, 221, 178)' : 'white', // Set background color for Footer
                     transition: 'background-color 0.3s ease-in-out',
                     borderRadius: '10px',
                 }}
@@ -111,17 +129,26 @@ const StntSidebar = () => {
                     }}
                 >
                     {collapsed ? (
-                        <RiLogoutCircleLine style={{ fontSize: '20px' }}  onClick={() => navigate('/')}/>
+                        <RiLogoutCircleLine
+                            style={{ fontSize: '20px' }}
+                            onClick={handleLogout}
+                        />
                     ) : (
-                        <Link to="/" style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            textDecoration: 'none',
-                            color: 'black',
-                            transition: 'opacity 0.3s ease-in-out',
-                        }}>
-                            <RiLogoutCircleLine style={{ fontSize: '25px', marginRight: '10px' }} />
-                            <b  onClick={() => navigate('/ ')}>logout</b>
+                        <Link
+                            to="/"
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                textDecoration: 'none',
+                                color: 'black',
+                                transition: 'opacity 0.3s ease-in-out',
+                            }}
+                        >
+                            <RiLogoutCircleLine
+                                style={{ fontSize: '25px', marginRight: '10px' }}
+                                onClick={handleLogout}
+                            />
+                            <b>Logout</b>
                         </Link>
                     )}
                 </div>

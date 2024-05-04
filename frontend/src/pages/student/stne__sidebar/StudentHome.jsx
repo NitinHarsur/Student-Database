@@ -51,22 +51,22 @@ const StudentHome = () => {
             <h2>Profile:</h2>
             {studentDetails.map((student, index) => (
                 <div key={index} className="student-detail">
-                    {student.image && (
-                        <div className="d-flex align-items-start gap-4">
-                            <img style={{borderRadius:'20px'}}
+                    <div className="d-flex align-items-start gap-4">
+                        {student.image && (
+                            <img
+                                style={{ borderRadius: '20px' }}
                                 src={student.image}
                                 alt={`Image of ${student.studentname}`}
                                 className="img-fluid rounded-lg object-cover"
                             />
-                            <div>
-                                <h3 className="text-lg font-medium text-gray-900">Name:{student.studentname}</h3>
-                                <h3>Registration Number: {student.regnumber}</h3>
-                                <h3>Father's Name: {student.fathername}</h3>
-                                <h3>StudyingYear: {student.year}</h3>
-                            </div>
+                        )}
+                        <div>
+                            <h3 className="text-lg font-medium text-gray-900">Name: {student.studentname}</h3>
+                            <h3>Registration Number: {student.regnumber}</h3>
+                            <h3>Father's Name: {student.fathername}</h3>
+                            <h3>Studying Year: {student.year}</h3>
                         </div>
-                    )}
-                    
+                    </div>
                 </div>
             ))}
         </div>
