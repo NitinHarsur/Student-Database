@@ -34,6 +34,7 @@
 }
 
 .teacher__loginform h2 {
+  font-weight: bold;
   text-align: center;
   margin-bottom: 20px;
   color: #333;
@@ -46,6 +47,7 @@
   background-color: #5299e46e;
 }
 .teacher__loginform input {
+  font-weight: bold;
   padding: 12px;
   margin-bottom: 15px;
   width: 100%;
@@ -58,7 +60,7 @@
 }
 
 .teacher__loginform input::placeholder {
-  color: #999;
+  color: black;
 }
 
 .teacher__loginform input:focus {
@@ -66,6 +68,7 @@
 }
 
 .teacherSubmitbtn {
+  font-weight: bolder;
   padding: 12px 20px;
   margin-top: 15px;
   width: 100%;
@@ -83,10 +86,13 @@
 }
 
 .teacherSubmitbtn:focus {
+  font-weight: bolder;
+
   outline: none;
 }
 
 .error-message {
+  font-weight: bolder;
   color: red;
   margin-top: 5px;
   text-align: center;

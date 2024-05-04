@@ -34,6 +34,10 @@ const TeacherLoginForm = () => {
           progress: undefined,
           theme: "light",
           transition: Bounce,
+          style: {
+            fontWeight: 'bold', // Customize the font weight
+            color: 'black', // Customize the text color (green in this example)
+        },
         });
       } else {
         navigate('/TeacherDashboard');
@@ -47,6 +51,10 @@ const TeacherLoginForm = () => {
           progress: undefined,
           theme: "light",
           transition: Bounce,
+          style: {
+            fontWeight: 'bold', // Customize the font weight
+            color: 'black', // Customize the text color (green in this example)
+        },
         });
       }
     } catch (error) {

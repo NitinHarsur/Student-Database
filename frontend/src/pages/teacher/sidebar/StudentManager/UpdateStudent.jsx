@@ -38,6 +38,10 @@ const UpdateStudent = () => {
           progress: undefined,
           theme: "light",
           transition: Bounce,
+          style: {
+            fontWeight: 'bold', // Customize the font weight
+            color: 'black', // Customize the text color (green in this example)
+        },
         });
       } else {
         toast.success(data.message || 'Student information updated successfully', {
@@ -50,6 +54,10 @@ const UpdateStudent = () => {
           progress: undefined,
           theme: "light",
           transition: Bounce,
+          style: {
+            fontWeight: 'bold', // Customize the font weight
+            color: 'black', // Customize the text color (green in this example)
+        },
         });
       }
     } catch (error) {
@@ -86,6 +94,10 @@ const UpdateStudent = () => {
           progress: undefined,
           theme: "light",
           transition: Bounce,
+          style: {
+            fontWeight: 'bold', // Customize the font weight
+            color: 'black', // Customize the text color (green in this example)
+        },
         });
       } else {
         toast.success(data.message || 'Students year updated successfully', {
@@ -126,10 +138,11 @@ const UpdateStudent = () => {
               id="fieldToUpdate"
               value={fieldToUpdate}
               onChange={(e) => setFieldToUpdate(e.target.value)} required
-            >
-              <option value="">Select Field</option>
-              <option value="studentname">Student Name</option>
-              <option value="year">Year</option>
+
+              >
+              <option value=""className='fw-bolder'>Select Field</option>
+              <option value="studentname" className='fw-bolder'>Student Name</option>
+              <option value="year"className='fw-bolder'>Year</option>
             </select>
           
             <label htmlFor="newValue">New Value:</label>

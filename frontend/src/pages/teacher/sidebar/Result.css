@@ -10,6 +10,7 @@ border-radius: 10px;
  }
   
   .form-container h2 {
+    font-weight: bold;
     margin-top: 5px;
     font-size: 1.5rem;
     margin-bottom: 20px;
@@ -26,12 +27,14 @@ border-radius: 10px;
   }
   
   .form-container label {
+    font-weight: bold;
     display: block;
     margin-bottom: 5px;
   }
   
   .form-container input[type="text"],
   .form-container input[type="number"] {
+    font-weight: bold;
     width: 100%;
     padding: 10px;
     background-color: transparent;
@@ -43,7 +46,7 @@ border-radius: 10px;
   
   .form-container button {
     background-color: #00b4d8;
-    color: white;
+    color: rgb(8, 7, 7);
     padding: 10px 20px;
     border: none;
     display: flex;
@@ -53,6 +56,7 @@ border-radius: 10px;
   }
   
   .form-container button:hover {
+    font-weight: bold;
     background-color: #00b4d8;
   }
   
