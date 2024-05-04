@@ -1,0 +1,65 @@
+
+.Student__Home {
+    width: 800px;
+    margin-left: 330px;
+    padding: 20px;
+    background-color: #63faaab1;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    max-width: 800px;
+}
+
+.card {width: 600px;
+
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.table {
+    width: 100%;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    vertical-align: middle;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #333;
+}
+
+.table td {
+    background-color: #fff;
+    color: #555;
+}
+
+.text-danger {
+    color: red;
+}
+
+* {
+    list-style: none;
+    font-family: "Josefin Slab", serif;
+}

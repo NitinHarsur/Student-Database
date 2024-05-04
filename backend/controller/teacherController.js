@@ -36,7 +36,7 @@ const teacherLogin = async (req, res) => {
  // Function to Add Student Data to the Databse System
  const addStudent = async (req, res) => {
   try {
-    const { studentname,fathername,mothername,email, regnumber,year } = req.body;
+    const { studentname,fathername,mothername,email, regnumber,year,phone,image } = req.body;
 
       const existingStudent = await Student.findOne({
           regnumber:regnumber
@@ -53,7 +53,8 @@ const teacherLogin = async (req, res) => {
               email,
               regnumber,
               year,
-              phone
+              phone,
+              image
           });
 
           await student.save();
@@ -116,7 +117,7 @@ try {
 // Function to Update the Details of an Existing Student in the Databse system
 const updateStudent = async (req,res)=>{
 try {
-  const { regnumber, studentname, year } = req.body;
+  const { regnumber, studentname, fathername,mothername,email, year,phone,image } = req.body;
 
   // Find the student by registration number
   const student = await Student.findOne({ regnumber });
@@ -126,15 +127,33 @@ try {
     return res.status(404).json({ message: 'Student not found' });
   }
 
-  // If student name is provided, update the student's name
   if (studentname) {
     student.studentname = studentname;
   }
 
-  // If year is provided, update the student's year
+  if (fathername) {
+    student.fathername = fathername;
+  }
+
+  if (mothername) {
+    student.mothername = mothername;
+  }
+
+  if (email) {
+    student.email = email;
+  }
   if (year) {
     student.year = year;
   }
+
+  if (phone) {
+    student.phone = phone;
+  }
+  
+  if (image) {
+    student.image = image;
+  }
+  
 
   // Save the updated student details
   await student.save();
@@ -310,33 +329,7 @@ const result = async (req, res) => {
   }
 };
 
-const getSemestersAndSubjects = async (req, res) => {
-  try {
-    // Find the student by registration number
-    const student = await Student.findOne({ regnumber: req.body.regnumber });
-
-    if (!student) {
-      return res.status(404).json({ error: 'Student not found' });
-    }
-
-    // Prepare the response data
-    const semestersData = student.semesters.map(semester => ({
-      semesterNumber: semester.semesterNumber,
-      subjects: semester.subjects.map(subject => ({
-        subjectName: subject.subjectName,
-        internalMarks: subject.internalMarks,
-        externalMarks: subject.externalMarks,
-        totalMarks: subject.totalMarks
-      }))
-    }));
-
-    res.status(200).json({ semesters: semestersData });
-  } catch (error) {
-    console.error('Error fetching semesters and subjects:', error.message);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-};
 
 
 module.exports={teacherLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,
-updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result,getSemestersAndSubjects};
+updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result};

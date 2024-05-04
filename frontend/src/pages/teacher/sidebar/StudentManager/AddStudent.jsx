@@ -12,7 +12,7 @@ const AddStudent = () => {
     email: '',
     year: '',
     regnumber: '',
-    phone: '',
+    phone: '', // Added phone field
     image: '', // New state for storing the image as a Base64 string
   });
 
@@ -45,7 +45,7 @@ const AddStudent = () => {
 
     try {
       // Send POST request to the backend with student data
-      const response = await fetch('http://localhost:3001/AddStudent', {
+      const response = await fetch('http://localhost:3001/addStudent', { // Corrected route to addStudent
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -178,10 +178,10 @@ const AddStudent = () => {
             <div>
               <label htmlFor='phone'>Phone Number:</label>
               <input
-                type='text'
+                type='number'
                 id='phone'
                 value={studentData.phone}
-                onChange={handleChange}
+                onChange={handleChange} // Added handling for phone number input
                 required
               />
             </div>
