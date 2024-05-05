@@ -64,6 +64,10 @@ const AddStudent = () => {
           draggable: true,
           theme: 'light',
           transition: Bounce,
+          style: {
+            fontWeight: 'bold', // Customize the font weight
+            color: 'black', // Customize the text color (green in this example)
+        },
         });
       } else {
         toast.success('Student added successfully', {
@@ -75,6 +79,10 @@ const AddStudent = () => {
           draggable: true,
           theme: 'light',
           transition: Bounce,
+          style: {
+            fontWeight: 'bold', // Customize the font weight
+            color: 'black', // Customize the text color (green in this example)
+        },
         });
 
         // Reset the form after successful submission
@@ -101,6 +109,10 @@ const AddStudent = () => {
         draggable: true,
         theme: 'light',
         transition: Bounce,
+        style: {
+          fontWeight: 'bold', // Customize the font weight
+          color: 'black', // Customize the text color (green in this example)
+      },
       });
     }
   };

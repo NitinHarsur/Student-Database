@@ -31,6 +31,24 @@ const Sidebar = () => {
         setIsHovered(false);
     };
 
+    const handleLogout = () => {
+        // Perform any additional logout actions if needed
+    
+        // Redirect to the home page
+        navigate('/');
+    
+        // Push a new state to the history stack for the home page
+        window.history.pushState(null, null, '/');
+    
+        // Optionally, add an event listener to prevent the user from navigating back using the back button
+        // If the user attempts to navigate back, prevent the action
+        window.onpopstate = (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            // Optionally, navigate back to the home page if needed
+            navigate('/');
+        };
+    };
     
     return (
         <Layout className="layout-container" style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white', height: '100vh' }}>
@@ -115,10 +133,10 @@ const Sidebar = () => {
                     backgroundColor: isHovered ? '#00b4d8' : 'white',
                     transition: 'background-color 0.3s ease-in-out',
                     borderRadius: '10px'
-                }}
+                }}onClick={handleLogout}
             >
                 <div
-                    className="profile-section"
+                    className="logout-section"
                     style={{
                         display: 'flex',
                         alignItems: 'center',
@@ -126,7 +144,7 @@ const Sidebar = () => {
                     }}
                 >
                     {collapsed ? (
-                        <RiLogoutCircleLine style={{ fontSize: '20px', cursor: 'pointer' }}  onClick={() => navigate('/')} />
+                        <RiLogoutCircleLine style={{ fontSize: '20px', cursor: 'pointer' }}   />
                     ) : (
                         <div
                             style={{
@@ -139,8 +157,8 @@ const Sidebar = () => {
                             }}
                             
                         >
-                            <RiLogoutCircleLine style={{ fontSize: '25px', marginRight: '10px' }}  onClick={() => navigate('/')} />
-                            <b  onClick={() => navigate('/')}>Log Out</b>
+                            <RiLogoutCircleLine style={{ fontSize: '25px', marginRight: '10px' }}   />
+                            <b  >Log Out</b>
                         </div>
                     )}
                 </div>
