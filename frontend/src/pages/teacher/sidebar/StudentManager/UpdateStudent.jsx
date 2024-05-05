@@ -36,10 +36,6 @@ const UpdateStudent = () => {
           progress: undefined,
           theme: 'light',
           transition: Bounce,
-          style: {
-            fontWeight: 'bold', // Customize the font weight
-            color: 'black', // Customize the text color (green in this example)
-        },
         });
       } else {
         toast.success(data.message || 'Student information updated successfully', {
@@ -52,10 +48,6 @@ const UpdateStudent = () => {
           progress: undefined,
           theme: 'light',
           transition: Bounce,
-          style: {
-            fontWeight: 'bold', // Customize the font weight
-            color: 'black', // Customize the text color (green in this example)
-        },
         });
       }
     } catch (error) {
@@ -92,10 +84,6 @@ const UpdateStudent = () => {
           progress: undefined,
           theme: 'light',
           transition: Bounce,
-          style: {
-            fontWeight: 'bold', // Customize the font weight
-            color: 'black', // Customize the text color (green in this example)
-        },
         });
       } else {
         toast.success(data.message || 'Students year updated successfully', {
@@ -140,34 +128,54 @@ const UpdateStudent = () => {
       <div className="stntupdate">
         <h2>Update Student Information</h2>
         <form onSubmit={handleUpdate}>
-         
-            <label htmlFor="regnumber">Registration Number:</label>
-            <input
-              type="text"
-              id="regnumber"
-              value={regnumber}
-              onChange={(e) => setRegnumber(e.target.value)} required
-            />
-         
-            <label htmlFor="fieldToUpdate">Field to Update:</label>
-            <select
-              id="fieldToUpdate"
-              value={fieldToUpdate}
-              onChange={(e) => setFieldToUpdate(e.target.value)} required
-            >
-              <option value="">Select Field</option>
-              <option value="studentname">Student Name</option>
-              <option value="year">Year</option>
-            </select>
-          
-            <label htmlFor="newValue">New Value:</label>
-            <input
-              type="text"
-              id="newValue"
-              value={newValue}
-              onChange={(e) => setNewValue(e.target.value)} required
-            />
-          
+          <label htmlFor="regnumber">Registration Number:</label>
+          <input
+            type="text"
+            id="regnumber"
+            value={regnumber}
+            onChange={(e) => setRegnumber(e.target.value)}
+            required
+          />
+          <label htmlFor="fieldToUpdate">Field to Update:</label>
+          <select
+            id="fieldToUpdate"
+            value={fieldToUpdate}
+            onChange={(e) => setFieldToUpdate(e.target.value)}
+            required
+          >
+            <option value="">Select Field</option>
+            <option value="studentname">Student Name</option>
+            <option value="fathername">Father Name</option>
+            <option value="mothername">Mother Name</option>
+            <option value="email">Email</option>
+            <option value="year">Year</option>
+            <option value="phone">Phone</option>
+            <option value="image">Image</option>
+          </select>
+          {fieldToUpdate === 'image' && (
+            <div>
+              <label htmlFor="image">Upload Image:</label>
+              <input
+                type="file"
+                id="image"
+                accept="image/*"
+                onChange={handleChange}
+                required
+              />
+            </div>
+          )}
+          {fieldToUpdate !== 'image' && (
+            <div>
+              <label htmlFor="newValue">New Value:</label>
+              <input
+                type="text"
+                id="newValue"
+                value={newValue}
+                onChange={(e) => setNewValue(e.target.value)}
+                required
+              />
+            </div>
+          )}
           <button type="submit">Update Student</button>
           {error && <div>{error}</div>}
         </form>

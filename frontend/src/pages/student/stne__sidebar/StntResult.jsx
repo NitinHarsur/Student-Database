@@ -101,7 +101,7 @@ const StudentHome = () => {
     return (
         <center>
             <div className="Student__result container">
-                <div className="index-chart">
+                
                 <h2 className="text-center ">Student Result</h2>
                 <div className="row">
                     <div>
@@ -110,6 +110,7 @@ const StudentHome = () => {
                                 <div className="two">
                                     <h3 className="card-title text-center">Select Semester</h3>
                                     <select className="form-select mb-3" value={selectedSemester} onChange={handleSemesterChange}>
+                                    
                                         <option value="">Select Semester</option>
                                         {studentDetails.map((semesters, index) => (
                                             <option key={index} value={semesters.semesterNumber}>Semester {semesters.semesterNumber}</option>
@@ -161,13 +162,14 @@ const StudentHome = () => {
                                     <div className="mt-4">
                                         <canvas ref={chartRef}  />
                                     </div>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 </div>
-            </div>
+            
         </center>
     );
 };
