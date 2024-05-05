@@ -100,7 +100,8 @@ const StudentHome = () => {
 
     return (
         <center>
-            <div className="Student__Home container">
+            <div className="Student__result container">
+                <div className="index-chart">
                 <h2 className="text-center ">Student Result</h2>
                 <div className="row">
                     <div>
@@ -164,6 +165,7 @@ const StudentHome = () => {
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </center>
