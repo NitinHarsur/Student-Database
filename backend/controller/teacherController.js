@@ -36,7 +36,7 @@ const teacherLogin = async (req, res) => {
  // Function to Add Student Data to the Databse System
  const addStudent = async (req, res) => {
   try {
-    const { studentname,fathername,mothername,email, regnumber,year } = req.body;
+    const { studentname,fathername,mothername,email, regnumber,year} = req.body;
 
       const existingStudent = await Student.findOne({
           regnumber:regnumber
