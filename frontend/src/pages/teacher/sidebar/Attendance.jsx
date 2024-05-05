@@ -102,28 +102,28 @@ else{
     };
 
     return (
-        <div className="container">
-            <h2>Attendance Page</h2>
+        <div className="container fw-bold">
+            <h2 className='fw-bold'>Attendance Page</h2>
 
             {/* Year selection and Fetch button */}
             <div className="row mb-3">
                 <div className="col-auto">
-                    <label htmlFor="yearSelect" className="form-label">Select Year:</label>
+                    <label htmlFor="yearSelect" className="form-label fw-bold">Select Year:</label>
                     <select
                         id="yearSelect"
                         value={selectedYear}
                         onChange={handleYearChange}
-                        className="form-select"
+                        className="form-select fw-bolder"
                         style={{ width: '200px' }}
                     >
-                        <option value="">-- Select a year --</option>
-                        <option value="1st year">1st year</option>
-                        <option value="2nd year">2nd year</option>
-                        <option value="3rd year">3rd year</option>
+                        <option value=""className='fw-bolder'>-- Select a year --</option>
+                        <option value="1st year" className='fw-bolder'>1st year</option>
+                        <option value="2nd year" className='fw-bolder'>2nd year</option>
+                        <option value="3rd year" className='fw-bolder'>3rd year</option>
                     </select>
                 </div>
                 <div className="col-auto d-flex align-items-end">
-                    <button className="btn" style={{backgroundColor:'#00b4d8'}} onClick={fetchRegistrationNumbers}>Fetch Registration Numbers</button>
+                    <button className="btn fw-bold" style={{backgroundColor:'#00b4d8'}} onClick={fetchRegistrationNumbers}>Fetch Registration Numbers</button>
 
      
 
@@ -143,7 +143,7 @@ else{
                     value={totalDays}
                     onChange={handleTotalDaysChange}
                     className="form-control"
-                    style={{ width: '200px' }}
+                    style={{ width: '200px',fontWeight:'bold' }}
                 />
             </div>
 

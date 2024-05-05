@@ -9,6 +9,7 @@
 }
 
 .add-student-container h2 {
+  font-weight: bold;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -20,11 +21,13 @@
 }
 
 .add-student-container form label {
+  font-weight: bold;
   width: 50%;
   margin-bottom: 10px;
 }
 
 .add-student-container form input {
+  font-weight: bold;
   width: 100%;
   padding: 10px;
   outline: none;
@@ -53,11 +56,12 @@
 }
 
 .add-student-container form button {
+  font-weight: bold;
   width: 100%;
   padding: 10px;
   margin-top: 20px;
   background-color: #00b4d8;
-  color: #fff;
+  color: #030303;
   border: none;
   border-radius: 5px;
   cursor: pointer;

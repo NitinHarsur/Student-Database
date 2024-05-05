@@ -100,8 +100,8 @@ const handleSubjectChange = (event, index) => {
           <input type="number" id="semesterNumber" name="semesterNumber" value={semesterNumber} onChange={(e) => setSemesterNumber(e.target.value)} required />
         </div>
 
-        <h3>Subjects</h3>
-        {subjects.length === 0 && <p>No subjects added yet.</p>}
+        <h3 className='fw-bolder'>Subjects</h3>
+        {subjects.length === 0 && <p className='fw-bolder'>No subjects added yet.</p>}
         {subjects.map((subject, index) => (
           <div key={index} className='subject-container'>
             <label htmlFor={`subjectName-${index}`}>Subject Name:</label>

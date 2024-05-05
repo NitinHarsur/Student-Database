@@ -2,6 +2,7 @@
 
 /* Ensure your styles take precedence over default styles */
 .menu__bar {
+    font-weight: bolder;
     display: flex;
     flex-direction: column;
     gap: 30px;

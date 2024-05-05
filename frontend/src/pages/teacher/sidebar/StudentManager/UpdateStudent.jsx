@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './UpdateStudent.css'
+import './UpdateStudent.css';
 import { toast, Bounce } from 'react-toastify';
 
 const UpdateStudent = () => {
@@ -12,7 +12,6 @@ const UpdateStudent = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-
     try {
       const response = await fetch('http://localhost:3001/updateStudent', {
         method: 'PUT',
@@ -21,35 +20,42 @@ const UpdateStudent = () => {
         },
         body: JSON.stringify({
           regnumber,
-          [fieldToUpdate]: newValue
+          [fieldToUpdate]: newValue,
         }),
       });
-
       const data = await response.json();
 
       if (!response.ok) {
         toast.error(data.error || 'Failed to update student', {
-          position: "top-right",
+          position: 'top-right',
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: "light",
+          theme: 'light',
           transition: Bounce,
+          style: {
+            fontWeight: 'bold', // Customize the font weight
+            color: 'black', // Customize the text color (green in this example)
+        },
         });
       } else {
         toast.success(data.message || 'Student information updated successfully', {
-          position: "top-right",
+          position: 'top-right',
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: "light",
+          theme: 'light',
           transition: Bounce,
+          style: {
+            fontWeight: 'bold', // Customize the font weight
+            color: 'black', // Customize the text color (green in this example)
+        },
         });
       }
     } catch (error) {
@@ -69,7 +75,7 @@ const UpdateStudent = () => {
         },
         body: JSON.stringify({
           oldYear,
-          newYear
+          newYear,
         }),
       });
 
@@ -77,26 +83,30 @@ const UpdateStudent = () => {
 
       if (!response.ok) {
         toast.error(data.error || 'Failed to update students year', {
-          position: "top-right",
+          position: 'top-right',
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: "light",
+          theme: 'light',
           transition: Bounce,
+          style: {
+            fontWeight: 'bold', // Customize the font weight
+            color: 'black', // Customize the text color (green in this example)
+        },
         });
       } else {
         toast.success(data.message || 'Students year updated successfully', {
-          position: "top-right",
+          position: 'top-right',
           autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: "light",
+          theme: 'light',
           transition: Bounce,
         });
       }
@@ -106,10 +116,28 @@ const UpdateStudent = () => {
     }
   };
 
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+
+    if (id === 'image') {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        setNewValue(reader.result);
+      };
+    
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    } else {
+      setFieldToUpdate(value);
+    }
+  };
+
   return (
-    <div>
-      <div className='update-student-container'>
-        <div className="stntupdate">
+    <div className="update-student-container">
+      <div className="stntupdate">
         <h2>Update Student Information</h2>
         <form onSubmit={handleUpdate}>
          
@@ -143,34 +171,30 @@ const UpdateStudent = () => {
           <button type="submit">Update Student</button>
           {error && <div>{error}</div>}
         </form>
-        </div>
-    
+      </div>
 
-    
-        <div className="yearupdate">
+      <div className="yearupdate">
         <h2>Update Students Year</h2>
         <form onSubmit={handleUpdateYears}>
-          
-            <label htmlFor="oldYear">Current Year:</label>
-            <input
-              type="text"
-              id="oldYear"
-              value={oldYear}
-              onChange={(e) => setOldYear(e.target.value)} required
-            />
-          
-            <label htmlFor="newYear">New Year:</label>
-            <input
-              type="text"
-              id="newYear"
-              value={newYear}
-              onChange={(e) => setNewYear(e.target.value)} required
-            />
-          
+          <label htmlFor="oldYear">Current Year:</label>
+          <input
+            type="text"
+            id="oldYear"
+            value={oldYear}
+            onChange={(e) => setOldYear(e.target.value)}
+            required
+          />
+          <label htmlFor="newYear">New Year:</label>
+          <input
+            type="text"
+            id="newYear"
+            value={newYear}
+            onChange={(e) => setNewYear(e.target.value)}
+            required
+          />
           <button type="submit">Update Students Year</button>
           {error && <div>{error}</div>}
         </form>
-      </div>
       </div>
     </div>
   );

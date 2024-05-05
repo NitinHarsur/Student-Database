@@ -33,6 +33,11 @@ const DeleteStudent = () => {
           progress: undefined,
           theme: "light",
           transition: Bounce,
+          style: {
+            fontWeight: 'bold', // Customize the font weight
+            color: 'black', // Customize the text color (green in this example)
+        },
+
         });
       } else {
         toast.success('Student Deleted successfully', {
@@ -45,6 +50,11 @@ const DeleteStudent = () => {
           progress: undefined,
           theme: "light",
           transition: Bounce,
+          style: {
+            fontWeight: 'bold', // Customize the font weight
+            color: 'black', // Customize the text color (green in this example)
+        },
+
         });
       }
     } catch (error) {
@@ -59,6 +69,10 @@ const DeleteStudent = () => {
         progress: undefined,
         theme: "light",
         transition: Bounce,
+        style: {
+          fontWeight: 'bold', // Customize the font weight
+          color: 'black', // Customize the text color (green in this example)
+      },
       });
     }
   };
@@ -85,6 +99,11 @@ const DeleteStudent = () => {
           progress: undefined,
           theme: "light",
           transition: Bounce,
+          style: {
+            fontWeight: 'bold', // Customize the font weight
+            color: 'black', // Customize the text color (green in this example)
+        },
+          
         });
       } else {
         toast.success('Students Deleted successfully', {
@@ -97,6 +116,10 @@ const DeleteStudent = () => {
           progress: undefined,
           theme: "light",
           transition: Bounce,
+          style: {
+            fontWeight: 'bold', // Customize the font weight
+            color: 'black', // Customize the text color (green in this example)
+        },
         });
       }
     } catch (error) {
@@ -111,6 +134,10 @@ const DeleteStudent = () => {
         progress: undefined,
         theme: "light",
         transition: Bounce,
+        style: {
+          fontWeight: 'bold', // Customize the font weight
+          color: 'black', // Customize the text color (green in this example)
+      },
       });
     }
   }

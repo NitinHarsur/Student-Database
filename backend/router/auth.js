@@ -38,7 +38,7 @@ router.post('/studentlogin', studentLogin.studentLogin);
 router.get('/studentDetails',studentDetails.studentDetails)
 
 
-router.post('/showResult',getSemestersAndSubjects.getSemestersAndSubjects)
+router.get('/showResult',getSemestersAndSubjects.getSemestersAndSubjects)
 
 
 
