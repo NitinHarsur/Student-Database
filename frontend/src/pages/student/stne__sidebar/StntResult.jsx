@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './stntResult.css'; // Import your custom CSS file for additional styling
+import './stntResult.css'; // Import your custom CSS file for additional styling;
 import Chart from 'chart.js/auto';
 
 const StudentHome = () => {
@@ -12,8 +12,7 @@ const StudentHome = () => {
     const [totalMarks, setTotalMarks] = useState(0);
     const [percentage, setPercentage] = useState(0);
     const [failedSubjects, setFailedSubjects] = useState([]);
-    const [chartRendered, setChartRendered] = useState(false); // Track if the chart has been rendered
-    const [chartColor, setChartColor] = useState('rgba(75, 192, 192, 0.2)'); // Default color for chart
+    const chartRef = useRef(null);
 
     useEffect(() => {
         const fetchStudentDetails = async () => {
@@ -72,67 +71,24 @@ const StudentHome = () => {
         setTotalMarks(total);
         setPercentage((total / (semesterResult.length * 100)) * 100);
         setFailedSubjects(failedSubs);
-
-        // Determine chart color based on internal and external status
-        if (failedSubs.length > 0) {
-            setChartColor('rgba(255, 99, 132, 0.2)'); // Red color if failed subjects exist
-        } else {
-            setChartColor('rgba(75, 192, 192, 0.2)'); // Green color if all subjects passed
-        }
     }, [semesterResult]);
 
     useEffect(() => {
-        console.log('Creating chart...');
-        if (!chartRendered && semesterResult.length > 0) {
-            const ctx = document.getElementById('pieChart');
-            console.log('Canvas element:', ctx); // Check if ctx is defined
-            if (ctx) {
-                new Chart(ctx, {
-                    type: 'pie',
-                    data: {
-                        labels: ['Percentage', 'Remaining'], // Add labels here
-                        datasets: [{
-                            data: [percentage, 100 - percentage],
-                            backgroundColor: [
-                                chartColor,
-                                'rgba(255, 255, 255, 0.2)',
-                            ],
-                            borderColor: [
-                                chartColor.replace('0.2', '1'), // Adjust alpha for border color
-                                'rgba(255, 255, 255, 1)',
-                            ],
-                            borderWidth: 1,
-                        }],
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: {
-                                display: false,
-                            },
-                        },
-                        tooltips: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    if (context.parsed) {
-                                        label += context.parsed.toFixed(2) + '%';
-                                    }
-                                    return label;
-                                }
-                            }
-                        }
-                    },
-                });
-                setChartRendered(true);
-            } else {
-                console.log('Canvas element not found');
-            }
+        // Create chart data
+        if (chartRef.current) {
+            const ctx = chartRef.current.getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Percentage Obtained', 'Percentage Remaining'],
+                    datasets: [{
+                        data: [percentage, 100 - percentage],
+                        backgroundColor: ['green', 'red']
+                    }]
+                }
+            });
         }
-    }, [semesterResult, percentage, chartRendered, chartColor]);
+    }, [percentage]);
 
     if (loading) {
         return <p>Loading...</p>;
@@ -202,7 +158,7 @@ const StudentHome = () => {
                                         <p>Percentage: {percentage}%</p>
                                     </div>
                                     <div className="mt-4">
-                                        <canvas id="pieChart"></canvas>
+                                        <canvas ref={chartRef}  />
                                     </div>
                                 </div>
                             </div>
