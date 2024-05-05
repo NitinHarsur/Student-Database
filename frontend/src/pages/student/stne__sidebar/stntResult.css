@@ -1,25 +1,43 @@
 
 .Student__result {
-    width: 800px;
-    margin-left: 330px;
+    width: 1000px;
+    margin-top: 40px;
     padding: 20px;
-    background-color: #63faaab1;
+    background-color: #00ff80;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
 }
 
-.container {
-    max-width: 800px;
+.card-body {
+    flex: 1 1 auto;
+    padding: 40px;
+    background-color:#63faaab1 ;
+
+    color: var(--bs-card-color);
 }
 
-.card {width: 600px;
-
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+.card-title{
+    margin-top: 10px;
 }
+.sem-text{
+    margin-top: 10px;
+}
+
+
 .index-chart{
     display: flex;
+}
+
+.result{
+    background-color: #f9fbfa;
+    width: 579px;
+    padding-bottom: 20px;
+}
+
+.chart{
+    background-color: #f9fbfa;
+    padding-top: 135px  ;
+    width: 300px;
 }
 
 .card-title {
@@ -29,12 +47,12 @@
     margin-bottom: 20px;
 }
 
-.form-select {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.mt-4 button{
+    border: none;
+    background-color: #00ff80;
+    color: #000000;
+    width: 150px;
+    border-radius: 5px;
 }
 
 .table {
@@ -47,16 +65,8 @@
     vertical-align: middle;
 }
 
-.table th {
-    background-color: #f8f9fa;
-    font-weight: bold;
-    color: #333;
-}
 
-.table td {
-    background-color: #fff;
-    color: #555;
-}
+
 
 .text-danger {
     color: red;

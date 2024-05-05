@@ -1,7 +1,58 @@
 import React, { useEffect, useState, useRef } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './stntResult.css'; // Import your custom CSS file for additional styling;
 import Chart from 'chart.js/auto';
+
+import { useReactToPrint } from 'react-to-print';
+
+// Create a new component for the printable part of the page
+const PrintableResult = React.forwardRef(({ semesterResult, failedSubjects, totalMarks, percentage,passOrFail }, ref) => {
+    return (
+        <div ref={ref}>
+            <h2 className="sem-text">Student Result</h2>
+            <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Subject Name</th>
+                        <th>Internal Marks</th>
+                        <th>External Marks</th>
+                        <th>Total Marks</th>
+                        <th>Internal Status</th>
+                        <th>External Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {semesterResult.map((subject, subIndex) => (
+                        <tr key={subIndex}>
+                            <td>{subject.subjectName}</td>
+                            <td>{subject.internalMarks}</td>
+                            <td>{subject.externalMarks}</td>
+                            <td>{subject.totalMarks}</td>
+                            <td>{subject.internalMarks < 24 ? 'Fail' : 'Pass'}</td>
+                            <td>{subject.externalMarks < 24 ? 'Fail' : 'Pass'}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+            {failedSubjects.length > 0 && (
+                <div className="mt-4">
+                    <h5 className="text-danger">Failed Subjects</h5>
+                    <ul>
+                        {failedSubjects.map((subject, index) => (
+                            <li key={index}>{subject}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+            <div className="mt-4">
+            <p>Total Marks: {totalMarks}</p>
+            <p style={{ color: passOrFail === 'Fail' ? 'red' : 'green' }}>Pass/Fail: {passOrFail}</p>
+            <p>Percentage: {percentage}%</p>
+            </div>
+        </div>
+    );
+});
+
+
 
 const StudentHome = () => {
     const storedRegnumber = sessionStorage.getItem('regnumber');
@@ -12,6 +63,10 @@ const StudentHome = () => {
     const [totalMarks, setTotalMarks] = useState(0);
     const [percentage, setPercentage] = useState(0);
     const [failedSubjects, setFailedSubjects] = useState([]);
+    const [passOrFail, setPassOrFail] = useState('');
+    const componentRef = useRef(null);
+
+
     const chartRef = useRef(null);
 
     useEffect(() => {
@@ -60,18 +115,25 @@ const StudentHome = () => {
     useEffect(() => {
         let total = 0;
         let failedSubs = [];
+        let anyFail = false;
         if (semesterResult.length > 0) {
             semesterResult.forEach(subject => {
                 total += subject.internalMarks + subject.externalMarks;
                 if (subject.internalMarks < 24 || subject.externalMarks < 24) {
                     failedSubs.push(subject.subjectName);
+                    anyFail = true;
                 }
             });
         }
         setTotalMarks(total);
         setPercentage((total / (semesterResult.length * 100)) * 100);
         setFailedSubjects(failedSubs);
+
+        // Set pass or fail status
+        setPassOrFail(anyFail ? 'Fail' : 'Pass');
     }, [semesterResult]);
+
+    
 
     useEffect(() => {
         // Create chart data
@@ -90,6 +152,10 @@ const StudentHome = () => {
         }
     }, [percentage]);
 
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current
+    });
+
     if (loading) {
         return <p>Loading...</p>;
     }
@@ -100,7 +166,7 @@ const StudentHome = () => {
 
     return (
         <center>
-            <div className="Student__result container">
+            <div className="Student__result">
                 
                 <h2 className="text-center ">Student Result</h2>
                 <div className="row">
@@ -108,41 +174,27 @@ const StudentHome = () => {
                         <div className="card">
                             <div className="card-body">
                                 <div className="two">
-                                    <h3 className="card-title text-center">Select Semester</h3>
-                                    <select className="form-select mb-3" value={selectedSemester} onChange={handleSemesterChange}>
+                                    <div className="index-chart">
+                                        <div className='result'>
+                                    <h3 className="card-title">Select Semester</h3>
+                                    <select className="form-select " value={selectedSemester} onChange={handleSemesterChange}>
                                     
                                         <option value="">Select Semester</option>
                                         {studentDetails.map((semesters, index) => (
                                             <option key={index} value={semesters.semesterNumber}>Semester {semesters.semesterNumber}</option>
                                         ))}
                                     </select>
+                                    
                                     {selectedSemester && semesterResult && semesterResult.length > 0 && (
                                         <div>
-                                            <h4 className="text-center mb-4">Semester {selectedSemester} Result</h4>
-                                            <table className="table table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Subject Name</th>
-                                                        <th>Internal Marks</th>
-                                                        <th>External Marks</th>
-                                                        <th>Total Marks</th>
-                                                        <th>Internal Status</th>
-                                                        <th>External Status</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {semesterResult.map((subject, subIndex) => (
-                                                        <tr key={subIndex}>
-                                                            <td>{subject.subjectName}</td>
-                                                            <td>{subject.internalMarks}</td>
-                                                            <td>{subject.externalMarks}</td>
-                                                            <td>{subject.totalMarks}</td>
-                                                            <td>{subject.internalMarks < 24 ? 'Fail' : 'Pass'}</td>
-                                                            <td>{subject.externalMarks < 24 ? 'Fail' : 'Pass'}</td>
-                                                        </tr>
-                                                    ))}
-                                                </tbody>
-                                            </table>
+                                           <PrintableResult
+                                                    ref={componentRef}
+                                                    semesterResult={semesterResult}
+                                                    failedSubjects={failedSubjects}
+                                                    totalMarks={totalMarks}
+                                                    percentage={percentage}
+                                                    passOrFail={passOrFail}
+                                                />
                                         </div>
                                     )}
                                     {failedSubjects.length > 0 && (
@@ -155,15 +207,27 @@ const StudentHome = () => {
                                             </ul>
                                         </div>
                                     )}
+                                    
+                                    
                                     <div className="mt-4">
-                                        <p>Total Marks: {totalMarks}</p>
-                                        <p>Percentage: {percentage}%</p>
+                                      
+                                        <button onClick={handlePrint}>Print Result</button>
+                                        
                                     </div>
+                                    </div>
+                                    <div className='chart'>
                                     <div className="mt-4">
                                         <canvas ref={chartRef}  />
+                                        <p>Percentage: {percentage}%</p>
+                                        
                                     </div>
                                     
                                 </div>
+                               
+                                </div>
+                                </div>
+
+                                
                             </div>
                         </div>
                     </div>
