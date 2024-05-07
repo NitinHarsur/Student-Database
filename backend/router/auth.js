@@ -15,6 +15,7 @@ const getSemestersAndSubjects = require('../controller/studentController')
 
 //---------------------teacher---------------------
 const teacherLogin = require('../controller/teacherController');
+const attendanceSave = require('../controller/teacherController');
 
 const addStudent = require('../controller/teacherController');
 const deleteStudentByRegnumber = require('../controller/teacherController');
@@ -82,6 +83,8 @@ router.post('/teacherlogin', teacherLogin.teacherLogin);
 
 router.post('/contact', contact );
 // Route for sending attendance messages
+
+router.post('/attendanceSave',attendanceSave.attendanceSave)
 
 
 

@@ -331,6 +331,41 @@ const result = async (req, res) => {
 };
 
 
+const attendanceSave = async (req, res) => {
+  try {
+    const { regnumber, year, attendancePercentage } = req.body;
+
+    let yearAttendanceField;
+    switch (year) {
+      case '1st year':
+        yearAttendanceField = 'firstYearAttendance';
+        break;
+      case '2nd year':
+        yearAttendanceField = 'secondYearAttendance';
+        break;
+      case '3rd year':
+        yearAttendanceField = 'thirdYearAttendance';
+        break;
+      default:
+        throw new Error('Invalid year');
+    }
+
+    // Update attendance percentage in the database
+    const filter = { regnumber };
+    const update = { [yearAttendanceField]: attendancePercentage };
+    const options = { new: true }; // Return updated document
+    const updatedStudent = await Student.findOneAndUpdate(filter, update, options);
+
+    if (!updatedStudent) {
+      throw new Error(`Student with registration number ${regnumber} not found`);
+    }
+
+    res.status(200).json({ message: 'Attendance percentage saved successfully' });
+  } catch (error) {
+    console.error('Error saving attendance percentage:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
 
 module.exports={teacherLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,
-updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result};
+updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result,attendanceSave};

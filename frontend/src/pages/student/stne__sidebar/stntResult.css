@@ -1,12 +1,13 @@
 
 .Student__result {
-    width: 1000px;
+    width: 1174px;
     margin-top: 40px;
     padding: 20px;
     background-color: #00ff80;
     border-radius: 10px;
     margin-bottom: 40px;
 }
+
 
 .card-body {
     flex: 1 1 auto;
@@ -20,7 +21,7 @@
     margin-top: 10px;
 }
 .sem-text{
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 
@@ -32,12 +33,13 @@
     background-color: #f9fbfa;
     width: 579px;
     padding-bottom: 20px;
+    padding-left: 30px;
 }
 
 .chart{
     background-color: #f9fbfa;
     padding-top: 135px  ;
-    width: 300px;
+    width: 478px;
 }
 
 .card-title {
