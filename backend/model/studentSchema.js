@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 // Define subject schema
 const subjectSchema = new mongoose.Schema({
   subjectName: { type: String, required: true },
@@ -23,20 +24,28 @@ const studentSchema = new mongoose.Schema({
   regnumber: { type: String, required: true },
   year: { type: String, required: true },
   phone: { type: Number, required: true },
-  firstYearAttendance: { type: Number},
-  secondYearAttendance: { type: Number},
-  thirdYearAttendance: { type: Number},
-
-
-  image: { type: String }, // If this is supposed to be an image URL, string type is appropriate.
+  attendance: [
+    {
+      firstYearAttendance: {
+        totalDays: { type: Number },
+        presentDays: { type: Number },
+        percentage: { type: Number }
+      },
+      secondYearAttendance: {
+        totalDays: { type: Number },
+        presentDays: { type: Number },
+        percentage: { type: Number }
+      },
+      thirdYearAttendance: {
+        totalDays: { type: Number },
+        presentDays: { type: Number },
+        percentage: { type: Number }
+      }
+    }
+  ],
+  image: { type: String },
   semesters: [semesterSchema]
-  
-
-
-
 });
-
-
 // Create and export Student model
 const db = mongoose.connection.useDb('GPTDATA');
 const Student = db.model('STUDENTDATA', studentSchema);

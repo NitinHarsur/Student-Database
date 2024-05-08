@@ -332,40 +332,66 @@ const result = async (req, res) => {
 
 
 const attendanceSave = async (req, res) => {
+  const { regnumber, year, totalDays, presentDays, percentage } = req.body;
+
   try {
-    const { regnumber, year, attendancePercentage } = req.body;
+      // Validate data
+      if (!regnumber || !year || !totalDays || !presentDays || !percentage) {
+          return res.status(400).json({ error: 'Invalid request body' });
+      }
 
-    let yearAttendanceField;
-    switch (year) {
-      case '1st year':
-        yearAttendanceField = 'firstYearAttendance';
-        break;
-      case '2nd year':
-        yearAttendanceField = 'secondYearAttendance';
-        break;
-      case '3rd year':
-        yearAttendanceField = 'thirdYearAttendance';
-        break;
-      default:
-        throw new Error('Invalid year');
-    }
+      // Find the student by registration number
+      let student = await Student.findOne({ regnumber });
 
-    // Update attendance percentage in the database
-    const filter = { regnumber };
-    const update = { [yearAttendanceField]: attendancePercentage };
-    const options = { new: true }; // Return updated document
-    const updatedStudent = await Student.findOneAndUpdate(filter, update, options);
+      if (!student) {
+          return res.status(404).json({ error: 'Student not found' });
+      }
 
-    if (!updatedStudent) {
-      throw new Error(`Student with registration number ${regnumber} not found`);
-    }
+      let yearAttendanceField;
+      switch (year) {
+          case '1st year':
+              yearAttendanceField = 'firstYearAttendance';
+              break;
+          case '2nd year':
+              yearAttendanceField = 'secondYearAttendance';
+              break;
+          case '3rd year':
+              yearAttendanceField = 'thirdYearAttendance';
+              break;
+          default:
+              throw new Error('Invalid year');
+      }
 
-    res.status(200).json({ message: 'Attendance percentage saved successfully' });
+      // Check if attendance for the specified year exists
+      let attendanceIndex = student.attendance.findIndex(att => att[yearAttendanceField]);
+
+      if (attendanceIndex !== -1) {
+          // Update existing attendance details
+          student.attendance[attendanceIndex][yearAttendanceField].totalDays = totalDays;
+          student.attendance[attendanceIndex][yearAttendanceField].presentDays = presentDays;
+          student.attendance[attendanceIndex][yearAttendanceField].percentage = percentage;
+      } else {
+          // Create new attendance details
+          const newAttendance = {
+              [yearAttendanceField]: {
+                  totalDays,
+                  presentDays,
+                  percentage
+              }
+          };
+          student.attendance.push(newAttendance);
+      }
+
+      // Save the updated/created attendance details
+      await student.save();
+
+      res.status(200).json({ message: 'Attendance details saved successfully' });
   } catch (error) {
-    console.error('Error saving attendance percentage:', error);
-    res.status(500).json({ error: 'Internal server error' });
+      console.error('Error saving attendance details:', error.message);
+      res.status(500).json({ error: 'Internal server error' });
   }
 };
+
 
 module.exports={teacherLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,
 updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result,attendanceSave};

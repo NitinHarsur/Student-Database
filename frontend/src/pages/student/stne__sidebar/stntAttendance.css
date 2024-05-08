@@ -1,0 +1,67 @@
+.stnt-AttContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+
+  .stnt-AttContainer h1 {
+    text-align: center;
+  }
+  
+  .stnt-AttContainer div {
+    margin-bottom: 10px;
+  }
+  
+  .stnt-AttContainer label {
+    font-weight: bold;
+  }
+  
+  .stnt-AttContainer select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .stnt-AttContainer table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .stnt-AttContainer th, td {
+    padding: 10px;
+    border: 1px solid #000000;
+    text-align: center;
+  }
+  
+  .stnt-AttContainer th {
+    background-color: #f2f2f2;
+  }
+  
+  .stnt-AttContainer tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .stnt-AttContainer tbody tr:hover {
+    background-color: #ddd;
+  }
+  
+  .stnt-AttContainer .chart-container {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  /* Adjust Pie chart size */
+  .stnt-AttContainer .canvas-container {
+    width: 80px !important;
+    height: 80px !important;
+  }
+  

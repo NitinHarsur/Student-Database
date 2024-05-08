@@ -8,6 +8,7 @@ const contact = require('../controller/contactController')
 const studentLogin = require('../controller/studentController');
 
 const studentDetails = require('../controller/studentController');
+const showAttendance = require('../controller/studentController');
 
 const getSemestersAndSubjects = require('../controller/studentController')
 
@@ -40,6 +41,9 @@ router.get('/studentDetails',studentDetails.studentDetails)
 
 
 router.get('/showResult',getSemestersAndSubjects.getSemestersAndSubjects)
+
+
+router.get('/showAttendance',showAttendance.showAttendance)
 
 
 
@@ -89,4 +93,4 @@ router.post('/attendanceSave',attendanceSave.attendanceSave)
 
 
 
-module.exports = router;
+module.exports = router; 

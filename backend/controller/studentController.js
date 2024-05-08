@@ -76,9 +76,45 @@ const getSemestersAndSubjects = async (req, res) => {
   }
 }
 
+const showAttendance = async (req, res) => {
+  const { regnumber, year } = req.query;
+  try {
+    // Query the database for the student with the specified registration number
+    const student = await Student.findOne({ regnumber });
+
+    if (!student) {
+      return res.status(404).json({ error: 'Student not found' });
+    }
+
+    let selectedAttendance = null;
+
+    // Extract attendance data for the selected year
+    if (year === 'firstYearAttendance') {
+      selectedAttendance = student.attendance.find(item => item.firstYearAttendance);
+    } else if (year === 'secondYearAttendance') {
+      selectedAttendance = student.attendance.find(item => item.secondYearAttendance);
+    } else if (year === 'thirdYearAttendance') {
+      selectedAttendance = student.attendance.find(item => item.thirdYearAttendance);
+    }
+
+    if (!selectedAttendance) {
+      return res.status(404).json({ error: 'Attendance data not found for the selected year' });
+    }
+
+    const { totalDays, presentDays, percentage } = selectedAttendance[year];
+
+    res.json({ totalDays, presentDays, percentage });
+  } catch (error) {
+    console.error('Error fetching attendance data:', error);
+    res.status(500).json({ message: 'Server error. Please try again later.' });
+  }
+};
+
+
+
     module.exports = {
       studentLogin,
-      studentDetails,getSemestersAndSubjects // Add `studentDetails` to the export object
+      studentDetails,getSemestersAndSubjects,showAttendance
   };
   
 

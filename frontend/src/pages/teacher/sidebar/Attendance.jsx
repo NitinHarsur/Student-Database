@@ -90,17 +90,46 @@ const Attendance = () => {
                 body: JSON.stringify(data),
             });
             if (!response.ok) {
-              const errorMessage = await response.text(); // Read the response body as text
-              throw new Error(errorMessage);
-          }
-else{
-            const responseData = await response.json();
-            console.log('Message sent successfully:', responseData);}
+                const errorMessage = await response.text(); // Read the response body as text
+                throw new Error(errorMessage);
+            } else {
+                const responseData = await response.json();
+                console.log('Message sent successfully:', responseData);
+            }
         } catch (error) {
             console.error('Error sending message:', error);
         }
     };
 
+    // Function to handle saving attendance percentage
+    const handleSaveAttendance = async (regnumber, presentDays, percentage) => {
+        setError(null); // Clear previous errors
+        try {
+            const attendanceData = studentsAttendance.find((att) => att.regnumber === regnumber);
+            if (!attendanceData) {
+                throw new Error(`Attendance data for registration number ${regnumber} not found`);
+            }
+    
+            // Send a request to save attendance percentage
+            const response = await fetch('http://localhost:3001/attendanceSave', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ regnumber, year: selectedYear, totalDays, presentDays, percentage }), // Ensure field names match backend
+            });
+            if (!response.ok) {
+                const errorMessage = await response.text(); // Read the response body as text
+                throw new Error(errorMessage);
+            } else {
+                const responseData = await response.json();
+                console.log('Attendance saved successfully:', responseData);
+            }
+        } catch (error) {
+            console.error('Error saving attendance:', error);
+        }
+    };
+    
     return (
         <div className="container fw-bold">
             <h2 className='fw-bold'>Attendance Page</h2>
@@ -124,9 +153,6 @@ else{
                 </div>
                 <div className="col-auto d-flex align-items-end">
                     <button className="btn fw-bold" style={{backgroundColor:'#00b4d8'}} onClick={fetchRegistrationNumbers}>Fetch Registration Numbers</button>
-
-     
-
                 </div>
             </div>
 
@@ -158,6 +184,7 @@ else{
                                     <th>Present Days</th>
                                     <th>Percentage</th>
                                     <th>Action</th>
+                                    <th>Save</th> {/* Add a new header column for Save button */}
                                 </tr>
                             </thead>
                             <tbody>
@@ -186,6 +213,15 @@ else{
                                                     Send
                                                 </button>
                                             )}
+                                        </td>
+                                        {/* Save button */}
+                                        <td>
+                                            <button
+                                                className="btn btn-primary"
+                                                onClick={() => handleSaveAttendance(student.regnumber, studentsAttendance[index]?.presentDays, studentsAttendance[index]?.percentage)}
+                                            >
+                                                Save
+                                            </button>
                                         </td>
                                     </tr>
                                 ))}
