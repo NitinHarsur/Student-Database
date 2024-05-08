@@ -6,7 +6,7 @@ import { AiFillHome } from 'react-icons/ai';
 import { PiStudentBold, PiExamFill, PiUserListFill } from 'react-icons/pi';
 import { FaBookBookmark, FaUserCheck } from 'react-icons/fa6';
 import { HiUserAdd } from 'react-icons/hi';
-import { MdPersonRemoveAlt1 } from 'react-icons/md';
+import { MdPersonRemoveAlt1,MdAssignmentAdd } from 'react-icons/md';
 
 import './Sidebar.css';
 
@@ -116,6 +116,11 @@ const Sidebar = () => {
                             icon: <PiUserListFill size={collapsed ? '20' : '25'} />,
                             label: <Link to="/TeacherDashboard/StudentsList">StudentsList</Link>,
                         },
+                        {
+                            key: '/TeacherDashboard/Assignments',
+                            icon: <MdAssignmentAdd size={collapsed ? '20' : '25'} />,
+                            label: <Link to="/TeacherDashboard/Assignments">Assignment</Link>,
+                        }
                     ]}
                 />
             </Sider>
