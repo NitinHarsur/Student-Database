@@ -7,9 +7,7 @@ import Attendance from './sidebar/Attendance';
 import StudentManager from './sidebar/StudentManager';
 import Result from './sidebar/Result';
 import StudentsList from './sidebar/StudentsList';
-import TeacherProfile from './sidebar/TeacherProfile';
-
-
+import Assignments from './sidebar/Assignments';
 
 
 
@@ -28,7 +26,7 @@ const TeacherDashboard = () => {
         <Route path="/StudentManager/*" element={<StudentManager/>} />
         <Route path="/Result" element={<Result />} />
         <Route path="/StudentsList" element={<StudentsList />} />
-        <Route path="/TeacherProfile" element={<TeacherProfile />} />
+        <Route path="/Assignments" element={<Assignments />} />
       </Routes>
       </div>
     </div>
