@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './Result.css'
+import { toast, Bounce } from 'react-toastify';
+
 
 const SubmitMarksForm = () => {
   const [regnumber, setRegnumber] = useState('');
@@ -75,14 +77,33 @@ const handleSubjectChange = (event, index) => {
 
       const data = await response.json();
       console.log(data);
-      alert('Marks submitted successfully');
+      toast.success(data.message || 'Marks submited successfully', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+        transition: Bounce,
+      });
       // Reset form fields
       setRegnumber('');
       setSemesterNumber('');
       setSubjects([]);
     } catch (error) {
       console.error('Error submitting marks:', error.message);
-      alert('Failed to submit marks. Please try again later.');
+      toast.error(error.message || 'Failed to submit marks. Please try again later.', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+        transition: Bounce,})
     }
   };
 

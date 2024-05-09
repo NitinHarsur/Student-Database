@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { toast, Bounce } from 'react-toastify';
+
 
 const Attendance = () => {
     // State variables
@@ -23,6 +25,7 @@ const Attendance = () => {
 
             if (!response.ok) {
                 throw new Error(`Failed to fetch data, status code: ${response.status}`);
+                
             }
 
             const data = await response.json();
@@ -68,8 +71,10 @@ const Attendance = () => {
         try {
             const studentData = studentsData.find((student) => student.regnumber === regnumber);
             if (!studentData) {
-                throw new Error(`Student with registration number ${regnumber} not found`);
-            }
+                throw new Error(`Student with registration number ${regnumber} not found`); }
+                
+                
+           
 
             const attendanceData = studentsAttendance.find((att) => att.regnumber === regnumber);
             if (!attendanceData) {
@@ -92,12 +97,34 @@ const Attendance = () => {
             if (!response.ok) {
                 const errorMessage = await response.text(); // Read the response body as text
                 throw new Error(errorMessage);
+                
             } else {
                 const responseData = await response.json();
                 console.log('Message sent successfully:', responseData);
+                toast.success(data.message || 'Message sent successfully', {
+                    position: 'top-right',
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'light',
+                    transition: Bounce,
+                  });
             }
         } catch (error) {
             console.error('Error sending message:', error);
+            toast.error('Error sending message:', error, {
+                position: 'top-right',
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'light',
+                transition: Bounce,})
         }
     };
 
@@ -124,9 +151,30 @@ const Attendance = () => {
             } else {
                 const responseData = await response.json();
                 console.log('Attendance saved successfully:', responseData);
+                toast.success('Attendance saved successfully:', responseData, {
+                    position: 'top-right',
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'light',
+                    transition: Bounce,
+                  });
             }
         } catch (error) {
             console.error('Error saving attendance:', error);
+            toast.error('Error saving attendance:', error, {
+                position: 'top-right',
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'light',
+                transition: Bounce,})
         }
     };
     

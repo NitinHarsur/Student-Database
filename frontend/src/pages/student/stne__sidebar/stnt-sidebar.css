@@ -1,0 +1,35 @@
+
+
+.stnt-menu__bar {
+    font-weight: bolder;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-size: 1rem;
+}
+.stnt-menu__bar a {
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+.stnt-menu__bar .ant-menu-item {
+    background-color: white; /* Set default background color */
+    transition: background-color 0.3s ease; /* Add transition */
+  }
+  
+  .stnt-menu__bar .ant-menu-item:hover {
+    background-color: rgb(140, 221, 178); /* Change background color on mouse enter */
+    color: black;
+    border-radius: 5px;
+  }
+  
+  .stnt-menu__bar .ant-menu-item:hover .anticon {
+    background-color: #bde0fe; /* Change icon background color on mouse enter */
+    border-radius: 50%;
+    padding: 5px;
+  }

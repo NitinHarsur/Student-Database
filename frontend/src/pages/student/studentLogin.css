@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center; /* Center the items horizontally */
   align-items: center; /* Center the items vertically */
-  background-image: url(../../images/studentlogin.jpg);
+  background-image: url(../../images/studentlogin.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -61,7 +61,7 @@ border-radius: 20px;
 
   border-radius: 20px; /* Adjusted border radius */
   padding: 25px 35px; /* Padding around form elements */
-
+background-color: rgba(34, 252, 172, 0.484);
   margin: 30px auto; /* Center form */
 }
 
@@ -75,8 +75,7 @@ border-radius: 20px;
   padding: 20px 5px;
   margin-bottom: 20px;
   border-bottom: 1px solid #242222;
-
-  border-inline: 2px solid transparent; /* Transparent border */
+  outline: none;
 }
 
 /* Placeholder styling */
@@ -84,13 +83,7 @@ border-radius: 20px;
 .studentform input::-moz-placeholder {
   color: #000000;
 }
-/* Placeholder styling */
 
-/* Focus state styling */
-.studentform input:focus {
-  outline: none; /* Remove outline */
-  border-inline: 2px solid #18bed4; /* Blue border on focus */
-}
 .studentform .studentSubmitbtn{
   background: rgba(0, 238, 151, 0.885);
   border-radius: 10px;
@@ -112,4 +105,15 @@ border-radius: 20px;
   color: red; /* Error message color */
   font-weight: bold; /* Bold text */
   margin-top: 10px; /* Space above the error message */
+}
+
+
+@media screen and (max-width: 768px) {
+  .student__logincontainer {
+    width: 90%;
+  }
+
+  .studentform {
+    max-width: 300px;
+  }
 }

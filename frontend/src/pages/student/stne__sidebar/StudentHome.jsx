@@ -55,7 +55,7 @@ const StudentHome = () => {
 
     // Main render of student information
     return (
-        <div className="Student__Home ps-5 pe-5">
+        <div className="Student__Home ps-5 pe-5"  >
             {/* Inline CSS for hover effect */}
                 <style>
                     {`
@@ -67,6 +67,7 @@ const StudentHome = () => {
                             margin: 20px;
                             /* Transition settings */
                             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+                            
                         }
 
                         /* Hover effect for student-detail class */
@@ -82,7 +83,7 @@ const StudentHome = () => {
             {studentDetails.map((student, index) => (
                 <div key={index} className="mb-4">
                     {/* Student detail container */}
-                    <div className="student-detail">
+                    <div className="student-detail" style={{background:"white"}}>
                         <div className="d-flex align-items-start" style={{ gap: '7rem' }}>
                             {/* Display student image if available */}
                             {student.image && (
@@ -118,7 +119,7 @@ const StudentHome = () => {
                     </div>
 
                     {/* Student info section */}
-                    <div className="student-info mt-4" style={{ padding: '30px', boxShadow: '5px 5px 15px rgba(0, 0, 0, 0.3)', borderRadius: '30px' }}>
+                    <div className="student-info mt-4" style={{ padding: '30px', boxShadow: '5px 5px 15px rgba(0, 0, 0, 0.3)', borderRadius: '30px',background:"white" }}>
                         <h3>Name: {student.studentname}</h3>
                         <h3>Registration Number: {student.regnumber}</h3>
                         <h3>Year of Study: {student.year}</h3>

@@ -19,7 +19,7 @@ const TeacherDashboard = () => {
   <Sidebar />
 </div>
 
-    <div className='teacherDashboard'   style={{ backgroundColor: '#d7e3fc',width:'100%'}} >
+    <div className='teacherDashboard'   style={{ backgroundColor: '#d7e3fc',width:'100%',height:'500%'}} >
       <Routes>
         <Route path="/" element={<TeacherHome />} />
         <Route path="/Attendance" element={<Attendance />} />
