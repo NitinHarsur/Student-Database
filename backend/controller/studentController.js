@@ -1,4 +1,5 @@
 const Student  = require ('../model/studentSchema')
+const Teacher = require ('../model/teacherSchema');
 
 
 // Function to handle student login requests and authenticate students
@@ -110,34 +111,49 @@ const showAttendance = async (req, res) => {
   }
 };
 
+//function to display assignments
+const showAssignments = async (req, res) => {
+  try {
+      // Retrieve the regnumber from the request query parameters
+      const { regnumber } = req.query;
 
+      // Find the student in the database based on the regnumber
+      const student = await Student.findOne({ regnumber });
 
-    module.exports = {
-      studentLogin,
-      studentDetails,getSemestersAndSubjects,showAttendance
-  };
-  
+      // Check if the student was found
+      if (!student) {
+          return res.status(404).json({ error: 'Student not found' });
+      }
 
+      // Determine the student's year
+      const studentYear = student.year;
 
+      let assignments;
+      const teacher = await Teacher.findOne(); // You may need additional criteria for finding the appropriate teacher
 
+      // Determine the assignments based on the student's year
+      if (studentYear === '1st year') {
+          assignments = teacher.assignments.firstYear;
+      } else if (studentYear === '2ns year') {
+          assignments = teacher.assignments.secondYear;
+      } else if (studentYear === '3rd year') {
+          assignments = teacher.assignments.thirdYear;
+      } else {
+          return res.status(400).json({ error: 'Invalid student year' });
+      }
 
+      // Return the assignments as a JSON response
+      res.json(assignments);
+  } catch (error) {
+      console.error('Error fetching assignments:', error);
+      res.status(500).json({ error: 'Server error. Please try again later.' });
+  }
+};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
+module.exports = {
+studentLogin,
+studentDetails,
+getSemestersAndSubjects,
+showAttendance,
+showAssignments
+};

@@ -12,6 +12,8 @@ const showAttendance = require('../controller/studentController');
 
 const getSemestersAndSubjects = require('../controller/studentController')
 
+const showAssignments = require('../controller/studentController')
+
 
 
 //---------------------teacher---------------------
@@ -27,6 +29,7 @@ const studentsList = require('../controller/teacherController');
 const attendance = require('../controller/teacherController');
 const handleSendMessage = require('../controller/teacherController');
 const result = require('../controller/teacherController');
+const assignments = require('../controller/teacherController');
 
 
 
@@ -44,6 +47,9 @@ router.get('/showResult',getSemestersAndSubjects.getSemestersAndSubjects)
 
 
 router.get('/showAttendance',showAttendance.showAttendance)
+
+
+router.get('/showAssignments',showAssignments.showAssignments)
 
 
 
@@ -77,6 +83,8 @@ router.post('/handleSendMessage',handleSendMessage.handleSendMessage)
 //Result
 router.post('/result',result.result)
 
+//assignment
+router.post('/assignments',assignments.assignments)
 
 
 

@@ -5,6 +5,8 @@ import { Route, Routes, useParams } from 'react-router-dom';
 import StntResult from './stne__sidebar/StntResult';
 import StntAttendance from './stne__sidebar/StntAttendance';
 import StudentHome from './stne__sidebar/StudentHome';
+import StntAssignments from './stne__sidebar/StntAssignments';
+
 
 const StudentDashboard = () => {
   const { studentname, regnumber } = useParams();
@@ -20,6 +22,7 @@ const StudentDashboard = () => {
           <Route path="/" element={<StudentHome studentname={studentname} regnumber={regnumber} />} />
           <Route path="/stntAttendance" element={<StntAttendance studentname={studentname} regnumber={regnumber} />} />
           <Route path="/stntResult" element={<StntResult studentname={studentname} regnumber={regnumber} />} />
+          <Route path="/stntassignments" element={<StntAssignments studentname={studentname} regnumber={regnumber} />} />
         </Routes>
       </div>
     </div>

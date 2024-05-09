@@ -14,18 +14,36 @@ const Assignments = () => {
         setSelectedFile(e.target.files[0]);
     };
 
+    // Function to convert file to Base64
+    const convertFileToBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = (error) => reject(error);
+            reader.readAsDataURL(file);
+        });
+    };
+
     // Handle assignment upload
     const handleUploadAssignment = async () => {
         if (selectedYear && selectedFile) {
-            const formData = new FormData();
-            formData.append('year', selectedYear);
-            formData.append('file', selectedFile);
-
             try {
-                // Replace 'YOUR_API_URL' with your actual API URL
-                const response = await fetch('YOUR_API_URL/assignments', {
+                // Convert the selected file to Base64
+                const base64File = await convertFileToBase64(selectedFile);
+
+                // Create the payload with selected year and base64 file
+                const payload = {
+                    year: selectedYear,
+                    file: base64File,
+                };
+
+                // Send the payload to the server
+                const response = await fetch('http://localhost:3001/assignments', {
                     method: 'POST',
-                    body: formData,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload),
                 });
 
                 if (response.ok) {

@@ -5,6 +5,8 @@ import { RiMenuFoldFill, RiMenuUnfoldFill, RiLogoutCircleLine } from 'react-icon
 import { PiExamFill } from 'react-icons/pi';
 import { FaBookBookmark } from 'react-icons/fa6';
 import { CgProfile } from 'react-icons/cg';
+import { MdAssignmentAdd } from 'react-icons/md';
+
 import './sidebar.css';
 
 const { Sider, Footer } = Layout;
@@ -100,7 +102,11 @@ const StntSidebar = () => {
                             key: '/StudentDashboard/Result',
                             icon: <PiExamFill size={collapsed ? '20' : '25'} />,
                             label: <Link to="/StudentDashboard/stntResult">Result</Link>,
-                        },
+                        },  {
+                            key: '/StudentDashboard/Assignments',
+                            icon: <MdAssignmentAdd size={collapsed ? '20' : '25'} />,
+                            label: <Link to="/StudentDashboard/stntassignments">Assignments </Link>,
+                        }
                     ]}
                 />
             </Sider>

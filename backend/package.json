@@ -17,8 +17,11 @@
     "dotenv": "^16.4.5",
     "expess": "^0.0.1-security",
     "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "googleapis": "^137.1.0",
     "mongodb": "^6.5.0",
     "mongoose": "^8.3.1",
+    "multer": "^1.4.5-lts.1",
     "react-toastify": "^10.0.5",
     "twilio": "^5.0.4"
   },

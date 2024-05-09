@@ -1,6 +1,7 @@
 const Teacher = require ('../model/teacherSchema');
 const Student  = require ('../model/studentSchema')
 const { client, twilioPhoneNumber } = require('../twilioConfig');
+const multer = require('multer')
 
 const teacherLogin = async (req, res) => {
   const { name, password } = req.body;
@@ -392,6 +393,65 @@ const attendanceSave = async (req, res) => {
   }
 };
 
+// Function to handle assignment upload
+const assignments = async (req, res) => {
+  try {
+      // Get the selected year and base64 file from the request body
+      const { year, file } = req.body;
 
-module.exports={teacherLogin,addStudent,deleteStudentByRegnumber,deleteStudentsByYear,
-updateStudent,updateStudentsYear,studentsList,attendance,handleSendMessage,result,attendanceSave};
+      // Retrieve the teacher's document (assuming you have only one document in the database)
+      const teacher = await Teacher.findOne();
+
+      // Check if the teacher document exists
+      if (!teacher) {
+          return res.status(404).json({ error: 'Teacher document not found' });
+      }
+
+      // Determine which year array to update based on the selected year
+      let assignmentArray;
+      if (year === '1st year') {
+          assignmentArray = teacher.assignments.firstYear;
+      } else if (year === '2nd year') {
+          assignmentArray = teacher.assignments.secondYear;
+      } else if (year === '3rd year') {
+          assignmentArray = teacher.assignments.thirdYear;
+      } else {
+          return res.status(400).json({ error: 'Invalid year selected' });
+      }
+
+      // Add the new assignment (base64 file) to the appropriate array with the current date
+      assignmentArray.push({
+          file: file,
+          date: new Date() // Current date and time
+      });
+
+      // Save the updated teacher document
+      await teacher.save();
+
+      res.status(201).json({ message: 'Assignment uploaded successfully' });
+  } catch (error) {
+      console.error('Error uploading assignment:', error);
+      res.status(500).json({ error: 'An error occurred while uploading the assignment' });
+  }
+};
+
+
+
+
+
+
+
+
+module.exports={teacherLogin,
+addStudent,
+deleteStudentByRegnumber,
+deleteStudentsByYear,
+updateStudent,
+updateStudentsYear,
+studentsList,
+attendance,
+handleSendMessage,
+result,
+attendanceSave,
+assignments
+};

@@ -5,7 +5,7 @@
     font-weight: bolder;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 25px;
     font-size: 1rem;
 }
 .menu__bar a {
