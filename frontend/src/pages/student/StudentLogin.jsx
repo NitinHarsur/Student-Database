@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom';
-import students from '../../images/students.jpg'
+import students from '../../images/students.png'
 
 import {  toast,Bounce } from 'react-toastify';
 
@@ -72,20 +72,7 @@ navigate(`/StudentDashboard`);
     }
   };
 
- // This function changes the background color of the student form to white on hover
-const handleMouseEnter = () => {
-  const studentForm = document.querySelector('.studentform');
-  studentForm.style.backgroundColor = 'white';
-  studentForm.style.transition = '0.3s ease-in-out';
-};
 
-// This function reverts the background color change when the mouse leaves the button
-const handleMouseLeave = () => {
-  const studentForm = document.querySelector('.studentform');
-  studentForm.style.backgroundColor = 'rgba(34, 252, 172, 0.484)'; // Revert to original background color
-  studentForm.style.transition = '0.3s ease-in-out';
-
-};
 
 
   return (
@@ -118,15 +105,8 @@ const handleMouseLeave = () => {
                     />
                 </div>
                 <center>
-                <button
-                                className='studentSubmitbtn'
-                                type="submit"
-
-                                onMouseEnter={handleMouseEnter} // Handle mouse enter events
-                                onMouseLeave={handleMouseLeave} // Handle mouse leave events
-                            >
-                                Login
-                            </button></center>
+                <button className='studentSubmitbtn' type="submit">Login
+                </button></center>
                 {error && <div>{error}</div>}
           </form>
       </div>

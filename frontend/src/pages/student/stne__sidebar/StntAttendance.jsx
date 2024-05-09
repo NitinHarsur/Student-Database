@@ -42,6 +42,7 @@ function StntAttendance() {
   };
 
   return (
+    <center>
     <div className="stnt-AttContainer">
    
       <h1>Student Attendance Management</h1>
@@ -56,8 +57,8 @@ function StntAttendance() {
       </div>
       {error && <p>{error}</p>}
       {attendanceData && (
-        <div style={{ marginTop: '20px' }}>
-          <div>
+        <div style={{ marginTop: '20px' }} className='att-pai'>
+          <div className='att-att-pai'>
           <h2>Attendance Details for {selectedYear}</h2>
           <table>
             <thead>
@@ -75,7 +76,7 @@ function StntAttendance() {
               </tr>
             </tbody>
           </table>
-          </div>
+          
           <h2>Attendance Percentage</h2>
           <Pie
             data={{
@@ -88,10 +89,12 @@ function StntAttendance() {
               ]
             }}
           />
+          </div>
         
         </div>
       )}
     </div>
+    </center>
   );
 }
 

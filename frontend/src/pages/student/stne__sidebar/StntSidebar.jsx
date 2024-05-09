@@ -5,7 +5,7 @@ import { RiMenuFoldFill, RiMenuUnfoldFill, RiLogoutCircleLine } from 'react-icon
 import { PiExamFill } from 'react-icons/pi';
 import { FaBookBookmark } from 'react-icons/fa6';
 import { CgProfile } from 'react-icons/cg';
-import './sidebar.css';
+import './stnt-sidebar.css';
 
 const { Sider, Footer } = Layout;
 
@@ -47,13 +47,14 @@ const StntSidebar = () => {
     
 
     return (
+        <div>
         <Layout
             className="layout-container"
             style={{
                 display: 'flex',
                 flexDirection: 'column',
                 height: '100vh',
-                backgroundColor: 'white',
+                backgroundColor: 'white'
             }}
         >
             <Sider
@@ -69,8 +70,9 @@ const StntSidebar = () => {
             >
                 <div
                     className="top-bar"
+                    
                     onClick={toggleCollapse}
-                    style={{ padding: '10px', cursor: 'pointer' }}
+                    style={{ padding: '10px', cursor: 'pointer', }}
                 >
                     {collapsed ? (
                         <RiMenuUnfoldFill fontSize={30} />
@@ -83,8 +85,9 @@ const StntSidebar = () => {
 
                 {/* Menu */}
                 <Menu
-                    className="menu__bar"
+                    className="stnt-menu__bar"
                     mode="inline"
+                    
                     items={[
                         {
                             key: '/StudentDashboard',
@@ -154,6 +157,7 @@ const StntSidebar = () => {
                 </div>
             </Footer>
         </Layout>
+        </div>
     );
 };
 

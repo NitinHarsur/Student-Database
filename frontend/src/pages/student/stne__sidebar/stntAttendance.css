@@ -1,4 +1,5 @@
 .stnt-AttContainer {
+  margin: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,10 +7,20 @@
     width: 80%;
     max-width: 800px;
     background-color: #f9f9f9;
-    border-radius: 5px;
+    border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
+.att-pai{
+  background-color: #63faaab1;
+  padding: 30px;
+  border-radius: 7px;
+}
+
+.att-att-pai{
+  background-color: white;
+  padding: 20px;
+}
 
   .stnt-AttContainer h1 {
     text-align: center;
@@ -38,13 +49,10 @@
   
   .stnt-AttContainer th, td {
     padding: 10px;
-    border: 1px solid #000000;
     text-align: center;
   }
   
-  .stnt-AttContainer th {
-    background-color: #f2f2f2;
-  }
+  
   
   .stnt-AttContainer tbody tr:nth-child(even) {
     background-color: #f2f2f2;

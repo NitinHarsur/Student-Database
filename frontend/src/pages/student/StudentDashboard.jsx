@@ -10,7 +10,7 @@ const StudentDashboard = () => {
   const { studentname, regnumber } = useParams();
 
   return (
-    <div className="Main__Stntdashboard d-flex ">
+    <div className="Main__Stntdashboard d-flex " style={{backgroundColor: "rgb(215, 252, 237)", width: "100%"}}>
       <div className="__stnt__sidebar flex-shrink-0" style={{ boxShadow: '3px 0 6px rgba(0, 0, 0, 0.1)' }}>
         <StntSidebar />
       </div>
