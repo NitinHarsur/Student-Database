@@ -5,13 +5,11 @@ import { RiMenuFoldFill, RiMenuUnfoldFill, RiLogoutCircleLine } from 'react-icon
 import { PiExamFill } from 'react-icons/pi';
 import { FaBookBookmark } from 'react-icons/fa6';
 import { CgProfile } from 'react-icons/cg';
-<<<<<<< HEAD
 import { MdAssignmentAdd } from 'react-icons/md';
 
 import './sidebar.css';
-=======
+
 import './stnt-sidebar.css';
->>>>>>> 7faa9575eb621511caa497c281fc9db2a546232f
 
 const { Sider, Footer } = Layout;
 
