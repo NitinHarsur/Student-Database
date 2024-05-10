@@ -11,12 +11,9 @@ function HomePage() {
     return (
         <>
             <Navbar />
-            
-
-            {/* Background video */}
             <div className="background-video-wrapper">
                 <video
-                    src={backgroundVideo} // Specify the video source
+                    src={backgroundVideo} 
                     autoPlay
                     loop
                     muted

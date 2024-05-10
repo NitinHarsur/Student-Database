@@ -1,12 +1,6 @@
-
-
-
 .homepage{
   height: 100vh;
 }
-
-
-
 
 main .image-section {
     display: flex;
@@ -36,13 +30,10 @@ main .image-section {
   /* Add other styling as needed */
 }
 
-
 .image-wrapper {
   display: flex;
   gap: 20px; /* Adjust gap between images as needed */
 }
-
-
 
 /* Optional: Add hover effects for a dynamic touch */
 .image-wrapper img:hover {
@@ -63,7 +54,6 @@ main .image-section {
     margin-bottom: 10px; /* Add some margin below the image */
   }
 }
-
 
 .homepage main .image-section .image-wrapper a {
     text-decoration: none; /* Remove underline from links */
@@ -107,8 +97,6 @@ main .image-section {
       opacity: 1;
   }
 }
-
-  
   /* Footer styles */
   footer {
     margin-top: 20px;
@@ -176,7 +164,6 @@ main .image-section {
       padding: 10px; /* Add some spacing around the images */
   }
 }
-
 
 
 
