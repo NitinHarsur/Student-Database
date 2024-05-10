@@ -7,7 +7,7 @@ import { FaBookBookmark } from 'react-icons/fa6';
 import { CgProfile } from 'react-icons/cg';
 import { MdAssignmentAdd } from 'react-icons/md';
 
-import './sidebar.css';
+import './stnt-sidebar.css';
 
 import './stnt-sidebar.css';
 
