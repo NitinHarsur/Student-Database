@@ -29,7 +29,16 @@ const handleSubjectChange = (event, index) => {
 
   const addSubject = () => {
     if (!regnumber || !semesterNumber) {
-      alert('Please fill in all fields for the new subject');
+      toast.error( 'Please fill in all fields for the new subject.', {
+        position: 'top-right',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+        transition: Bounce,})
       return;
     }
   

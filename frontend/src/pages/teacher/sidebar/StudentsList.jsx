@@ -1,12 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useReactToPrint } from 'react-to-print';
+
+const PrintableResult = React.forwardRef(({ studentsData }, ref) => {
+    return (
+        <div ref={ref}>
+            <div className="row justify-content-center mt-3">
+                <div className="col-md-8 col-lg-6">
+                    <table className="table table-info table-hover table-bordered border-black" style={{ width: '100%',textAlign:"center"}}>
+                        <thead>
+                            <tr>
+                                <th>Serial No.</th>
+                                <th>Name</th>
+                                <th>Registration Number</th>
+                                <th>Year</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {studentsData.map((student, index) => (
+                                <tr key={index}>
+                                    <td className='fw-bolder'>{index + 1}</td>
+                                    <td className='fw-bolder'>{student.studentname}</td>
+                                    <td className='fw-bolder'>{student.regnumber}</td>
+                                    <td className='fw-bolder'>{student.year}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    );
+});
 
 const StudentsList = () => {
     const [studentsData, setStudentsData] = useState([]);
     const [selectedYear, setSelectedYear] = useState('');
     const [error, setError] = useState(null);
+    const componentRef = useRef(null);
 
-    // Function to fetch students list
     const fetchStudents = async (e) => {
         e.preventDefault();
         try {
@@ -30,19 +62,20 @@ const StudentsList = () => {
         }
     };
 
-    // Handle year change
     const handleYearChange = (e) => {
         setSelectedYear(e.target.value);
     };
 
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current
+    });
+
     return (
         <div className="container">
             <h2 className='fw-bolder'>Students List</h2>
-
-            {/* Year selection and Fetch button */}
             <div className="row mb-3">
                 <div className="col-auto">
-                    <label htmlFor="yearSelect" className='fw-bolder' >Select Year:</label>
+                    <label htmlFor="yearSelect" className='fw-bolder'>Select Year:</label>
                     <select
                         id="yearSelect"
                         value={selectedYear}
@@ -58,46 +91,13 @@ const StudentsList = () => {
                 </div>
                 <div className="col-auto d-flex align-items-end">
                     <button className="btn fw-bolder" style={{ backgroundColor: '#00b4d8' }} onClick={fetchStudents}>Fetch Students</button>
+                    <button className="btn fw-bolder" style={{ backgroundColor: '#00b4d8', marginLeft: '10px' }} onClick={handlePrint}>Print</button>
                 </div>
             </div>
-
-            {/* Error message */}
             {error && <p className="text-danger">{error}</p>}
-
-            {/* Students table */}
             {studentsData.length > 0 ? (
-                <div className="row justify-content-center mt-3">
-                    <div className="col-md-8 col-lg-6">
-                        <table className="table table-info table-hover table-bordered border-black" style={{ width: '100%' }}>
-                            <thead>
-                                <tr>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Registration Number</th>
-                                    <th>Year</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {studentsData.map((student, index) => (
-                                    <tr key={index}>
-                                        {/* Display the image using an img tag */}
-                                        <td>
-                                            {student.image && (
-                                                <img
-                                                    src={student.image}
-                                                    alt={`${student.studentname}'s image`}
-                                                    style={{ width: '50px', height: '50px', borderRadius: '50%' }}
-                                                />
-                                            )}
-                                        </td>
-                                        <td className='fw-bolder'>{student.studentname}</td>
-                                        <td className='fw-bolder'>{student.regnumber}</td>
-                                        <td className='fw-bolder'>{student.year}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
+                <div id="studentsTable">
+                    <PrintableResult ref={componentRef} studentsData={studentsData} />
                 </div>
             ) : (
                 <p className='fw-bolder'> No students found</p>
