@@ -263,6 +263,10 @@ if (attendancePercentage < 75) {
 }
 
 };
+
+
+
+
 const result = async (req, res) => {
   const { regnumber, semesterNumber, subjects } = req.body;
 
