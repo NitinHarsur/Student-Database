@@ -5,7 +5,9 @@ const TeacherHome = () => {
 
   return (
     <div>
-      <h2>Welcome</h2>
+      <center>
+      <h1>Welcome, Sunanda Devi </h1>
+      </center>
     </div>
   );
 };
