@@ -67,13 +67,15 @@ const StntAssignments = () => {
                             const fileUrl = fileExtension ? fileDataURL : fileDataURL;
 
                             return (
-                                <li key={index}>
+                                <li key={index} style={{marginBottom:"20px", backgroundColor:"white",width:"300px",padding:"20px",borderRadius:"10px"}}>
                                     <p>Date: {new Date(assignment.date).toLocaleDateString()}</p>
                                     <a href={fileUrl} target="_blank" rel="noopener noreferrer">
                                         View Assignment {index + 1}
                                     </a>
                                     {/* Provide a download button */}
-                                    <button
+                                    <button style={{border:"none",backgroundColor:"rgb(140, 221, 178)",
+                                        marginLeft:"20px",borderRadius:"5px"
+                                    }}
                                         onClick={() => {
                                             const link = document.createElement('a');
                                             link.href = fileUrl;
