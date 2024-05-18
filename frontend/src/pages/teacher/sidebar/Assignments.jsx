@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const Assignments = () => {
     const [selectedYear, setSelectedYear] = useState('');
     const [selectedFile, setSelectedFile] = useState(null);
+    const [selectedSubject, setSelectedSubject] = useState('');
 
     // Handle year change
     const handleYearChange = (e) => {
@@ -12,6 +13,11 @@ const Assignments = () => {
     // Handle file selection
     const handleFileChange = (e) => {
         setSelectedFile(e.target.files[0]);
+    };
+
+    // Handle subject input
+    const handleSubjectChange = (e) => {
+        setSelectedSubject(e.target.value);
     };
 
     // Function to convert file to Base64
@@ -26,14 +32,15 @@ const Assignments = () => {
 
     // Handle assignment upload
     const handleUploadAssignment = async () => {
-        if (selectedYear && selectedFile) {
+        if (selectedYear && selectedFile && selectedSubject) {
             try {
                 // Convert the selected file to Base64
                 const base64File = await convertFileToBase64(selectedFile);
 
-                // Create the payload with selected year and base64 file
+                // Create the payload with selected year, subject, and base64 file
                 const payload = {
                     year: selectedYear,
+                    subject: selectedSubject,
                     file: base64File,
                 };
 
@@ -56,15 +63,15 @@ const Assignments = () => {
                 alert('An error occurred while uploading the assignment.');
             }
         } else {
-            alert('Please select a year and an assignment file.');
+            alert('Please select a year, subject, and an assignment file.');
         }
     };
 
     return (
-        <div className='Assignment__Page'>
+        <div className='Assignment__Page' style={{width:"100%"}}>
             <h2 className='Assignments__container fw-bolder'>Assignments</h2>
 
-            {/* Year selection and upload button */}
+            {/* Year selection, subject input, file input, and upload button */}
             <div className="row mb-3">
                 <div className="col-auto">
                     <label htmlFor="yearSelect" className='fw-bolder'>Select Year:</label>
@@ -83,14 +90,24 @@ const Assignments = () => {
                 </div>
                 <div className="col-auto d-flex align-items-end">
                     <input
+                        type="text"
+                        placeholder='Subject'
+                        value={selectedSubject}
+                        onChange={handleSubjectChange}
+                        className='fw-bolder'
+                        style={{marginRight:"10px",border:"none",width:"200px",height:"38px",borderRadius:"5px"}}
+                        required
+                    />
+                    <input
                         type="file"
                         accept=".pdf, .doc, .docx"
                         onChange={handleFileChange}
                         className='fw-bolder'
+                        
                     />
                     <button
                         className="btn fw-bolder"
-                        style={{ backgroundColor: '#00b4d8', marginLeft: '10px' }}
+                        style={{ backgroundColor: '#00b4d8', marginLeft: '50px' }}
                         onClick={handleUploadAssignment}
                     >
                         Upload Assignment

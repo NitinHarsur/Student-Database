@@ -53,7 +53,7 @@ const Sidebar = () => {
     };
     
     return (
-        <Layout className="layout-container" style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white', height: '400vh' }}>
+        <Layout className="layout-container" style={{ display: 'flex', flexDirection: 'column', backgroundColor: 'white', height: '170vh' }}>
             <Sider
                 className="side__bar"
                 collapsed={collapsed}
@@ -76,7 +76,7 @@ const Sidebar = () => {
                 <Menu className='menu__bar'
                     mode="inline"
                     theme="light"
-                    style={{ width: `${menuWidth}px`, marginTop: "51px", transition: 'background-color 0.3s ease-in-out', position: "fixed" }} // Set dynamic width
+                    style={{ width: `${menuWidth}px`, marginTop: "51px", transition: 'background-color 0.3s ease-in-out', position: "fixed" ,    gap: "20px"}} // Set dynamic width
                     items={[
                         {
                             key: '/TeacherDashboard',

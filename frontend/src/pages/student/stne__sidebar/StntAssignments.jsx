@@ -69,6 +69,7 @@ const StntAssignments = () => {
                             return (
                                 <li key={index} style={{marginBottom:"20px", backgroundColor:"white",width:"300px",padding:"20px",borderRadius:"10px"}}>
                                     <p>Date: {new Date(assignment.date).toLocaleDateString()}</p>
+                                    <p>Subject: {assignment.subject}</p>
                                     <a href={fileUrl} target="_blank" rel="noopener noreferrer">
                                         View Assignment {index + 1}
                                     </a>
