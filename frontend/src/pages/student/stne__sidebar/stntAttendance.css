@@ -72,4 +72,25 @@
     width: 80px !important;
     height: 80px !important;
   }
+
+  /* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  .stnt-AttContainer {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .att-att-pai {
+    padding: 15px;
+  }
+
+  .stnt-AttContainer li {
+    padding: 15px;
+  }
+
+  .stnt-AttContainer button {
+    margin-left: 15px;
+    padding: 6px 10px;
+  }
+}
   

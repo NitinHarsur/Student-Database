@@ -61,7 +61,7 @@ const Sidebar = () => {
                 width={200}
                 style={{
                     backgroundColor: 'white',
-                    transition: 'width 0.3s ease-in-out, padding 0.3s ease-in-out, margin 0.3s ease-in-out' // Add transition for width change, padding change, and margin change
+                    transition: '0.3s ease-in-out' // Add transition for width change, padding change, and margin change
                 }}
             >
                 <div className="top-bar" onClick={toggleCollapse} style={{ padding: '10px', cursor: 'pointer', position: "fixed"}}>
@@ -76,7 +76,7 @@ const Sidebar = () => {
                 <Menu className='menu__bar'
                     mode="inline"
                     theme="light"
-                    style={{ width: `${menuWidth}px`, marginTop: "51px", transition: 'background-color 0.3s ease-in-out', position: "fixed" ,    gap: "20px"}} // Set dynamic width
+                    style={{ width: `${menuWidth}px`, marginTop: "51px", transition: '0.3s ease-in-out', position: "fixed" ,    gap: "20px"}} // Set dynamic width
                     items={[
                         {
                             key: '/TeacherDashboard',

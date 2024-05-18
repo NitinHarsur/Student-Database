@@ -59,7 +59,7 @@ const StntSidebar = () => {
                     width={200} // Set initial width of the sidebar
                     style={{
                         backgroundColor: 'white',
-                        transition: 'width 0.3s ease-in-out, padding 0.3s ease-in-out, margin 0.3s ease-in-out' // Add transition for width change, padding change, and margin change
+                        transition: '0.3s ease-in-out' // Add transition for width change, padding change, and margin change
                     }}
                 >
                     <div
@@ -78,7 +78,7 @@ const StntSidebar = () => {
                     <Menu
                         className="stnt-menu__bar"
                         mode="inline"
-                        style={{ width: `${menuWidth}px`, marginTop: "51px", transition: 'background-color 0.3s ease-in-out', position: "fixed" }} // Set dynamic width
+                        style={{ width: `${menuWidth}px`, marginTop: "51px", transition: '0.3s ease-in-out', position: "fixed" }} // Set dynamic width
                         items={[
                             {
                                 key: '/StudentDashboard',
